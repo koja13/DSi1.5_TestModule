@@ -5,6 +5,7 @@ class User_model extends CI_Model {
     {
         parent::__construct();
     }
+    
 	function login($email,$password)
     {
 		$this->db->where("email",$email);
@@ -28,6 +29,7 @@ class User_model extends CI_Model {
 		}
 		return false;
     }
+    
 	public function add_user()
 	{
 		$data=array(

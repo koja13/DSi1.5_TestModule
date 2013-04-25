@@ -1,11 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class User extends CI_Controller{
+	
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('user_model');
 	}
+	
 	public function index()
+	{
+		if(($this->session->userdata('user_name')!=""))
+		{
+			$this->welcome();
+		}
+		else{
+			$data['title']= 'Home';
+			$this->load->view('header_view',$data);
+			$this->load->view("signin_view.php", $data);
+			$this->load->view('footer_view',$data);
+		}
+	}
+	
+	// redirektuje na stranu za registrovanje
+	public function register()
 	{
 		if(($this->session->userdata('user_name')!=""))
 		{
@@ -18,6 +35,7 @@ class User extends CI_Controller{
 			$this->load->view('footer_view',$data);
 		}
 	}
+	
 	public function welcome()
 	{
 		$data['title']= 'Welcome';
@@ -25,6 +43,7 @@ class User extends CI_Controller{
 		$this->load->view('welcome_view.php', $data);
 		$this->load->view('footer_view',$data);
 	}
+	
 	public function login()
 	{
 		$email=$this->input->post('email');
@@ -34,6 +53,7 @@ class User extends CI_Controller{
 		if($result) $this->welcome();
 		else        $this->index();
 	}
+	
 	public function thank()
 	{
 		$data['title']= 'Thank';
@@ -41,6 +61,7 @@ class User extends CI_Controller{
 		$this->load->view('thank_view.php', $data);
 		$this->load->view('footer_view',$data);
 	}
+	
 	public function registration()
 	{
 		$this->load->library('form_validation');
@@ -60,6 +81,7 @@ class User extends CI_Controller{
 			$this->thank();
 		}
 	}
+	
 	public function logout()
 	{
 		$newdata = array(
