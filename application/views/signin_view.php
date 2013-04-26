@@ -17,4 +17,12 @@
 		</div><!--<div class="signin_form">-->
 	</div><!--<div class="signup_wrap">-->
     
+       <div id="countdown"></div>
+    
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="<?php echo base_url('assets/countdownTimer/countdown/jquery.countdown.js')?>"></script>
+		<script src="<?php echo base_url('assets/countdownTimer/js/script.js')?>"></script>
+ 
+    
+    
 </div><!--<div id="content">-->
