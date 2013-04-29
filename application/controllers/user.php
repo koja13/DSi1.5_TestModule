@@ -44,6 +44,14 @@ class User extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
+	public function start()
+	{
+		$data['title']= 'DSi2.0';
+		$this->load->view('header_view',$data);
+		$this->load->view('MainView.php', $data);
+		$this->load->view('footer_view',$data);
+	}
+	
 	public function login()
 	{
 		$email=$this->input->post('email');
