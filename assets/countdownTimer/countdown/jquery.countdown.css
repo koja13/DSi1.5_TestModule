@@ -7,6 +7,15 @@
 	position: fixed;
 	right: 0px;
 	bottom: 0px;
+	
+	opacity:0.3;
+  	filter:alpha(opacity=30);
+}
+
+.countdownHolder:hover{
+	
+	opacity:1.0;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
 .position{

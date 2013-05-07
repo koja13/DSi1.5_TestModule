@@ -113,7 +113,7 @@
 		var replacement = $('<span>',{
 			'class':'digit',
 			css:{
-				top:'-2.1em',
+				top:'0',
 				opacity:0
 			},
 			html:number
@@ -125,7 +125,7 @@
 		digit
 			.before(replacement)
 			.removeClass('static')
-			.animate({top:'2.5em',opacity:0},'fast',function(){
+			.animate({top:0,opacity:1},'fast',function(){
 				digit.remove();
 			})
 
