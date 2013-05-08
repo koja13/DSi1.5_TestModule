@@ -23,38 +23,11 @@
 	<script type="text/javascript" src="<?php echo base_url('/assets/js/findAndReplaceDOMText.js');?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('/assets/js/jsFunctions.js');?>"></script>
 
-
+<!--  
 	<div id="countdown"> </div>
-	
-	    <script type="text/javascript">
-			$(function() {
+-->	
 
-			var $tabs = $('#tabs').tabs();
 	
-			$(".ui-tabs-panel").each(function(i){
-	
-			  var totalSize = $(".ui-tabs-panel").size() - 1;
-	
-			  if (i != totalSize) {
-			      next = i + 2;
-		   		  $(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
-			  }
-	  
-			  if (i != 0) {
-			      prev = i;
-		   		  $(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
-			  }
-   		
-			});
-	
-			$('.next-tab, .prev-tab').click(function() { 
-		           $tabs.tabs('select', $(this).attr("rel"));
-		           return false;
-		       });
-       
-
-		});
-    </script>	
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainDiv'>
 
@@ -139,20 +112,56 @@
         	<div id="fragment-15" class="ui-tabs-panel ui-tabs-hide">
         		<p>The end.</p>
         	</div>
-
         </div>
 		
 	</div>
 	
-
-
-
-
 </div>
 
+
+	
+<script type="text/javascript">
+
+	$(function() 
+	{
+
+		var $tabs = $('#tabs').tabs();
+		
+		$(".ui-tabs-panel").each(function(i)
+		{
+		
+			var totalSize = $(".ui-tabs-panel").size() - 1;
+			
+			if (i != totalSize) 
+			{
+				next = i + 2;
+				$('#bottomDiv').append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+			}
+			  
+			if (i != 0)
+			{
+				prev = i;
+				$('#bottomDiv').append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+			}
+
+			
+		});
+	
+		$('.next-tab, .prev-tab').click(function() 
+		{ 
+			$tabs.tabs('select', $(this).attr("rel"));
+			return false;
+		});
+       
+
+	});
+	
+    </script>
+    
+    
 <!------------------------- bottomDiv, donji div u kome se prikazuju veze izmedju reci u tekstu ------------------------->
 
-<div id='bottomDiv'></div>
+<div id='bottomDiv'><div id="countdown"> </div>	</div>
 <?php 
 			// ucita se ime modela u globalnu promenljivu
 			// prikaz dugmeta za download rdf grafa		
@@ -168,7 +177,7 @@
 					</script>");		
 ?>
 		
-		
+	
 		
 		
 </div><!--<div id="content">-->

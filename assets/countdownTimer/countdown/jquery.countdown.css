@@ -4,12 +4,10 @@
 	font: 20px/1.5 'Open Sans Condensed',sans-serif;
 	text-align:center;
 	letter-spacing:-3px;
-	position: fixed;
-	right: 0px;
-	bottom: 0px;
+
 	
-	opacity:0.3;
-  	filter:alpha(opacity=30);
+	opacity:0.6;
+  	filter:alpha(opacity=60);
 }
 
 .countdownHolder:hover{
@@ -50,8 +48,10 @@
 		linear,
 		left bottom,
 		left top,
-		color-stop(0.5, #3A3A3A),
-		color-stop(0.5, #444444)
+		
+		/* OVDE SE MENJAJU BOJE BROJKI NA BROJACU */
+		color-stop(0.5, #5BA7E9),
+		color-stop(0.5, #5BA7E9)
 	);
 }
 
