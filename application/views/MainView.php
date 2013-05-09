@@ -46,11 +46,6 @@
         		<li><a href="#fragment-8">8</a></li>
         		<li><a href="#fragment-9">9</a></li>
         		<li><a href="#fragment-10">10</a></li>
-        		<li><a href="#fragment-11">11</a></li>
-        		<li><a href="#fragment-12">12</a></li>
-        		<li><a href="#fragment-13">13</a></li>
-        		<li><a href="#fragment-14">14</a></li>
-        		<li><a href="#fragment-15">15</a></li>
     	   </ul>
 	
         	<div id="fragment-1" class="ui-tabs-panel">
@@ -90,29 +85,12 @@
         	</div>
         	
         	<div id="fragment-10" class="ui-tabs-panel ui-tabs-hide">
-
+					Kraj...
         	</div>
         	
-        	<div id="fragment-11" class="ui-tabs-panel ui-tabs-hide">
-        
-        	</div>
-        	
-        	<div id="fragment-12" class="ui-tabs-panel ui-tabs-hide">
-        
-        	</div>
-        	
-        	<div id="fragment-13" class="ui-tabs-panel ui-tabs-hide">
-        
-        	</div>
-        	
-        	<div id="fragment-14" class="ui-tabs-panel ui-tabs-hide">
-        
-        	</div>
-        	
-        	<div id="fragment-15" class="ui-tabs-panel ui-tabs-hide">
-        		<p>The end.</p>
-        	</div>
         </div>
+        
+		<div id="countdown"> </div>
 		
 	</div>
 	
@@ -135,16 +113,15 @@
 			if (i != totalSize) 
 			{
 				next = i + 2;
-				$('#bottomDiv').append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+				$(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
 			}
 			  
 			if (i != 0)
 			{
 				prev = i;
-				$('#bottomDiv').append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+				$(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
 			}
 
-			
 		});
 	
 		$('.next-tab, .prev-tab').click(function() 
@@ -161,7 +138,7 @@
     
 <!------------------------- bottomDiv, donji div u kome se prikazuju veze izmedju reci u tekstu ------------------------->
 
-<div id='bottomDiv'><div id="countdown"> </div>	</div>
+<div id='bottomDiv'>	</div>
 <?php 
 			// ucita se ime modela u globalnu promenljivu
 			// prikaz dugmeta za download rdf grafa		

@@ -35,6 +35,7 @@
 			
 			if(left < 0){
 				left = 0;
+				
 			}
 			
 			// Number of days left
@@ -61,6 +62,7 @@
 			
 			// Scheduling another call of this function in 1s
 			setTimeout(tick, 1000);
+			
 		})();
 		
 		// This function updates two digit positions at once
@@ -97,7 +99,7 @@
 	// Creates an animated transition between the two numbers
 	function switchDigit(position,number){
 		
-		var digit = position.find('.digit')
+		var digit = position.find('.digit');
 		
 		if(digit.is(':animated')){
 			return false;
@@ -127,7 +129,7 @@
 			.removeClass('static')
 			.animate({top:0,opacity:1},'fast',function(){
 				digit.remove();
-			})
+			});
 
 		replacement
 			.delay(100)
