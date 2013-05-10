@@ -4,7 +4,9 @@
 	font: 20px/1.5 'Open Sans Condensed',sans-serif;
 	text-align:center;
 	letter-spacing:-3px;
-
+	position: fixed;
+	bottom:0px;
+	margin:auto;
 	
 	/*opacity:0.6;
   	filter:alpha(opacity=60);*/
