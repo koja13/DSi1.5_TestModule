@@ -87,8 +87,21 @@ li.ui-state-processing a
 	border-width: 0; 
 	background: none; 
 	border: 1px solid #ccc; 
-	position: relative; 
-	min-height: 200px; 
+	/*position: relative; */
+	min-height: 90%; 
+	position: fixed;
+	top:5%;
+	bottom:0;
+	right:0;
+	left:0;
+	
+	
+	
+	
+	
+	
+	
+	
 }
 .ui-tabs .ui-tabs-hide
 { 
@@ -104,6 +117,7 @@ a.mover
  	color: white; 
  	font-weight: bold; 
  	text-decoration: none; 
+ 	
 }
 .next-tab 							
 { 
@@ -111,6 +125,7 @@ a.mover
 	right: 0; 
 	-moz-border-radius-topleft: 10px; 
 	-webkit-border-top-left-radius: 10px; 
+	
 }
 
 .prev-tab 							
@@ -119,4 +134,5 @@ a.mover
 	left: 0; 
 	-moz-border-radius-topright: 10px; 
 	-webkit-border-top-right-radius: 10px; 
+	
 }

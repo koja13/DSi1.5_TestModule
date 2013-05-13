@@ -49,6 +49,7 @@ class User extends CI_Controller{
 		$data['title']= 'DSi2.0';
 		$this->load->view('header_view',$data);
 		$this->load->view('MainView.php', $data);
+		//$this->load->view('LessionView.php', $data);
 		$this->load->view('footer_view',$data);
 	}
 	

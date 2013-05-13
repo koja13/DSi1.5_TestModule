@@ -1,7 +1,10 @@
 body {
 	/* ovde treba da se ubaci pozadinska slika */
 /*	background: url('../images/background.png') fixed 50% no-repeat white;*/
-	
+	/*margin:0;
+	padding:0;
+	height:100%;
+	width:100%;*/
 	font-family: Helvetica;
 }
 
@@ -124,12 +127,29 @@ form .button:active {
 }
 
 
+
+
+
+
+
+#countdown
+{
+	position: fixed;
+	bottom:0;
+	margin:right;
+	background-color: red;
+	
+}
+
+
+
+
 /* DEO ZA TABOVE */
 
 /* prikrivanje tabova kako bi korisnik koristio prev i next kontrole*/
-ul
+/*ul
 {
-	display: none !important;
+	display: none;
 }
 
 
@@ -141,13 +161,13 @@ ul
 	background: none; 
 	border: 1px solid #ccc; 
 	position: relative; 
-	/*min-height: 200px; */
+	min-height: 200px; 
 
 }
 
 .ui-tabs .ui-tabs-hide
 { 
-	display: none !important;
+	display: none;
 }
 
 
@@ -174,7 +194,7 @@ a.mover
 	left: 0; 
 	-moz-border-radius-topright: 10px; 
 	-webkit-border-top-right-radius: 10px; 
-}
+}*/
 
 
 /*
@@ -187,7 +207,7 @@ a.mover
 	bottom: 0px;
 	width:100%;
 }*/
-
+/*
 #navigationDiv
 {
 	height:50px;
@@ -196,7 +216,7 @@ a.mover
 
 #wrapper
 {
-	height:100%;
+	height:99%;
 	width:100%;
 }
 #mainDiv
@@ -209,10 +229,11 @@ a.mover
 {
 	height: 100%; 
 	/*overflow:auto;*/
-}
+/*}
 
 #fragment-1, #fragment-2, #fragment-3, #fragment-4, #fragment-5, #fragment-6, #fragment-7, #fragment-8, #fragment-9, #fragment-10
 {
-	height: 200px; 
-	overflow:auto;
-}
+	height: 100%; */
+	/*height: 200px; */
+	/*overflow:auto;
+}*/
