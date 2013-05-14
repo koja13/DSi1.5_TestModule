@@ -131,7 +131,7 @@ form .button:active {
 
 
 
-
+/*
 #countdown
 {
 	position: fixed;
@@ -140,7 +140,7 @@ form .button:active {
 	background-color: red;
 	
 }
-
+*/
 
 
 
@@ -197,16 +197,19 @@ a.mover
 }*/
 
 
-/*
+
 
 #bottomDiv
 {
-	position: fixed;
+	position: relative;
 	background-color:#aaa;
 	height:33px;
+	margin:0px auto;
+	/*left:50%;
+	right:50%;*/
 	bottom: 0px;
 	width:100%;
-}*/
+}
 /*
 #navigationDiv
 {

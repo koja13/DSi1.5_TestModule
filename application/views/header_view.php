@@ -6,8 +6,6 @@
 	    <link rel="stylesheet" href="<?php echo base_url('assets/countdownTimer/css/styles.css')?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/countdownTimer/countdown/jquery.countdown.css')?>" />
         
-        
-
         <link rel="stylesheet" href="<?php echo base_url('assets/css/tabs.css')?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>" />
         

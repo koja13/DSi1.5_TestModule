@@ -4,7 +4,7 @@
 	font: 20px/1.5 'Open Sans Condensed',sans-serif;
 	text-align:center;
 	letter-spacing:-3px;
-	position: fixed;
+	position: relative;
 	bottom:0px;
 	margin:auto;
 	
