@@ -136,3 +136,16 @@ a.mover
 	-webkit-border-top-right-radius: 10px; 
 	
 }
+
+
+.lessionDiv
+{
+	/*background: green; */
+	min-height: 85%; 
+	position: fixed;
+	top:5%;
+	bottom:15%;
+	right:0;
+	left:0;
+	overflow:auto;
+}

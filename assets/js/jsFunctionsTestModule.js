@@ -19,158 +19,58 @@
 		
 		// promenljiva koja cuva link ka rdf kontroleru, koristi se kod ajax poziva
 		var rdfController = config.site_url + "/RdfController";
-		
 
-		// FUNKCIJE
-		
-		
-		// ========================= setLinkForOppositeMode(str) ========================
-		//
-		// funkcija koja postavlja link ka Edit/Read modu, tj na vec napravljeni link dodaje string koji se prosledi
-		// poziva se prilikom ucitavanja js fajla
-		// poziva je funkcija addFileNamesToLink(), prilikom dodavanja naziva fajlova u link ka opposite modu
-		// ulazni parametar je: str - string koji se dodaje na link
-		//
-		function setLinkForOppositeMode(str)  
-		{
-			//postavljanje osnovne putanje za link ka Edit/Read modu, i dodavanje prosledjenog stringa tom linku
-			$("#linkID").attr("href", config.site_url + "/" + config.opposite_controller + "/index" + str);
-		}
-		// poziv funkcije sa praznim stringom, zbog kreiranja linka prilikom ucitavanja strane
-		setLinkForOppositeMode("");
-	
-	
-		// ========================= setDownloadLinkForRdfGraph() ========================
-		//
-		// funkcija koja postavlja link ka rdf kako bi mogao da bude downloadovan klikom na dugme
-		// aktivira je onClick event button-a za download
-		// 
-		function setDownloadLinkForRdfGraph()
-		{
-			// kreiranje linka
-			$(location).attr('href', config.base_url + rdfGraphName);
-			 
-			// skrivanje obavestenja o downloadu, bice prikazano tek nakon izmene
-			$("#downloadMessageSpanId").hide();
-		}
+	// FUNKCIJE
+		getTextFromServer(1, "tekst1.html", "model.rdf");
 
-	
-		
-		//
-		// FUNKCIJE ZA UPLOAD FAJLOVA
-		//
-		
-		// ========================= uploadRdfGraph() ========================
-		//
-		// funkcija za upload RDF fajla
-		// poziva se aktiviranjem onclick eventa input file polja za upload rdf fajla
-		//
-		function uploadRdfGraph()
+		// dodavanje next i prev kontrola na svaki tab
+		$(function() 
 		{
-			// koriscenje iframe za uplaod fajla, kako ne bi doslo do refreshovanja stranice
-			document.getElementById('formRdfUploadId').target = 'iFrameRdf'; //'iFrameRdf' is the name of the iframe
-			document.getElementById('formRdfUploadId').submit();
+
+			var $tabs = $('#tabs').tabs();
 			
-			// ucitavanje naziva rdf fajla u globalnu promenljivu
-			rdfGraphName = $('#fileRdfId').val().split('\\').pop();
-
-			// dodavanje naziva fajlova u link ka opposite modu
-			addFileNamesToLink();
+			$(".ui-tabs-panel").each(function(i)
+			{
 			
-			// prikazuje dugme za download ukoliko je
-			 if(config.controller=="ReadController")
-			 {
-				$("#downloadSpanId").show();
-			 }
-		}
+				var totalSize = $(".ui-tabs-panel").size() - 1;
+				
+				if (i != totalSize) 
+				{
+					next = i + 2;
+					$(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+				}
+				  
+				if (i != 0)
+				{
+					prev = i;
+					$(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+				}
+
+			});
 		
-		// ========================= uploadTextFile() ========================
-		//
-		// funkcija za upload fajla sa tekstom
-		// poziva se aktiviranjem onclick eventa input file polja za upload fajla za tekstom
-		//
-		function uploadTextFile()
-		{ 
-			// koriscenje iframe za uplaod fajla, kako ne bi doslo do refreshovanja stranice
-			 document.getElementById('formTextUploadId').target = 'iFrameText'; //'iFrameText' is the name of the iframe
-			 document.getElementById('formTextUploadId').submit();
+			$('.next-tab, .prev-tab').click(function() 
+			{ 
+				// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
+				// zatim se taj tab selektuje
+				$tabs.tabs('select', $(this).attr("rel"));
+				//alert($(this).attr("rel"));
+				getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".html", "model.rdf");
+				
+				// BRISATI SADRZAJ TABA KOJI NIJE AKTIVAN TRENUTNO KAKO SE APP NEBI KOCILA
+				
+				
+				//$("")
+				//$("#lessionDiv" + lessionNumber).html(response);
+				return false;
+			});
+	       
 
-			// ucitavanje naziva fajla sa tekstom u globalnu promenljivu
-			textFileName = $('#filesTextId').val().split('\\').pop();
-
-			// dodavanje naziva fajlova u link ka opposite modu
-			addFileNamesToLink();
-		}
-
-		// postavljanje handler-a za onClick event input polja za upload text fajla
-		$(document).ready(function() {
-		    $("#textUploadId").click(function() {
-		    	uploadTextFile();
-		    });
-		});
-
-		// postavljanje handler-a za onClick event input polja za upload rdf fajla
-		$(document).ready(function() {
-		    $("#rdfUploadId").click(function() {
-		    	uploadRdfGraph();
-		    });
 		});
 		
 		
-		// ========================= addFileNamesToLink() ========================
-		//
-		// funkcija koja dodaje nazive fajla sa tekstom, ekstenzije fajla sa tekstom i naziva rdf fajla na link za opposite mod
-		// pozivaju je funkcije uploadTextFile() i uploadTextFile() prilikom uploadovanja fajlova
-		// poziva se i nakon odgovora servera na ajax zahtev sendSubjectObjectPredicate(form)
-		// zbog kreiranja novog rdf fajla sa istim imenom kao fajl sa tekstom ukoliko rdf fajl prethodno nije ucitan a uneta je nova veza
-		//
-		function addFileNamesToLink()
-		{ 
-			if(textFileName=="")
-			 {
-				if(rdfGraphName!="")
-				{
-					 // ukoliko tekstualni fajl ne postoji onda se na link dodaje samo naziv modela
-					setLinkForOppositeMode("/rdfGraphName/" + rdfGraphName.split(".rdf")[0]);	
-				}
-			 }
-			 else
-			 {
-				// ukoliko tekstualni fajl postoji
-
-				// trazi se .txt u nazivu
-				var isTxtFile = textFileName.search(".txt");
-
-				// u lokalnoj promenljivoj se cuva naziv fajla sa tekstom
-				var textFileNameWithoutExtension = "";
-				 
-				if(isTxtFile!=-1)
-				{
-					// jeste txt fajl
-					textFileNameWithoutExtension = textFileName.split(".txt")[0];
-					textFileType = "txt";
-				}
-				else
-				{
-					// jeste html fajl
-					textFileNameWithoutExtension = textFileName.split(".html")[0];
-					textFileType = "html";
-				}
-
-				if(rdfGraphName=="")
-				{
-					// ukoliko ne postoji model onda se link kreira tako da se salje ime fajla sa tekstom, tip fajla sa tekstom, respektivno
-					setLinkForOppositeMode("/textFileName/" + textFileNameWithoutExtension + "/textFileType/" + textFileType + "/");
-				}
-				else
-				{
-					// kreiranje linka za read mod tako da se salje ime fajla sa tekstom, tip fajla sa tekstom, naziv modela, respektivno
-					setLinkForOppositeMode("/textFileName/" + textFileNameWithoutExtension + "/textFileType/" + textFileType + "/rdfGraphName/" + rdfGraphName.split(".rdf")[0]); 
-				}
-
-			}
-		}
-
+		
+		
+		
 	//
 	// FUNKCIJA ZA DRAG & DROP
 	//
@@ -375,56 +275,7 @@
 			});
 	}
 	
-	
-	// ========================= sendSubjectObjectPredicate(form) ========================
-	//
-	// Ajax fja za slanje subjekta, objekta i predikta serveru, kako bi nova veza bila upisana u rdf graf
-	// poziva se na onClick event dugmeta "Sacuvaj" (za cuvanje nove veze)
-	// ulazni parametar je: form - referenca na formu za cuvanje nove veze
-	//
-	function sendSubjectObjectPredicate(form)
-	{
-		// uzimanje unesenog predikta u polju za unos nove veze
-		predicate = form.predicate.value;
-		
-		// postavljanje naziva rdf grafa ukoliko vec nije uploadovan na server
- 		setRdfGraphName();
- 		
- 		// ukoliko nista nije uneseno u polje za novu vezu onda ne radi nista
-		if(predicate!="")
-		{
-			$.ajax({
-				  type: "POST",
-				  url: rdfController + "/writeStatement",
-				  data: { 	s: subject,
-							o: object ,
-							p: predicate,
-							rdfGraph: rdfGraphName
-				  		}
-			
-				}).done(function( response ) {
-			
-					// ovde se obradjuje odgovor na zahtev koji se salje Ajaxom
-		    		 
-			  		$("#bottomDivRight").html($("#bottomDivRight").html() + response);
-	
-			  		// nakon upisivanja veze na serveru poziva se fja koja ponovo salje zahtev serveru sa odgovarajucim subjektom i objektom
-			  		// kako bi sve veze bile upisane u donji levi div
-			  		writeToBottomDivLeft(subject,object);
-	
-			  		// posto je dodata nova veza u odgovarajucu promenljivu upisujemo TRUE
-			 		rdfGraphIsChanged = true;
-	
-			 		// prikazuje se obavestenje da je moguce skinuti novu verziju modela
-			 		downloadMessage();
 
-			 		// dodavanje imena fajlova u link ka opposite modu
-			 		addFileNamesToLink();
-					
-				});
-		
-		}
-	}
 
 	// ========================= getTextFromServer(tFileName) ========================
 	//
@@ -432,7 +283,7 @@
 	// poziva je funkcija uploadTextFile, takodje se poziva prilikom ucitavanja stranice ukoliko je tekst ucitan na server
 	// ulazni parametar je: tFileName - naziv fajla sa tekstom na serveru
 	//
-	function getTextFromServer(tFileName)
+	function getTextFromServer(lessionNumber, tFileName, rdfGraphName)
 	{
 		$.ajax({
 			  type: "POST",
@@ -443,88 +294,14 @@
 		
 			}).done(function( response ) {
 				
-				
-				alert("bilo sta");
-				alert(response);
-				// upisivanje procitanog teksta u mainDiv
-				$("#fragment-1").html(response);
+				$("#lessionDiv" + lessionNumber).html(response);
 				 
 				// spanovanje teksta
-				//span();
+				spanReadMode(rdfGraphName);
 				
 			});
 	}
-	
-	// ========================= setRdfGraphName() ========================
-	//
-	// Funkcija za postavljanje naziva rdf grafa ukoliko neki graf nije vec ucitan
-	// poziva je funkcija sendSubjectObjectPredicate(form) pre nego sto se uputi zahtev serveru
-	//
-	function setRdfGraphName()
-	{
-		if(rdfGraphName=="")
- 		{
-			// trazi se .txt u nazivu
-			var isTxtFile = textFileName.search(".txt");
-			
-			if(isTxtFile!=-1)
-			{
-				// jeste txt fajl
-				textFileNameWithoutExtension = textFileName.split(".txt")[0];
-			}
-			else
-			{
-				// jeste html fajl
-				textFileNameWithoutExtension = textFileName.split(".html")[0];
-			}
-			
-			rdfGraphName = textFileNameWithoutExtension + ".rdf";
- 		}
-	}
-	
-	// ========================= span() ========================
-	//
-	// Funkcija za spanovanje teksta, u zavisnosti od moda poziva odgovarajucu funkciju za spanovanje
-	// poziva je funkcija getTextFromServer(tFileName), i funkcija uploadRdfGraph() samo u slucaju da je u pitanju Read mode
-	//
-	function span()
-	{
-		if(config.controller=="EditController")
-		{
-			spanEditMode();
-		
-		}
-		else if (config.controller=="ReadController")
-		{
-			spanReadMode();
-		}
-	}
-	
-	// ========================= spanEditMode() ========================
-	//
-	// Funkcija za spanovanje teksta u Edit modu
-	// poziva je funkcija span()
-	// koristi funkciju findAndReplaceDOMText, definisanu u eksternoj js biblioteci
-	// funkcija findAndReplaceDOMText pronalazi reci u tekstu i stavlja ih u html span elemente kojima se daje klasa dragdrop, 
-	// \w+/g predsatvlja regular expresion kojim se biraju sve reci u tekstu, mainDiv predstavlja id diva koji u kome se traze reci
-	//
-	function spanEditMode()
-	{
-		findAndReplaceDOMText(
-			/\w+/g,
-			mainDiv,
-			function(fill, matchIndex) {
-			var el = document.createElement('span');
-			el.setAttribute("class", "dragdrop");
-			el.innerHTML = fill;
-			return el;
-			}
-		);
 
-		// recima u tekstu se daje drag & drop funkcionalnost
-		makeDraggableDroppable();
-	}
-	
 	// ========================= spanReadMode() ========================
 	//
 	// Ajax funkcija za citanje subjekata i objekata sa servera, pa zatim spanovanje teksta u Read modu
@@ -534,7 +311,7 @@
 	// regular expresion kojim se biraju reci u tekstu dobija se putem ajax zahteva serveru, ajax zahtevom traze se svi subjekti i objekti koje taj rdf fajl sadrzi
 	// mainDiv predstavlja id diva koji u kome se traze reci
 	//
-	function spanReadMode()
+	function spanReadMode(rdfGraphName)
 	{
 			$.ajax({
 			  type: "POST",
@@ -564,24 +341,21 @@
 				
 			});
 	}
+
+	rdfGraphName = "model.rdf";
 	
-	// ========================= downloadMessage() ========================
-	//
-	// funkcija koja prikazuje obavestenje o downloadu rdf modela kao i dugme za download
-	// poziva je funkcija sendSubjectObjectPredicate(form)
-	// nakon unosa nove veze korisniku se ispise obavestenje da je rdf graf izmenjen i dugme za download postanje vidljivo
-	//
-	function downloadMessage()
+	function getAllLessionsFromServer()
 	{
-		// ukoliko je rdf model izmenjen, tj dodate nove veze, prikazi obavestenje i dugme za download
-		if(rdfGraphIsChanged==true)
-		{
-			$("#downloadSpanId").show();
-			
-			if(config.controller=="EditController")
-			{
-				$("#downloadMessageSpanId").show();
-			}			
-		}	
+		getTextFromServer(1, "tekst1.html", "model.rdf");
+		getTextFromServer(2, "tekst2.html", "model.rdf");
+		getTextFromServer(3, "tekst3.html", "model.rdf");
+		getTextFromServer(4, "tekst4.html", "model.rdf");
+		getTextFromServer(5, "tekst5.html", "model.rdf");
+		getTextFromServer(6, "tekst6.html", "model.rdf");
+		getTextFromServer(7, "tekst7.html", "model.rdf");
+		getTextFromServer(8, "tekst8.html", "model.rdf");
+		getTextFromServer(9, "tekst9.html", "model.rdf");
+		getTextFromServer(10, "tekst10.html", "model.rdf");
 	}
 	
+	//getAllLessionsFromServer();
