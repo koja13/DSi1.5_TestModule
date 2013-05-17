@@ -74,3 +74,5 @@
 </div>
 
 <div id="countdown"> </div>
+
+<div id="bottomDiv">Bla bla</div>

@@ -53,14 +53,19 @@
 				// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
 				// zatim se taj tab selektuje
 				$tabs.tabs('select', $(this).attr("rel"));
-				//alert($(this).attr("rel"));
+			
+				// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
 				getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".html", "model.rdf");
 				
-				// BRISATI SADRZAJ TABA KOJI NIJE AKTIVAN TRENUTNO KAKO SE APP NEBI KOCILA
+				var relPrev = parseInt($(this).attr("rel"))-1;
+				var relNext = parseInt($(this).attr("rel"))+1;
+				
+				// brisanje tabova koji nisu trenutno aktivni
+				$("#lessionDiv" + relPrev).empty();
+				$("#lessionDiv" + relNext).empty();
 				
 				
-				//$("")
-				//$("#lessionDiv" + lessionNumber).html(response);
+				//alert(relNext + " to je +1 i " + relPrev + " je -1");
 				return false;
 			});
 	       
@@ -259,19 +264,11 @@
 			  		}
 		
 			}).done(function( response ) {
-
-				if(config.controller=="EditController")
-				{
-					// u donji div levo se upisu sve veze koje vrati server
-					$("#bottomDivLeft").html(response);
-		
-				}
-				else if (config.controller=="ReadController")
-				{
-					// u donji div se upisu sve veze koje vrati server
-					$("#bottomDiv").html(response);
-				}
 				
+				// u donji div se upisu sve veze koje vrati server
+				alert(response);
+				$("#bottomDiv").html(response);
+
 			});
 	}
 	
