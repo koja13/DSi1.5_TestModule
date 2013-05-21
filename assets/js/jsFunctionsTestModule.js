@@ -145,19 +145,9 @@
 
 		  	// alert("Subjekat = " + s + " i Objekat = " + o);
 			
-			if(config.controller=="EditController")
-			{
-				// dodavanje forme za upis nove veze
-				writeToBottomDivRight(s,o);
-				
-				// ispisivanje postojecih veza
-				writeToBottomDivLeft(s,o);
-			}
-			else if (config.controller=="ReadController")
-			{
-				// ispisivanje postojecih veza
-				writeToBottomDiv(s,o);
-			}
+		  	// ispisivanje postojecih veza
+			writeToBottomDiv(s,o);
+		
 	  	  }
 	}
 	
@@ -253,7 +243,6 @@
 	// 
 	function sendSubjectObject()
 	{
-		
 		$.ajax({
 			  type: "POST",
 			  url: rdfController + "/getPredicate",
@@ -266,7 +255,6 @@
 			}).done(function( response ) {
 				
 				// u donji div se upisu sve veze koje vrati server
-				alert(response);
 				$("#bottomDiv").html(response);
 
 			});
@@ -340,7 +328,7 @@
 	}
 
 	rdfGraphName = "model.rdf";
-	
+	/*
 	function getAllLessionsFromServer()
 	{
 		getTextFromServer(1, "tekst1.html", "model.rdf");
@@ -354,5 +342,5 @@
 		getTextFromServer(9, "tekst9.html", "model.rdf");
 		getTextFromServer(10, "tekst10.html", "model.rdf");
 	}
-	
+	*/
 	//getAllLessionsFromServer();

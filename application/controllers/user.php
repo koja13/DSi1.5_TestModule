@@ -53,6 +53,23 @@ class User extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
+	public function startQuiz()
+	{
+		$data['title']= 'Welcome';
+		$this->load->view('header_view',$data);
+		$this->load->view('welcomeViewQuiz.php', $data);
+		$this->load->view('footer_view',$data);
+	}
+	
+	public function quiz()
+	{
+		$data['title']= 'Welcome';
+		$this->load->view('header_view',$data);
+		$this->load->view('QuizView.php', $data);
+		$this->load->view('footer_view',$data);
+	}
+	
+	
 	public function login()
 	{
 		$email=$this->input->post('email');
