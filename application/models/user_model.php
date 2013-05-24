@@ -8,6 +8,17 @@ class User_model extends CI_Model {
     
 	function login($email,$password)
     {
+    	// upisivanje u session cookie kako ne bi morali stalno
+    	// da pristupamo bazi da vidimo koji je korisnik logovan
+    	/*$newdata = array(
+    			'email'     => 'johndoe@some-site.com',
+    			'logged_in' => TRUE
+    	);
+    	
+    	$this->session->set_userdata($newdata);*/
+    	
+    	
+    	// upisivanje u bazu
 		$this->db->where("email",$email);
         $this->db->where("password",$password);
             

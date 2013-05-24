@@ -20,7 +20,10 @@
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainDiv'>
 
+<script>
 
+
+</script>
 	 		<script>
 	 		/*alert($(window).height());   // returns height of browser viewport
 	 		alert($(document).height()); // returns height of HTML document
@@ -36,6 +39,9 @@
 	 		$(window).resize(function() {
 	 			 alert("promena velicine");
 	 			});*/
+
+
+	 			//alert('<?php //echo $this->session->userdata('user_name'); ?>'// + "je ulogovan");
 	 		</script>	
 	 		
 	 		
@@ -94,4 +100,8 @@
 
 <div id="countdown"> </div>
 
-<div id="bottomDiv">Bla bla</div>
+<div id="bottomDiv">
+ <span class="close">&times;</span>
+ 
+ <div id="statementDiv"> </div>
+</div>

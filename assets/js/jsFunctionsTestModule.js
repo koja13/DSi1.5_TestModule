@@ -21,6 +21,24 @@
 		var rdfController = config.site_url + "/RdfController";
 
 	// FUNKCIJE
+		$(document).ready(function() {
+		
+			/*$(document).on('click','.close_box',function()
+			{
+				$(this).parent().fadeTo(300,0,function()
+				{
+				       //   $(this).remove();
+				});
+			});*/
+			
+			 $(document).on('click', '.close', function(){
+			        $(this).parent().hide(400);
+			    });
+
+		});
+		
+		
+		
 		getTextFromServer(1, "tekst1.html", "model.rdf");
 
 		// dodavanje next i prev kontrola na svaki tab
@@ -254,8 +272,10 @@
 		
 			}).done(function( response ) {
 				
+				
+				$("#bottomDiv").show();
 				// u donji div se upisu sve veze koje vrati server
-				$("#bottomDiv").html(response);
+				$("#statementDiv").html(response);
 
 			});
 	}

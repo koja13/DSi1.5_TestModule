@@ -1,10 +1,8 @@
 body {
 	/* ovde treba da se ubaci pozadinska slika */
 /*	background: url('../images/background.png') fixed 50% no-repeat white;*/
-	/*margin:0;
+	margin:0;
 	padding:0;
-	height:100%;
-	width:100%;*/
 	font-family: Helvetica;
 }
 
@@ -13,14 +11,53 @@ h2 {
 	color: #a6a6a6;
 }
 
+#wrapper
+{
+	/*max-height:100%;*/
+}
+#navigationDiv
+{
+	height: 16px;
+	margin: 10px;
+	text-align: right;
+}
+
+
+.ui-tabs .ui-tabs-panel
+{ margin:0; 
+	border: 1px solid #ccc; 
+	height: 30%; 
+}
+
+#bottomDiv
+{
+	position: fixed;
+	background-color:#C9C9C9;
+	/*height:33px;*/
+	margin:0px auto;
+	/*left:50%;
+	right:50%;*/
+		bottom: 30px; 
+	right: 0; 
+	width:100%;
+}
+
+.close {
+    float: right;
+    color: #f00;
+    cursor:pointer;
+}
+
+
+
 /* NAVIGATION */
 
-
-
 nav {
+	
+	/*
 	position: fixed;
 	top: 10px;
-	right: 10px;	
+	right: 10px;	*/
 }
 
 nav a {
@@ -37,6 +74,17 @@ nav a:hover {
 
 nav a.focus {
 	opacity: 1;
+}
+
+.startWrap {
+	width: 280px;
+	height: 260px;
+	margin: 200px auto;
+	background: white;
+	border-radius: 3px;
+	box-shadow: 0 0 10px rgba(0,0,0, .4); 
+	text-align: center;
+	padding-top: 1px;
 }
 
 /* LOGIN & REGISTER FORM */
@@ -113,130 +161,3 @@ form .button:active {
 	
 	box-shadow: inset 0 0 2px rgba(0,0,0, .3), 0 1px 0 white;
 }
-
-
-.startWrap {
-	width: 280px;
-	height: 260px;
-	margin: 200px auto;
-	background: white;
-	border-radius: 3px;
-	box-shadow: 0 0 10px rgba(0,0,0, .4); 
-	text-align: center;
-	padding-top: 1px;
-}
-
-
-
-
-
-
-/*
-#countdown
-{
-	position: fixed;
-	bottom:0;
-	margin:right;
-	background-color: red;
-	
-}
-*/
-
-
-
-/* DEO ZA TABOVE */
-
-/* prikrivanje tabova kako bi korisnik koristio prev i next kontrole*/
-/*ul
-{
-	display: none;
-}
-
-
-.ui-tabs .ui-tabs-panel
-{ 
-	padding: 20px; 
-	display: block; 
-	border-width: 0; 
-	background: none; 
-	border: 1px solid #ccc; 
-	position: relative; 
-	min-height: 200px; 
-
-}
-
-.ui-tabs .ui-tabs-hide
-{ 
-	display: none;
-}
-
-
-a.mover 							
-{
- 	background: #4889C2; 
- 	padding: 6px 12px; 
- 	position: fixed;		      
- 	color: white; 
- 	font-weight: bold; 
- 	text-decoration: none; 
-}
-.next-tab 							
-{ 
-	bottom: 0; 
-	right: 0; 
-	-moz-border-radius-topleft: 10px; 
-	-webkit-border-top-left-radius: 10px; 
-}
-
-.prev-tab 							
-{ 
-	bottom: 0; 
-	left: 0; 
-	-moz-border-radius-topright: 10px; 
-	-webkit-border-top-right-radius: 10px; 
-}*/
-
-
-
-
-#bottomDiv
-{
-	position: relative;
-	background-color:#aaa;
-	height:33px;
-	margin:0px auto;
-	/*left:50%;
-	right:50%;*/
-	bottom: 0px;
-	width:100%;
-}
-/*
-#navigationDiv
-{
-	height:50px;
-	width:100%;
-}
-
-#wrapper
-{
-	height:99%;
-	width:100%;
-}
-#mainDiv
-{
-	height:100%;
-	width:100%;
-}
-
-#tabs
-{
-	height: 100%; 
-	/*overflow:auto;*/
-/*}
-
-#fragment-1, #fragment-2, #fragment-3, #fragment-4, #fragment-5, #fragment-6, #fragment-7, #fragment-8, #fragment-9, #fragment-10
-{
-	height: 100%; */
-	/*height: 200px; */
-	/*overflow:auto;
-}*/

@@ -89,20 +89,14 @@ li.ui-state-processing a
 	border: 1px solid #ccc; 
 	/*position: relative; */
 	min-height: 90%; 
-	position: fixed;
+	/*position: fixed;
 	top:5%;
 	bottom:0;
 	right:0;
-	left:0;
-	
-	
-	
-	
-	
-	
-
-	
+	left:0;*/	
 }
+
+
 .ui-tabs .ui-tabs-hide
 { 
 	display: none !important;
@@ -142,10 +136,10 @@ a.mover
 {
 	/*background: green; */
 	min-height: 85%; 
-	position: fixed;
+	/*position: fixed;
 	top:5%;
 	bottom:15%;
 	right:0;
-	left:0;
+	left:0;*/
 	overflow:auto;
 }
