@@ -20,10 +20,6 @@
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainDiv'>
 
-<script>
-
-
-</script>
 	 		<script>
 	 		/*alert($(window).height());   // returns height of browser viewport
 	 		alert($(document).height()); // returns height of HTML document
@@ -96,12 +92,12 @@
 			</div>
         	
         </div>
+        
 </div>
-
 <div id="countdown"> </div>
 
-<div id="bottomDiv">
- <span class="close">&times;</span>
- 
- <div id="statementDiv"> </div>
-</div>
+	<div id="bottomDiv">
+		 <span class="close">&times;</span>
+		 
+		 <div id="statementDiv"> </div>
+	</div>

@@ -1,5 +1,9 @@
 <div id="content">
+
+<div id='navigationDiv'>
 <nav><a  href="<?php echo site_url("/user"); ?>">Log In</a> | <a href="#" class="focus">Register</a></nav>
+
+</div>
 	<div class="reg_form" >
 
 			<?php echo validation_errors('<p class="error">'); ?>

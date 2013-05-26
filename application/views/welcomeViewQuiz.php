@@ -1,14 +1,16 @@
 <div id="content">
-
+<div id='navigationDiv'>
 <nav><?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
+</div>
 
 		<?php echo form_open("user/quiz"); ?>
 		
-			<h5> Let's see what you have learned with DSi<?php echo $this->session->userdata('username'); ?>!<br />
+			<h5> Let's see what you have learned with DSi <?php echo $this->session->userdata('user_name'); ?>!<br /><br />
 			
 			The test contains 20 questions and there is no time limit.
 			
 			Press button to start Quiz.<br />
+			
 			Good luck! 
 			</h5>
 

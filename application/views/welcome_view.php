@@ -1,6 +1,7 @@
 <div id="content">
-
+<div id='navigationDiv'>
 <nav><?php echo anchor('#', 'Start test') . " | " . anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
+</div>
 
 		<?php echo form_open("user/start"); ?>
 		

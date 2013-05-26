@@ -32,7 +32,7 @@ ul
 	list-style: none;
 	position: relative;
 	padding: 2px 2px 0;
-	overflow: hidden; 
+	/*overflow: auto; */
 	top: 1px;
 	z-index: 1000;
 }
@@ -82,13 +82,13 @@ li.ui-state-processing a
 
 .ui-tabs .ui-tabs-panel
 { 
-	padding: 20px; 
+	padding: 5px; 
 	display: block; 
 	border-width: 0; 
 	background: none; 
-	border: 1px solid #ccc; 
-	/*position: relative; */
-	min-height: 90%; 
+	/*border: 1px solid #ccc; */
+	/*position: relative; 
+	min-height: 90%; */
 	/*position: fixed;
 	top:5%;
 	bottom:0;
@@ -105,7 +105,8 @@ li.ui-state-processing a
 
 a.mover 							
 {
- 	background: #900; 
+	/* boja next, prev kontrola */
+ 	background: #4889C2; 
  	padding: 6px 12px; 
  	position: absolute;		      
  	color: white; 
@@ -129,17 +130,4 @@ a.mover
 	-moz-border-radius-topright: 10px; 
 	-webkit-border-top-right-radius: 10px; 
 	
-}
-
-
-.lessionDiv
-{
-	/*background: green; */
-	min-height: 85%; 
-	/*position: fixed;
-	top:5%;
-	bottom:15%;
-	right:0;
-	left:0;*/
-	overflow:auto;
 }

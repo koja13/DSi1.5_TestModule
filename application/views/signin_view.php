@@ -1,5 +1,8 @@
 <div id="content">
+
+<div id='navigationDiv'>
 <nav><a href="#" class="focus">Log In</a> | <a href="<?php echo site_url("/user/register"); ?>">Register</a></nav>
+</div>
 	<div class="signup_wrap">
 	
 		<div class="signin_form">
