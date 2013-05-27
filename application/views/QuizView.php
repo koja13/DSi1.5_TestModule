@@ -20,5 +20,41 @@
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainQuizDiv'>
  			
+ 			
+ 			
+ <!--  	<form action="">-->
+ 			
+
+
+      <div id="q1" class="question">
+      <p id="question1" class = "qPar"> Pitanje 1? </p> <br />
       
+      	<input class="radio" type="radio" name="q1" value="">  Odgovor 1<br />
+      	<input class="radio" type="radio" name="q1" value="">  Odgovor 2<br />
+      	<input class="radio" type="radio" name="q1" value="">  Odgovor 3<br />
+
+      </div><br />
+
+      
+      <div id="q2" class="question">
+	      <p id="question2" class = "qPar" >Pitanje 2? </p> <br />
+      
+      	<input class="radio" type="radio" name="q2" value="">  Odgovor 1<br />
+      	<input class="radio" type="radio" name="q2" value="">  Odgovor 2<br />
+      	<input class="radio" type="radio" name="q2" value="">  Odgovor 3<br />
+      </div><br />
+      
+      <div id="q3" class="question" >
+	      <p id="question3" class = "qPar">Pitanje 3? </p> <br />
+      
+      	<input class="radio" type="radio" name="q3" value="">  Odgovor 1<br />
+      	<input class="radio" type="radio" name="q3" value="">  Odgovor 2<br />
+      	<input class="radio" type="radio" name="q3" value="">  Odgovor 3<br />
+      </div>
+      
+      <div id="submit">
+      	<input type="submit" class="button" value="Next >>" />
+      </div>
+      
+    <!--  </form>-->
 </div>

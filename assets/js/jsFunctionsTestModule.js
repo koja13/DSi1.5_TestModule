@@ -66,7 +66,7 @@
 
 			});
 		
-			$('.next-tab, .prev-tab').click(function() 
+			$('.next-tab').click(function() 
 			{ 
 				// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
 				// zatim se taj tab selektuje
@@ -76,17 +76,36 @@
 				getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".html", "model.rdf");
 				
 				var relPrev = parseInt($(this).attr("rel"))-1;
-				var relNext = parseInt($(this).attr("rel"))+1;
+				
 				
 				// brisanje tabova koji nisu trenutno aktivni
 				$("#lessionDiv" + relPrev).empty();
-				$("#lessionDiv" + relNext).empty();
 				
 				
 				//alert(relNext + " to je +1 i " + relPrev + " je -1");
 				return false;
 			});
 	       
+			
+			$('.prev-tab').click(function() 
+					{ 
+						// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
+						// zatim se taj tab selektuje
+						$tabs.tabs('select', $(this).attr("rel"));
+					
+						// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
+						getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".html", "model.rdf");
+						
+						
+						var relNext = parseInt($(this).attr("rel"))+1;
+						
+						// brisanje tabova koji nisu trenutno aktivni
+						$("#lessionDiv" + relNext).empty();
+						
+						
+						//alert(relNext + " to je +1 i " + relPrev + " je -1");
+						return false;
+					});
 
 		});
 		

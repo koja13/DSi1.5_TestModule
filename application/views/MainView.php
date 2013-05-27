@@ -94,9 +94,12 @@
         </div>
         
 </div>
-<div id="countdown"> </div>
 
-	<div id="bottomDiv">
+<div id="countDiv">
+	<div id="countdown"> </div>
+</div>
+
+<div id="bottomDiv">
 		 <span class="close">&times;</span>
 		 
 		 <div id="statementDiv"> </div>
