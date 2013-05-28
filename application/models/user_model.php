@@ -32,6 +32,7 @@ class User_model extends CI_Model {
                 	   	'user_id' 		=> $rows->id,
                     	'user_name' 	=> $rows->username,
 		                'user_email'    => $rows->email,
+                		'use_dsi'    => $rows->use_dsi,
 	                    'logged_in' 	=> TRUE,
                    );
 			}

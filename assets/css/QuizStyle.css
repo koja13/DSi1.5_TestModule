@@ -41,23 +41,60 @@ h2 {
 .qPar
 {
 	font-weight:bold;
-	color:green;
+	font-size: 17px;
+	color:white;
+	background: #4889C2;
+	border-radius: 5px;
+	padding-left:5px;
+	padding-top:5px;
+	padding-bottom:5px;
 }
 
 .radio
 {
 	margin:5px;
+	
+
 }
+
+.answer
+{
+	padding-left:5px;
+	border-radius: 5px;
+	font-weight:bold;
+	font-size: 13.5px;
+	color:#555555;
+
+}
+.answer:hover
+{
+	color:#C64F00;
+	font-size: 15px;
+	background: #E1E1E1;
+}
+
 .question
 {
+	
+	width: 700px;
 	height: 150px;
+	margin: auto;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0, .4); 
+	/*text-align: center;*/
+	padding:15px 30px;
+	
+	
+	/*height: 150px;
 	width:50%;
-	margin:auto;
+	margin:auto;*/
 
 /*	border:2px solid #a1a1a1;*/
-	padding:15px 30px; 
-	background:#D4D4D4;
-	border-radius:25px;
+	/*padding:15px 30px; 
+	background:#FFA364;
+	color:white;
+	border-radius:25px;*/
 	/*text-align: center;*/
 }
 

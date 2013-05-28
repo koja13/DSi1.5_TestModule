@@ -37,7 +37,18 @@
 
 		});
 		
-		
+		$(document).ready(function() {
+			/*$( "input" ).on( "click", function() {
+				  alert( $("input:checked").val() + " is checked!" );
+				});*/
+			
+			$("p.answer").click(function() 
+			{ 
+				//alert("click");
+				/*$('input:radio').prop('checked', true);*/
+				//$("p.answer.radio").prop('checked', true);
+			});
+		});
 		
 		getTextFromServer(1, "tekst1.html", "model.rdf");
 
@@ -321,8 +332,10 @@
 				$("#lessionDiv" + lessionNumber).html(response);
 				 
 				// spanovanje teksta
-				spanReadMode(rdfGraphName);
-				
+				if(config.use_dsi=="yes")
+				{
+					spanReadMode(rdfGraphName);
+				}
 			});
 	}
 
