@@ -36,19 +36,31 @@
 			    });
 
 		});
+		$("#submit").append("<strong>Hello</strong>");
 		
-		$(document).ready(function() {
-			/*$( "input" ).on( "click", function() {
-				  alert( $("input:checked").val() + " is checked!" );
-				});*/
+		function appendText()
+		{
+			$(document).ready(function() {
+				
+			var par=$("<p class='answer'></p>").text("");
 			
-			$("p.answer").click(function() 
-			{ 
-				//alert("click");
-				/*$('input:radio').prop('checked', true);*/
-				//$("p.answer.radio").prop('checked', true);
+			
+			var radio = $('<input>').attr({
+			      type: 'radio', name: 'q1', value: 'Odgovor 1', id: 'q1a1'
+			  });
+			
+			radio.addClass("radio");
+			var label = $('<label>').attr("for", radio.attr("id"));
+			label.text(radio.attr("value"));
+			radio.append(label);
+			par.append(radio);
+
+			//alert(par);
+			
+			$("#submit").append(par);         // Append the new elements 
 			});
-		});
+		}
+		appendText();
 		
 		getTextFromServer(1, "tekst1.html", "model.rdf");
 
