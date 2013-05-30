@@ -20,27 +20,125 @@
 		// promenljiva koja cuva link ka rdf kontroleru, koristi se kod ajax poziva
 		var rdfController = config.site_url + "/RdfController";
 
-	// FUNKCIJE
+
+		// FUNKCIJE
 		$(document).ready(function() {
-		
-			/*$(document).on('click','.close_box',function()
-			{
-				$(this).parent().fadeTo(300,0,function()
-				{
-				       //   $(this).remove();
-				});
-			});*/
 			
 			 $(document).on('click', '.close', function(){
 			        $(this).parent().hide(400);
 			    });
 
 		});
-		$("#submit").append("<strong>Hello</strong>");
 		
-		function appendText()
+		var questions = [{
+	        'question': 'jQuery is a...',
+	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
+	        'correctAnswer': 1
+	    }, {
+	        'question': 'X comes after?',
+	        'answers': ['P', 'W', 'Y', 'v'],
+	        'correctAnswer': 2
+	    }, {
+	        'question': 'Meh stands for..',
+	        'answers': ['Eh', '/Sigh', 'What?', 'Whatever'],
+	        'correctAnswer': 4
+	    }, {
+	        'question': 'Dejan...',
+	        'answers': ['Todosijevic', 'fgb', 'PHP Framework', 'None of the above'],
+	        'correctAnswer': 1
+	    }, {
+	        'question': 'Bla bla truc...',
+	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
+	        'correctAnswer': 3
+	    }, {
+	        'question': 'Koja bla bla...',
+	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
+	        'correctAnswer': 2
+	    }, ];
+
+		function addQuestion(qNo, question, answers, correctAnswer)
+		{
+			var newQuestion = {
+						'questionNo': qNo,
+						'question': question,
+				        'answers': answers,
+				        'correctAnswer': correctAnswer};
+			questions.push(newQuestion);
+
+		//var x=document.getElementById("demo");
+		//x.innerHTML=fruits;
+		
+		//x.innerHTML=novoPitanje;
+		//x.innerHTML=pitanja[7].question;
+		}
+		function initQuestions()
+		{
+			addQuestion();
+		}
+		
+		function initQuestions()
+		{
+			var init = {
+				    'questions': [{
+				        'question': 'jQuery is a...',
+				        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
+				        'correctAnswer': 1
+				    }, {
+				        'question': 'X comes after?',
+				        'answers': ['P', 'W', 'Y', 'v'],
+				        'correctAnswer': 2
+				    }, {
+				        'question': 'Meh stands for..',
+				        'answers': ['Eh', '/Sigh', 'What?', 'Whatever'],
+				        'correctAnswer': 4
+				    }, {
+				        'question': 'Dejan...',
+				        'answers': ['Todosijevic', 'fgb', 'PHP Framework', 'None of the above'],
+				        'correctAnswer': 1
+				    }, {
+				        'question': 'Bla bla truc...',
+				        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
+				        'correctAnswer': 3
+				    }, {
+				        'question': 'Koja bla bla...',
+				        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
+				        'correctAnswer': 2
+				    }, ],
+				    'resultComments': {
+				        perfect: 'Albus, is that you?',
+				        excellent: 'Outstanding, noble sir!',
+				        good: 'Exceeds expectations!',
+				        average: 'Acceptable. For a muggle.',
+				        bad: 'Well, that was poor.',
+				        poor: 'Dreadful!',
+				        worst: 'For shame, troll!'
+				    }
+
+				};
+		}
+		initQuestions();
+		alert("sdfsd" +init.questions[1].question);
+		function createQuestion()
 		{
 			$(document).ready(function() {
+				
+				$("#mainQuizDiv").append(" <div id='q" + " ***BROJ PITANJA*** " + "' class='question'>" +
+						"<p id='question" + " ***BROJ PITANJA*** " + "' class ='qPar'>" + " ***PITAAAAAAAAAAANJE*** " + "</p> <br />" +
+						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 1'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
+						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 2'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
+						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 3'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
+						"</div><br />"
+		      );
+				
+				$("#mainQuizDiv").append(" <div id='q" + " ***BROJ PITANJA*** " + "' class='question'>" +
+						"<p id='question" + " ***BROJ PITANJA*** " + "' class ='qPar'>" + " ***PITAAAAAAAAAAANJE*** " + "</p> <br />" +
+						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 1'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
+						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 2'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
+						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 3'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
+						"</div><br />"
+		      );
+			});
+			/*$(document).ready(function() {
 				
 			var par=$("<p class='answer'></p>").text("");
 			
@@ -58,9 +156,11 @@
 			//alert(par);
 			
 			$("#submit").append(par);         // Append the new elements 
-			});
+			});*/
 		}
-		appendText();
+		
+		createQuestion();
+		
 		
 		getTextFromServer(1, "tekst1.html", "model.rdf");
 
