@@ -51,5 +51,31 @@ class User_model extends CI_Model {
 			);
 		$this->db->insert('user',$data);
 	}
+	
+	public function getQuestions()
+	{
+		$query=$this->db->get("quiz_questions");
+		if($query->num_rows()>0)
+		{
+			foreach($query->result() as $rows)
+			{
+				//add all data to session
+				$question = array(
+						'question_number' 		=> $rows->question_number,
+						'question' 	=> $rows->question,
+						'correct_answer_number'    => $rows->correct_answer_number,
+						'answer1'    => $rows->answer1,
+						'answer2'    => $rows->answer2,
+						'answer3'    => $rows->answer3,
+				);
+				$ques["question" . $rows->question_number] = $question;
+				
+				//$data["question" . $rows->question_number] = $question;
+			}
+			$data["q"] = $ques;
+			//$this->session->set_userdata($newdata);
+			return $data;
+		}
+	}
 }
 ?>

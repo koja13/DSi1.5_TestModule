@@ -64,7 +64,10 @@ class User extends CI_Controller{
 	
 	public function quiz()
 	{
-		$data['title']= 'Welcome';
+		$data=$this->user_model->getQuestions();
+		//echo $data['question2']['question'];
+		
+		$data['title']= 'Qiuz';
 		$this->load->view('header_view',$data);
 		$this->load->view('QuizView.php', $data);
 		$this->load->view('footer_view',$data);

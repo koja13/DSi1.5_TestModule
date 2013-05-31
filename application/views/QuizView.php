@@ -24,8 +24,17 @@
  			
  <!--  	<form action="">-->
  			
+<?php //$this->load->helper('array');?>
+<?php //echo $question1['question'];?>
+<?php //echo element('question',"$question"+"1");?>
+<?php echo $q['question1']['question'];?>
+<ul>
+<?php //foreach ($q as $prrr):?>
 
+<li><?php //echo $q['question1']['question'];?></li>
 
+<?php //endforeach;?>
+</ul>
       <div id="q1" class="question">
       
       	<p id="question1" class ="qPar"> Ovo je pitanje broj 1? </p> <br />

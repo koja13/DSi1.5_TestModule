@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2013 at 02:45 PM
+-- Generation Time: May 31, 2013 at 01:56 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE `dsi_user` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `dsi_user`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_questions`
+--
+
+CREATE TABLE IF NOT EXISTS `quiz_questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_number` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `correct_answer_number` int(11) NOT NULL,
+  `answer1` varchar(255) NOT NULL,
+  `answer2` varchar(255) NOT NULL,
+  `answer3` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `quiz_questions`
+--
+
+INSERT INTO `quiz_questions` (`id`, `question_number`, `question`, `correct_answer_number`, `answer1`, `answer2`, `answer3`) VALUES
+(1, 1, 'Pitanje broj 1?', 2, 'Odgovor broj 1', 'Odgovor broj 2', 'Odgovor broj 3'),
+(2, 2, 'Pitanje broj 2?', 1, 'Odgovor broj 1', 'Odgovor broj 2', 'Odgovor broj 3');
 
 -- --------------------------------------------------------
 

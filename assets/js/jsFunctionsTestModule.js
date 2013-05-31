@@ -29,7 +29,7 @@
 			    });
 
 		});
-		
+		/*
 		var questions = [{
 	        'question': 'jQuery is a...',
 	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
@@ -55,7 +55,7 @@
 	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
 	        'correctAnswer': 2
 	    }, ];
-
+*/
 		function addQuestion(qNo, question, answers, correctAnswer)
 		{
 			var newQuestion = {
@@ -116,8 +116,8 @@
 
 				};
 		}
-		initQuestions();
-		alert("sdfsd" +init.questions[1].question);
+		//initQuestions();
+		//alert("sdfsd" +init.questions[1].question);
 		function createQuestion()
 		{
 			$(document).ready(function() {
