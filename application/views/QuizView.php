@@ -27,14 +27,132 @@
 <?php //$this->load->helper('array');?>
 <?php //echo $question1['question'];?>
 <?php //echo element('question',"$question"+"1");?>
-<?php echo $q['question1']['question'];?>
-<ul>
-<?php //foreach ($q as $prrr):?>
+<?php //echo $q['question1']['question'];?>
 
-<li><?php //echo $q['question1']['question'];?></li>
 
-<?php //endforeach;?>
-</ul>
+
+<?php //echo $question1;?>
+<?php //echo $question2;?>
+<?php //echo $questions[1];?>
+<?php //echo $question2;?>
+
+<?php
+
+for ($i = 1; $i <=30; $i++)
+{
+
+	echo $questions[$i];
+}
+
+?>
+
+<div id="divPrevNext">
+
+	<span id="prevButtonSpan">
+		<button id="prevButton" type="button" class="button" onclick="prevQuestionPage();">PREVIOUS</button>
+	</span>
+	
+	<span id="nextButtonSpan">
+		<button id="nextButton" type="button" class="button" onclick="nextQuestionPage();">NEXT</button>
+	</span>
+<?php echo form_open("user/QuizResultPage"); ?>
+	<span id="finishButtonSpan">
+		<input type="submit" id="finishButton" type="button" onclick="finishQuiz();" value="FINISH!"/>
+	</span>
+<?php echo form_close(); ?>
+</div>
+
+<script>
+
+	var qCount = 3;
+	var userAnswers = new Array();
+	
+	$("#prevButton").hide();
+	$("#finishButton").hide();
+
+
+	function prevQuestionPage()
+	{
+		//alert(qCount);
+		//alert("q" +(parseInt(qCount)-2));
+		$("#q" + (parseInt(qCount)-2)).hide();
+		$("#q" + (parseInt(qCount)-1)).hide();
+		$("#q" + (parseInt(qCount)-0)).hide();
+		
+		$("#q" + (parseInt(qCount)-5)).show();
+		$("#q" + (parseInt(qCount)-4)).show();
+		$("#q" + (parseInt(qCount)-3)).show();
+		qCount -= 3;
+
+		if(qCount<=3)
+		{
+			$("#prevButton").hide();
+		}
+	}
+
+	function nextQuestionPage()
+	{
+		//alert(qCount);
+		//alert("q" +(parseInt(qCount)-2));
+		$("#q" + (parseInt(qCount)-2)).hide();
+		$("#q" + (parseInt(qCount)-1)).hide();
+		$("#q" + (parseInt(qCount)-0)).hide();
+		
+		$("#q" + (parseInt(qCount)+1)).show();
+		$("#q" + (parseInt(qCount)+2)).show();
+		$("#q" + (parseInt(qCount)+3)).show();
+		qCount += 3;
+		
+		if(qCount>3)
+		{
+			$("#prevButton").show();
+		}
+		
+		if(qCount>27)
+		{
+			$("#nextButton").hide();
+			$("#finishButton").show();
+		}
+		
+		
+	}
+	
+	function finishQuiz()
+	{
+		for(var i=1;i<=30;i++)
+		{
+			if($("input[name=q"+i+"]:checked").val()==null)
+			{
+				userAnswers[i] = null;
+			}
+			else
+			{
+				var answerId =  $("input[name=q"+i+"]:checked").attr('id');
+				var userAnswer = answerId.substr(-1,1);
+				userAnswers[i] = userAnswer;
+			}
+		}
+		
+		sendQuizResults();
+	}
+
+	function sendQuizResults()
+	{	  
+		$.ajax({
+			  type: "POST",
+			  url: config.site_url + "/user/getQuizResults",
+			  data: {	
+				  		userAnswers: userAnswers
+			  		}
+			}).done(function( response ) {
+
+				//
+			});
+	}
+	
+</script>
+
+<!-- 
       <div id="q1" class="question">
       
       	<p id="question1" class ="qPar"> Ovo je pitanje broj 1? </p> <br />
@@ -64,9 +182,14 @@
       	<p class="answer"><input class="radio" type="radio" name="q3" id="q3a3" value="Odgovor 3"> <label for="q3a3">Odgovor 3</label></p>
       </div>
       
-      <div id="submit">
+      
+      -->
+    <!--  </form>
+   
+    
+	<div id="submit">
       	<input type="submit" class="button" value="Next >>" />
       </div>
-      
-    <!--  </form>-->
+    -->
+    
 </div>

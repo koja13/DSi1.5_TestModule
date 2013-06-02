@@ -7,7 +7,9 @@
 	
 		<div class="signin_form">
 		
-			<?php echo form_open("user/login"); ?>
+		<?php $attributes = array('class' => 'signin');
+				
+			echo form_open("user/login", $attributes); ?>
 			
 				<h2>Log In</h2>
 			    

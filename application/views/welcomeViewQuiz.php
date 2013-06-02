@@ -3,7 +3,9 @@
 <nav><?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
 </div>
 
-		<?php echo form_open("user/quiz"); ?>
+		<?php $attributes = array('class' => 'welcomeQuiz');
+	
+		echo form_open("user/quiz", $attributes); ?>
 		
 			<h5> Let's see what you have learned with DSi <?php echo $this->session->userdata('user_name'); ?>!<br /><br />
 			

@@ -14,34 +14,34 @@ h2 {
 	color: #a6a6a6;
 }
 
+#divPrevNext
+{
+	margin:auto;
+	text-align:center;
+	width: 500px;
+}
+img
+{
+	float: right;
+}
+#nextButtonSpan, #finishButtonSpan
+{
+	float: right;
+}
+#prevButtonSpan
+{
+	float: left;
+}
 
 #mainQuizDiv
 {
 	height: 90%;
 }
 
-#q1
-{
-	/*background-color:#FFC078;*/
-	/*height: 30%;
-	width: 100%;*/
-}
-
-#q2
-{
-	/*height: 30%;
-	width: 100%;*/
-}
-
-#q3
-{
-	/*height: 30%;
-	width: 100%;*/
-}
 .qPar
 {
 	font-weight:bold;
-	font-size: 17px;
+	font-size: 15px;
 	color:white;
 	background: #4889C2;
 	border-radius: 5px;
@@ -53,8 +53,6 @@ h2 {
 .radio
 {
 	margin:5px;
-	
-
 }
 
 .answer
@@ -62,23 +60,24 @@ h2 {
 	padding-left:5px;
 	border-radius: 5px;
 	font-weight:bold;
-	font-size: 13.5px;
+	font-size: 13px;
 	color:#555555;
 
 }
 .answer:hover
 {
 	color:#C64F00;
-	font-size: 15px;
+	font-size: 14px;
 	background: #E1E1E1;
 }
 
 .question
 {
 	
-	width: 700px;
-	height: 150px;
+	width: 600px;
+	height: 120px;
 	margin: auto;
+	margin-bottom:20px;
 	background: white;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0,0,0, .4); 
@@ -103,9 +102,10 @@ h2 {
 	width:50%;
 	margin:auto;
 
-/*	border:2px solid #a1a1a1;*/
+	border:2px solid #a1a1a1;
 	text-align: right;
 }
+
 
 .button {																				/* Submit button */
 	border-radius: 3px;
@@ -143,6 +143,48 @@ h2 {
 	background: -moz-linear-gradient(bottom, #5BA7E9 0%, #4889C2 100%);
 	background: -webkit-linear-gradient(bottom, #5BA7E9 0%, #4889C2 100%);
 	background: -ms-linear-gradient(bottom, #5BA7E9 0%, #4889C2 100%);
+	
+	box-shadow: inset 0 0 2px rgba(0,0,0, .3), 0 1px 0 white;
+}
+
+/***** FINISH BUTTON STYLE ****/
+
+#finishButton{																				/* Submit button */
+	border-radius: 3px;
+	border: 1px solid #009900;
+	box-shadow: inset 0 1px 0 #009900;
+	width: 130px;
+	height: 40px;
+	margin-top: 20px;
+	
+	background: linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -o-linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -moz-linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -webkit-linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -ms-linear-gradient(bottom, #009900 0%, #009900 100%);
+	
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 #336895;
+	
+	font-size: 13px;
+}
+
+#finishButton:hover {
+	background: linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -o-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -moz-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -webkit-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -ms-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+}
+
+#finishButton:active {
+	background: linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -o-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -moz-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -webkit-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -ms-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
 	
 	box-shadow: inset 0 0 2px rgba(0,0,0, .3), 0 1px 0 white;
 }

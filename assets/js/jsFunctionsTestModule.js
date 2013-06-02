@@ -56,7 +56,7 @@
 	        'correctAnswer': 2
 	    }, ];
 */
-		function addQuestion(qNo, question, answers, correctAnswer)
+		/*function addQuestion(qNo, question, answers, correctAnswer)
 		{
 			var newQuestion = {
 						'questionNo': qNo,
@@ -75,8 +75,8 @@
 		{
 			addQuestion();
 		}
-		
-		function initQuestions()
+		*/
+	/*	function initQuestions()
 		{
 			var init = {
 				    'questions': [{
@@ -115,10 +115,10 @@
 				    }
 
 				};
-		}
+		}*/
 		//initQuestions();
 		//alert("sdfsd" +init.questions[1].question);
-		function createQuestion()
+	/*	function createQuestion()
 		{
 			$(document).ready(function() {
 				
@@ -137,7 +137,7 @@
 						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 3'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
 						"</div><br />"
 		      );
-			});
+			});*/
 			/*$(document).ready(function() {
 				
 			var par=$("<p class='answer'></p>").text("");
@@ -157,9 +157,9 @@
 			
 			$("#submit").append(par);         // Append the new elements 
 			});*/
-		}
+		//}
 		
-		createQuestion();
+		//createQuestion();
 		
 		
 		getTextFromServer(1, "tekst1.html", "model.rdf");

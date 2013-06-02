@@ -65,7 +65,6 @@ class User extends CI_Controller{
 	public function quiz()
 	{
 		$data=$this->user_model->getQuestions();
-		//echo $data['question2']['question'];
 		
 		$data['title']= 'Qiuz';
 		$this->load->view('header_view',$data);
@@ -73,7 +72,21 @@ class User extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
-	
+	public function getQuizResults()
+	{
+		$userAnswers = $_POST['userAnswers'];
+		$result = $this->user_model->saveQuizResults($userAnswers);
+		
+	}
+	public function QuizResultPage()
+	{
+		$data=$this->user_model->getResults();
+		
+		$data['title']= 'Qiuz results';
+		$this->load->view('header_view',$data);
+		$this->load->view('QuizResultsView.php', $data);
+		$this->load->view('footer_view',$data);
+	}
 	public function login()
 	{
 		$email=$this->input->post('email');

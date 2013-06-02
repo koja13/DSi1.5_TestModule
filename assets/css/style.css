@@ -131,7 +131,7 @@ nav a.focus {
 
 /* LOGIN & REGISTER FORM */
 
-form {
+form.signin, form.welcome, form.welcomeQuiz{
 	width: 280px;
 	height: 260px;
 	margin: 200px auto;

@@ -56,26 +56,110 @@ class User_model extends CI_Model {
 	{
 		$query=$this->db->get("quiz_questions");
 		if($query->num_rows()>0)
-		{
+		{	
 			foreach($query->result() as $rows)
 			{
-				//add all data to session
-				$question = array(
-						'question_number' 		=> $rows->question_number,
-						'question' 	=> $rows->question,
-						'correct_answer_number'    => $rows->correct_answer_number,
-						'answer1'    => $rows->answer1,
-						'answer2'    => $rows->answer2,
-						'answer3'    => $rows->answer3,
-				);
-				$ques["question" . $rows->question_number] = $question;
+				$qNo = $rows->question_number;
+				$ques = $rows->question;
+				$correct_answer_number = $rows->correct_answer_number;
+				$answer1 = $rows->answer1;
+				$answer2 = $rows->answer2;
+				$answer3 = $rows->answer3;
 				
-				//$data["question" . $rows->question_number] = $question;
+				if($qNo<4)
+				{
+					$question = " <div id='q" .$qNo. "' class='question'>" .
+					"<p id='question" .$qNo. "' class ='qPar'>".$qNo. ". ".$ques. "</p> <br />" .
+					"<p class='answer'><input class='radio' type='radio' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>" .
+					"<p class='answer'><input class='radio' type='radio' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>" .
+					"<p class='answer'><input class='radio' type='radio' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>" .
+					"</div>";
+				}
+				else
+				{
+					$question = " <div id='q" .$qNo. "' style='display:none;' class='question'>" .
+							"<p id='question" .$qNo. "' class ='qPar'>" .$qNo. ". ".$ques. "</p> <br />" .
+							"<p class='answer'><input class='radio' type='radio' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>" .
+							"<p class='answer'><input class='radio' type='radio' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>" .
+							"<p class='answer'><input class='radio' type='radio' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>" .
+							"</div>";
+				}
+				$questions[$qNo] = $question;
+				
 			}
-			$data["q"] = $ques;
-			//$this->session->set_userdata($newdata);
+			
+			$data["questions"] = $questions;
 			return $data;
 		}
+	}
+	
+	public function saveQuizResults($userAnswers)
+	{
+		for($i=1;$i<count($userAnswers);$i++)
+		{
+			$data[$i] = array(
+					'session_id' => $this->session->userdata('session_id'),
+					'user_name' => $this->session->userdata('user_name') ,
+					'question_number' => $i ,
+					'user_answer' => $userAnswers[$i]
+			);
+			
+			$this->db->insert('quiz_results', $data[$i]);
+		}
+	}
+	
+	
+	public function getResults()
+	{
+		$query1=$this->db->get("quiz_questions");
+		
+		$sql = "SELECT question_number, user_answer FROM quiz_results WHERE session_id = '".$this->session->userdata('session_id')."' AND user_name = '".$this->session->userdata('user_name')."';";
+		
+		$query2 = $this->db->query($sql);
+		$userAnswers = null;
+		foreach ($query2->result() as $row)
+		{
+			$userAnswers[$row->question_number] = $row->user_answer;
+			//echo $row->question_number;
+			//echo $row->user_answer;
+		}
+		
+		$counter = 1;
+		/*
+		if($query1->num_rows()>0)
+		{
+			foreach($query1->result() as $rows)
+			{
+				$qNo = $rows->question_number;
+				$ques = $rows->question;
+				$correct_answer_number = $rows->correct_answer_number;
+				$answer1 = $rows->answer1;
+				$answer2 = $rows->answer2;
+				$answer3 = $rows->answer3;
+	
+				$question = " <div id='q" .$qNo. "' class='question'>" .
+							"<p id='question" .$qNo. "' class ='qPar'>".$qNo. ". ".$ques. "</p> <br />";
+				
+				if($userAnswers[$qNo]==$correct_answer_number)
+				{
+					$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label><img src='<?php echo base_url('/correct.jpg')?>' alt='correct' height='23' width='23'></p>";
+				}
+				else
+				{
+					echo $userAnswers[$qNo];
+					$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
+				}
+				$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
+				$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+							"</div>";
+				
+				$questions[$qNo] = $question;
+	
+			}
+				
+			$data["questions"] = $questions;
+			return $data;
+		}*/
 	}
 }
 ?>
