@@ -89,6 +89,12 @@ for ($i = 1; $i <=30; $i++)
 		{
 			$("#prevButton").hide();
 		}
+		
+		if(qCount<=27)
+		{
+			$("#finishButton").hide();
+			$("#nextButton").show();
+		}
 	}
 
 	function nextQuestionPage()
