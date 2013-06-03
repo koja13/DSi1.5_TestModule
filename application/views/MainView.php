@@ -14,11 +14,20 @@
 
 
 <div id='navigationDiv'>
+<span id="lessionNumberSpan1">
+	<span id="lessionNumberSpan2">
+		
+	</span>  of 10
+</span>
 <nav> <?php echo anchor('user/startQuiz', 'Start test') . " | " . anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
 </div>
 
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainDiv'>
+
+<script>
+
+</script>
 
 	 		<script>
 	 		/*alert($(window).height());   // returns height of browser viewport

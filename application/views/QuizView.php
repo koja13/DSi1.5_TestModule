@@ -14,6 +14,7 @@
 
 
 <div id='navigationDiv'>
+
 <nav> <?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
 </div>
 

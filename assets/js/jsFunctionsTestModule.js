@@ -20,148 +20,33 @@
 		// promenljiva koja cuva link ka rdf kontroleru, koristi se kod ajax poziva
 		var rdfController = config.site_url + "/RdfController";
 
+		var currentLessionNumber = 1;
+		
+		
 
 		// FUNKCIJE
 		$(document).ready(function() {
 			
-			 $(document).on('click', '.close', function(){
+			$("#lessionNumberSpan2").html(currentLessionNumber);
+			
+			$(document).on('click', '.close', function(){
 			        $(this).parent().hide(400);
 			    });
 
 		});
-		/*
-		var questions = [{
-	        'question': 'jQuery is a...',
-	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
-	        'correctAnswer': 1
-	    }, {
-	        'question': 'X comes after?',
-	        'answers': ['P', 'W', 'Y', 'v'],
-	        'correctAnswer': 2
-	    }, {
-	        'question': 'Meh stands for..',
-	        'answers': ['Eh', '/Sigh', 'What?', 'Whatever'],
-	        'correctAnswer': 4
-	    }, {
-	        'question': 'Dejan...',
-	        'answers': ['Todosijevic', 'fgb', 'PHP Framework', 'None of the above'],
-	        'correctAnswer': 1
-	    }, {
-	        'question': 'Bla bla truc...',
-	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
-	        'correctAnswer': 3
-	    }, {
-	        'question': 'Koja bla bla...',
-	        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
-	        'correctAnswer': 2
-	    }, ];
-*/
-		/*function addQuestion(qNo, question, answers, correctAnswer)
-		{
-			var newQuestion = {
-						'questionNo': qNo,
-						'question': question,
-				        'answers': answers,
-				        'correctAnswer': correctAnswer};
-			questions.push(newQuestion);
-
-		//var x=document.getElementById("demo");
-		//x.innerHTML=fruits;
 		
-		//x.innerHTML=novoPitanje;
-		//x.innerHTML=pitanja[7].question;
+		function changeLessionNumberPrev()
+		{
+			currentLessionNumber -= 1;
+			$("#lessionNumberSpan2").html(currentLessionNumber);
 		}
-		function initQuestions()
+		
+		function changeLessionNumberNext()
 		{
-			addQuestion();
+			currentLessionNumber += 1;
+			$("#lessionNumberSpan2").html(currentLessionNumber);
 		}
-		*/
-	/*	function initQuestions()
-		{
-			var init = {
-				    'questions': [{
-				        'question': 'jQuery is a...',
-				        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
-				        'correctAnswer': 1
-				    }, {
-				        'question': 'X comes after?',
-				        'answers': ['P', 'W', 'Y', 'v'],
-				        'correctAnswer': 2
-				    }, {
-				        'question': 'Meh stands for..',
-				        'answers': ['Eh', '/Sigh', 'What?', 'Whatever'],
-				        'correctAnswer': 4
-				    }, {
-				        'question': 'Dejan...',
-				        'answers': ['Todosijevic', 'fgb', 'PHP Framework', 'None of the above'],
-				        'correctAnswer': 1
-				    }, {
-				        'question': 'Bla bla truc...',
-				        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
-				        'correctAnswer': 3
-				    }, {
-				        'question': 'Koja bla bla...',
-				        'answers': ['JavaScript library', 'Ruby Gem', 'PHP Framework', 'None of the above'],
-				        'correctAnswer': 2
-				    }, ],
-				    'resultComments': {
-				        perfect: 'Albus, is that you?',
-				        excellent: 'Outstanding, noble sir!',
-				        good: 'Exceeds expectations!',
-				        average: 'Acceptable. For a muggle.',
-				        bad: 'Well, that was poor.',
-				        poor: 'Dreadful!',
-				        worst: 'For shame, troll!'
-				    }
 
-				};
-		}*/
-		//initQuestions();
-		//alert("sdfsd" +init.questions[1].question);
-	/*	function createQuestion()
-		{
-			$(document).ready(function() {
-				
-				$("#mainQuizDiv").append(" <div id='q" + " ***BROJ PITANJA*** " + "' class='question'>" +
-						"<p id='question" + " ***BROJ PITANJA*** " + "' class ='qPar'>" + " ***PITAAAAAAAAAAANJE*** " + "</p> <br />" +
-						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 1'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
-						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 2'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
-						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 3'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
-						"</div><br />"
-		      );
-				
-				$("#mainQuizDiv").append(" <div id='q" + " ***BROJ PITANJA*** " + "' class='question'>" +
-						"<p id='question" + " ***BROJ PITANJA*** " + "' class ='qPar'>" + " ***PITAAAAAAAAAAANJE*** " + "</p> <br />" +
-						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 1'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
-						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 2'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
-						"<p class='answer'><input class='radio' type='radio' name='q" + " ***BROJ PITANJA*** " + "' id='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "' value='Odgovor 3'> <label for='q" + " ***BROJ PITANJA*** " + "a" + " ***BROJ ODGOVORA*** " + "'>" + " ***ODGOVOR NA PITANJE*** " + "</label></p>" +
-						"</div><br />"
-		      );
-			});*/
-			/*$(document).ready(function() {
-				
-			var par=$("<p class='answer'></p>").text("");
-			
-			
-			var radio = $('<input>').attr({
-			      type: 'radio', name: 'q1', value: 'Odgovor 1', id: 'q1a1'
-			  });
-			
-			radio.addClass("radio");
-			var label = $('<label>').attr("for", radio.attr("id"));
-			label.text(radio.attr("value"));
-			radio.append(label);
-			par.append(radio);
-
-			//alert(par);
-			
-			$("#submit").append(par);         // Append the new elements 
-			});*/
-		//}
-		
-		//createQuestion();
-		
-		
 		getTextFromServer(1, "tekst1.html", "model.rdf");
 
 		// dodavanje next i prev kontrola na svaki tab
@@ -205,6 +90,9 @@
 				$("#lessionDiv" + relPrev).empty();
 				
 				
+				sendUserActionsLessions("next", parseInt(currentLessionNumber) + 1);
+				changeLessionNumberNext();
+				
 				//alert(relNext + " to je +1 i " + relPrev + " je -1");
 				return false;
 			});
@@ -225,6 +113,8 @@
 						// brisanje tabova koji nisu trenutno aktivni
 						$("#lessionDiv" + relNext).empty();
 						
+						sendUserActionsLessions("prev", parseInt(currentLessionNumber) - 1);
+						changeLessionNumberPrev();
 						
 						//alert(relNext + " to je +1 i " + relPrev + " je -1");
 						return false;
@@ -232,9 +122,52 @@
 
 		});
 		
+		var userActions = new Array();
+		
+		function sendUserActions(subject, object)
+		{
+			$.ajax({
+				  type: "POST",
+				  url: config.site_url + "/user/getUserActions",
+				  data: {	
+							  currentLessionNumber: currentLessionNumber,
+							  subject: subject,
+							  object:object
+					  		//userActions: userActions
+				  		}
+				}).done(function( response ) {
+					
+					//alert(response);
+				});
+		}	
+		
+		function sendUserActionsLessions(next_prev, next_prev_lession_number)
+		{
+			$.ajax({
+				  type: "POST",
+				  url: config.site_url + "/user/getUserActionsLessions",
+				  data: {	
+							  currentLessionNumber: currentLessionNumber,
+							  next_prev: next_prev,
+							  next_prev_lession_number: next_prev_lession_number
+					  		//userActions: userActions
+				  		}
+				}).done(function( response ) {
+					
+					//alert(response);
+				});
+		}	
+		
+		var currentTime = new Date();
+		var month = currentTime.getMonth() + 1;
+		var day = currentTime.getDate();
+		var year = currentTime.getFullYear();
+		var hours = currentTime.getHours();
+		var minuts = currentTime.getMinutes();
+		var seconds = currentTime.getSeconds();
 		
 		
-		
+		//alert(month + "/" + day + "/" + year + " " + hours + ":" + minuts + ":" + seconds);
 		
 	//
 	// FUNKCIJA ZA DRAG & DROP
@@ -307,6 +240,7 @@
 			
 		  	// ispisivanje postojecih veza
 			writeToBottomDiv(s,o);
+			sendUserActions(s, o);
 		
 	  	  }
 	}

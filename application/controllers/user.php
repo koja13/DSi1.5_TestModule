@@ -54,6 +54,24 @@ class User extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
+	public function getUserActions()
+	{
+		$currentLessionNumber = $_POST['currentLessionNumber'];
+		$subject = $_POST['subject'];
+		$object = $_POST['object'];
+		
+		$this->user_model->saveUserActions($currentLessionNumber, $subject, $object);
+	}
+	
+	public function getUserActionsLessions()
+	{
+		$currentLessionNumber = $_POST['currentLessionNumber'];
+		$next_prev = $_POST['next_prev'];
+		$next_prev_lession_number = $_POST['next_prev_lession_number'];
+	
+		$this->user_model->saveUserActionsLessions($currentLessionNumber, $next_prev, $next_prev_lession_number);
+	}
+	
 	public function startQuiz()
 	{
 		$data['title']= 'Welcome';

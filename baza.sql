@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 02, 2013 at 10:14 PM
+-- Generation Time: Jun 03, 2013 at 02:04 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `quiz_results` (
   `question_number` int(11) NOT NULL,
   `user_answer` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=331 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -114,6 +114,80 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `use_dsi`) VALUES
 (3, 'martin', 'martin@martin.com', '827ccb0eea8a706c4c34a16891f84e7b', 'no'),
 (4, 'kojakoja', 'kojakoja@koja.com', '827ccb0eea8a706c4c34a16891f84e7b', 'yes'),
 (5, 'blabla', 'blabla@bla.com', '827ccb0eea8a706c4c34a16891f84e7b', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_actions`
+--
+
+CREATE TABLE IF NOT EXISTS `user_actions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `session_id` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `lession_number` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `object` varchar(255) NOT NULL,
+  `time` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `user_actions`
+--
+
+INSERT INTO `user_actions` (`id`, `session_id`, `user_name`, `lession_number`, `subject`, `object`, `time`) VALUES
+(1, 'd79c4deca9968583ac60b5ee61e77bc7', 'kojakoja', 1, 'NLP', 'obrazaca', '0000-00-00'),
+(2, 'd79c4deca9968583ac60b5ee61e77bc7', 'kojakoja', 3, 'nauka', 'sport', '0000-00-00'),
+(3, 'af26b6ab631423717edbf4a7d5dabaeb', 'kojakoja', 1, 'obrazaca', 'obrazaca', '0000-00-00'),
+(4, 'af26b6ab631423717edbf4a7d5dabaeb', 'kojakoja', 1, 'NLP', 'modelovanje', '0000-00-00'),
+(5, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 3, 'NLP', 'modelovanje', '0000-00-00'),
+(6, 'ac29a63796a4e2777f12cc9cd8d4cbf9', 'kojakoja', 5, 'NLP', 'modelovanje', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_actions_lessions`
+--
+
+CREATE TABLE IF NOT EXISTS `user_actions_lessions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `session_id` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `lession_number` int(11) NOT NULL,
+  `next_prev` varchar(10) NOT NULL,
+  `next_prev_lession_number` int(11) NOT NULL,
+  `time` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+
+--
+-- Dumping data for table `user_actions_lessions`
+--
+
+INSERT INTO `user_actions_lessions` (`id`, `session_id`, `user_name`, `lession_number`, `next_prev`, `next_prev_lession_number`, `time`) VALUES
+(9, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 1, 'next', 2, '0000-00-00'),
+(10, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 2, 'next', 3, '0000-00-00'),
+(11, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 3, 'next', 4, '0000-00-00'),
+(12, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 4, 'prev', 3, '0000-00-00'),
+(13, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 3, 'prev', 2, '0000-00-00'),
+(14, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 2, 'next', 3, '0000-00-00'),
+(15, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 3, 'next', 4, '0000-00-00'),
+(16, '6ad1f7a0ed8fc56c8c4732ad7557db97', 'kojakoja', 4, 'next', 5, '0000-00-00'),
+(17, 'af26b6ab631423717edbf4a7d5dabaeb', 'kojakoja', 1, 'next', 2, '0000-00-00'),
+(18, 'af26b6ab631423717edbf4a7d5dabaeb', 'kojakoja', 2, 'next', 3, '0000-00-00'),
+(19, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 1, 'next', 2, '0000-00-00'),
+(20, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 2, 'prev', 1, '0000-00-00'),
+(21, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 1, 'next', 2, '0000-00-00'),
+(22, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 2, 'next', 3, '0000-00-00'),
+(23, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 3, 'next', 4, '0000-00-00'),
+(24, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 4, 'next', 5, '0000-00-00'),
+(25, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 1, 'next', 2, '0000-00-00'),
+(26, 'a8545e91893e6df518efd5fa46faa1ae', 'kojakoja', 2, 'next', 3, '0000-00-00'),
+(27, 'ac29a63796a4e2777f12cc9cd8d4cbf9', 'kojakoja', 1, 'next', 2, '0000-00-00'),
+(28, 'ac29a63796a4e2777f12cc9cd8d4cbf9', 'kojakoja', 2, 'next', 3, '0000-00-00'),
+(29, 'ac29a63796a4e2777f12cc9cd8d4cbf9', 'kojakoja', 3, 'next', 4, '0000-00-00'),
+(30, 'ac29a63796a4e2777f12cc9cd8d4cbf9', 'kojakoja', 4, 'next', 5, '0000-00-00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

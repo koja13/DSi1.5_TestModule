@@ -108,6 +108,33 @@ class User_model extends CI_Model {
 		}
 	}
 	
+	public function saveUserActions($currentLessionNumber, $subject, $object)
+	{/*
+		for($i=1;$i<count($userAnswers);$i++)
+		{*/
+		$data = array(
+						'session_id' => $this->session->userdata('session_id'),
+						'user_name' => $this->session->userdata('user_name') ,
+						'lession_number' => $currentLessionNumber ,
+						'subject' => $subject,
+						'object' => $object
+					);
+							
+			$this->db->insert('user_actions', $data);
+		//}
+	}
+	public function saveUserActionsLessions($currentLessionNumber, $next_prev, $next_prev_lession_number)
+	{
+		$data = array(
+				'session_id' => $this->session->userdata('session_id'),
+				'user_name' => $this->session->userdata('user_name') ,
+				'lession_number' => $currentLessionNumber ,
+				'next_prev' => $next_prev,
+				'next_prev_lession_number' => $next_prev_lession_number
+		);
+			
+		$this->db->insert('user_actions_lessions', $data);
+	}
 	
 	public function getResults()
 	{
