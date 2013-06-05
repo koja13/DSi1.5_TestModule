@@ -27,7 +27,22 @@
 		// FUNKCIJE
 		$(document).ready(function() {
 			
+			// kliktanje na start test u navigation divu
+			$("#startTest").click(function() {
+			    sendUserActionsLessions(currentLessionNumber, "end_dsi", null);
+			});
+			
+			/*$('#startQuiz').submit(function() {
+				sendUserActionsLessions("start_quiz", null);
+				  return false;
+				});*/
+			/*
+			$("#startQuizButton").click(function() {
+			    sendUserActionsLessions("start_quiz", null);
+			});
+			*/
 			$("#lessionNumberSpan2").html(currentLessionNumber);
+			
 			
 			$(document).on('click', '.close', function(){
 			        $(this).parent().hide(400);
@@ -90,7 +105,7 @@
 				$("#lessionDiv" + relPrev).empty();
 				
 				
-				sendUserActionsLessions("next", parseInt(currentLessionNumber) + 1);
+				sendUserActionsLessions(currentLessionNumber, "next", parseInt(currentLessionNumber) + 1);
 				changeLessionNumberNext();
 				
 				//alert(relNext + " to je +1 i " + relPrev + " je -1");
@@ -113,7 +128,7 @@
 						// brisanje tabova koji nisu trenutno aktivni
 						$("#lessionDiv" + relNext).empty();
 						
-						sendUserActionsLessions("prev", parseInt(currentLessionNumber) - 1);
+						sendUserActionsLessions(currentLessionNumber,"prev", parseInt(currentLessionNumber) - 1);
 						changeLessionNumberPrev();
 						
 						//alert(relNext + " to je +1 i " + relPrev + " je -1");
@@ -132,7 +147,8 @@
 				  data: {	
 							  currentLessionNumber: currentLessionNumber,
 							  subject: subject,
-							  object:object
+							  object:object,
+							  currentDateTime: getCurrentTime()
 					  		//userActions: userActions
 				  		}
 				}).done(function( response ) {
@@ -141,15 +157,16 @@
 				});
 		}	
 		
-		function sendUserActionsLessions(next_prev, next_prev_lession_number)
+		function sendUserActionsLessions(currentLessionNumber, action, next_prev_lession_number)
 		{
 			$.ajax({
 				  type: "POST",
 				  url: config.site_url + "/user/getUserActionsLessions",
 				  data: {	
 							  currentLessionNumber: currentLessionNumber,
-							  next_prev: next_prev,
-							  next_prev_lession_number: next_prev_lession_number
+							  action: action,
+							  next_prev_lession_number: next_prev_lession_number,
+							  currentDateTime: getCurrentTime()
 					  		//userActions: userActions
 				  		}
 				}).done(function( response ) {
@@ -158,17 +175,20 @@
 				});
 		}	
 		
-		var currentTime = new Date();
-		var month = currentTime.getMonth() + 1;
-		var day = currentTime.getDate();
-		var year = currentTime.getFullYear();
-		var hours = currentTime.getHours();
-		var minuts = currentTime.getMinutes();
-		var seconds = currentTime.getSeconds();
-		
-		
-		//alert(month + "/" + day + "/" + year + " " + hours + ":" + minuts + ":" + seconds);
-		
+		function getCurrentTime()
+		{
+			var currentTime = new Date();
+			var month = currentTime.getMonth() + 1;
+			var day = currentTime.getDate();
+			var year = currentTime.getFullYear();
+			var hours = currentTime.getHours();
+			var minuts = currentTime.getMinutes();
+			var seconds = currentTime.getSeconds();
+			
+			var currnetTimeString = year + "-" + month + "-" + day +" " + hours + ":" + minuts + ":" + seconds;
+			//alert(month + "/" + day + "/" + year + " " + hours + ":" + minuts + ":" + seconds);
+			return currnetTimeString;
+		}
 	//
 	// FUNKCIJA ZA DRAG & DROP
 	//

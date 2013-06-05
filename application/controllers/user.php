@@ -59,17 +59,19 @@ class User extends CI_Controller{
 		$currentLessionNumber = $_POST['currentLessionNumber'];
 		$subject = $_POST['subject'];
 		$object = $_POST['object'];
+		$currentDateTime = $_POST['currentDateTime'];
 		
-		$this->user_model->saveUserActions($currentLessionNumber, $subject, $object);
+		$this->user_model->saveUserActions($currentLessionNumber, $subject, $object, $currentDateTime);
 	}
 	
 	public function getUserActionsLessions()
 	{
 		$currentLessionNumber = $_POST['currentLessionNumber'];
-		$next_prev = $_POST['next_prev'];
+		$action = $_POST['action'];
 		$next_prev_lession_number = $_POST['next_prev_lession_number'];
-	
-		$this->user_model->saveUserActionsLessions($currentLessionNumber, $next_prev, $next_prev_lession_number);
+		$currentDateTime = $_POST['currentDateTime'];
+		
+		$this->user_model->saveUserActionsLessions($currentLessionNumber, $action, $next_prev_lession_number, $currentDateTime);
 	}
 	
 	public function startQuiz()
@@ -93,7 +95,9 @@ class User extends CI_Controller{
 	public function getQuizResults()
 	{
 		$userAnswers = $_POST['userAnswers'];
-		$result = $this->user_model->saveQuizResults($userAnswers);
+		$currentDateTime = $_POST['currentDateTime'];$result = $this->user_model->saveQuizResults($userAnswers);
+		$this->user_model->saveUserActionsLessions(null, "finish_quiz", null, $currentDateTime);
+		
 		
 	}
 	public function QuizResultPage()

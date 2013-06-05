@@ -108,7 +108,7 @@ class User_model extends CI_Model {
 		}
 	}
 	
-	public function saveUserActions($currentLessionNumber, $subject, $object)
+	public function saveUserActions($currentLessionNumber, $subject, $object, $currentDateTime)
 	{/*
 		for($i=1;$i<count($userAnswers);$i++)
 		{*/
@@ -117,20 +117,22 @@ class User_model extends CI_Model {
 						'user_name' => $this->session->userdata('user_name') ,
 						'lession_number' => $currentLessionNumber ,
 						'subject' => $subject,
-						'object' => $object
+						'object' => $object,
+						'time' => $currentDateTime
 					);
 							
 			$this->db->insert('user_actions', $data);
 		//}
 	}
-	public function saveUserActionsLessions($currentLessionNumber, $next_prev, $next_prev_lession_number)
+	public function saveUserActionsLessions($currentLessionNumber, $action, $next_prev_lession_number,$currentDateTime)
 	{
 		$data = array(
 				'session_id' => $this->session->userdata('session_id'),
 				'user_name' => $this->session->userdata('user_name') ,
 				'lession_number' => $currentLessionNumber ,
-				'next_prev' => $next_prev,
-				'next_prev_lession_number' => $next_prev_lession_number
+				'action' => $action,
+				'next_prev_lession_number' => $next_prev_lession_number,
+				'time' => $currentDateTime
 		);
 			
 		$this->db->insert('user_actions_lessions', $data);
@@ -152,7 +154,7 @@ class User_model extends CI_Model {
 		}
 		
 		$counter = 1;
-		/*
+		
 		if($query1->num_rows()>0)
 		{
 			foreach($query1->result() as $rows)
@@ -186,7 +188,7 @@ class User_model extends CI_Model {
 				
 			$data["questions"] = $questions;
 			return $data;
-		}*/
+		}
 	}
 }
 ?>

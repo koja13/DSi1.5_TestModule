@@ -1,8 +1,11 @@
 <div id="content">
 <div id='navigationDiv'>
-<nav><?php echo anchor('#', 'Start test') . " | " . anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
+<nav><?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
 </div>
 
+<script>
+sendUserActionsLessions(null, "logged_in", null);
+</script>
 
 		<?php $attributes = array('class' => 'welcome');
 				

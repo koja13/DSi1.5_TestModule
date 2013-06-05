@@ -19,6 +19,17 @@
 
 </script>
         
+	<!------------------------------------- jQuery biblioteke  ------------------------------------->
+	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-1.7.2.js');?>"></script>	
+	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-ui.min.js');?>"></script>
+
+	<script type="text/javascript" src="<?php echo base_url('/assets/js/findAndReplaceDOMText.js');?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('/assets/js/jsFunctionsTestModule.js');?>"></script>
+
+	<script src="<?php echo base_url('assets/countdownTimer/countdown/jquery.countdown.js')?>"></script>
+	<script src="<?php echo base_url('assets/countdownTimer/js/script.js')?>"></script>
+	
+	
 <title><?php echo (isset($title)) ? $title : "My CI Site" ?> </title>
 
 </head>

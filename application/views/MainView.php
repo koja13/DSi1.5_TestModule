@@ -1,32 +1,17 @@
-
-
-	<!------------------------------------- jQuery biblioteke  ------------------------------------->
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-1.7.2.js');?>"></script>	
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-ui.min.js');?>"></script>
-
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/findAndReplaceDOMText.js');?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jsFunctionsTestModule.js');?>"></script>
-
-	<script src="<?php echo base_url('assets/countdownTimer/countdown/jquery.countdown.js')?>"></script>
-	<script src="<?php echo base_url('assets/countdownTimer/js/script.js')?>"></script>
-
-
-
-
 <div id='navigationDiv'>
 <span id="lessionNumberSpan1">
 	<span id="lessionNumberSpan2">
 		
 	</span>  of 10
 </span>
-<nav> <?php echo anchor('user/startQuiz', 'Start test') . " | " . anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
+<nav> <?php echo anchor('user/startQuiz', 'Start test', array('id'=>'startTest') ) . " | " . anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
 </div>
 
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainDiv'>
 
 <script>
-
+sendUserActionsLessions(currentLessionNumber, "start_dsi", null);
 </script>
 
 	 		<script>

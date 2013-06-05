@@ -37,7 +37,11 @@
 <?php //echo $questions[1];?>
 <?php //echo $question2;?>
 
-<?php
+
+<?php $attributes = array('id' => 'finishQuiz');
+	echo form_open("user/QuizResultPage", $attributes); ?>
+
+	<?php
 
 for ($i = 1; $i <=30; $i++)
 {
@@ -46,7 +50,9 @@ for ($i = 1; $i <=30; $i++)
 }
 
 ?>
-
+<script>
+sendUserActionsLessions(null, "start_quiz", null);
+</script>
 <div id="divPrevNext">
 
 	<span id="prevButtonSpan">
@@ -56,7 +62,9 @@ for ($i = 1; $i <=30; $i++)
 	<span id="nextButtonSpan">
 		<button id="nextButton" type="button" class="button" onclick="nextQuestionPage();">NEXT</button>
 	</span>
-<?php echo form_open("user/QuizResultPage"); ?>
+	
+
+			
 	<span id="finishButtonSpan">
 		<input type="submit" id="finishButton" type="button" onclick="finishQuiz();" value="FINISH!"/>
 	</span>
@@ -139,17 +147,29 @@ for ($i = 1; $i <=30; $i++)
 				userAnswers[i] = userAnswer;
 			}
 		}
+		//sendUserActionsLessions(null, "end_quiz", null);
+		//sendQuizResults();
 		
-		sendQuizResults();
 	}
+	
+		$(document).ready(function() {
+			
+			$('#finishQuiz').submit(function() {
+				sendQuizResults();
+				
+			});
+			
+		});
 
+		
 	function sendQuizResults()
 	{	  
 		$.ajax({
 			  type: "POST",
 			  url: config.site_url + "/user/getQuizResults",
 			  data: {	
-				  		userAnswers: userAnswers
+				  		userAnswers: userAnswers,
+						currentDateTime: getCurrentTime()
 			  		}
 			}).done(function( response ) {
 
