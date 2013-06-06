@@ -36,6 +36,15 @@
 			if(left < 0){
 				left = 0;
 				
+				//alert("Nema vise vremena!");
+				sendUserActionsLessions(null, "reading_time_is_up", null);
+				
+				//$('#wrapper').load('user/startQuiz2', function() {
+					  //alert('Load was performed.');
+					//});
+				//alert("vreme je isteklo!");
+				//startQuiz();
+				window.location = config.site_url + "/user/startQuiz";
 			}
 			
 			// Number of days left
@@ -61,7 +70,10 @@
 			options.callback(d, h, m, s);
 			
 			// Scheduling another call of this function in 1s
-			setTimeout(tick, 1000);
+			//if(left!=0)
+			//{
+				setTimeout(tick, 1000);
+			//}
 			
 		})();
 		

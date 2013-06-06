@@ -139,6 +139,19 @@
 		
 		var userActions = new Array();
 		
+		function startQuiz()
+		{
+			$.ajax({
+				  type: "POST",
+				  url: config.site_url + "/user/startQuiz3",
+				  data: {
+				  		}
+				}).done(function( response ) {
+					
+					//alert(response);
+				});
+		}	
+		
 		function sendUserActions(subject, object)
 		{
 			$.ajax({

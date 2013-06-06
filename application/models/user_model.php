@@ -106,6 +106,7 @@ class User_model extends CI_Model {
 			
 			$this->db->insert('quiz_results', $data[$i]);
 		}
+		return "Success";
 	}
 	
 	public function saveUserActions($currentLessionNumber, $subject, $object, $currentDateTime)

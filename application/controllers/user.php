@@ -82,6 +82,19 @@ class User extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
+	public function startQuiz2()
+	{
+		$data['title']= 'Welcome';
+		$this->load->view('welcomeViewQuiz.php', $data);
+	}
+	public function startQuiz3()
+	{
+		$data['title']= 'Welcome';
+		$this->load->view('header_view',$data);
+		$this->load->view('welcomeViewQuiz.php', $data);
+		$this->load->view('footer_view',$data);
+	}
+	
 	public function quiz()
 	{
 		$data=$this->user_model->getQuestions();
@@ -95,10 +108,11 @@ class User extends CI_Controller{
 	public function getQuizResults()
 	{
 		$userAnswers = $_POST['userAnswers'];
-		$currentDateTime = $_POST['currentDateTime'];$result = $this->user_model->saveQuizResults($userAnswers);
-		$this->user_model->saveUserActionsLessions(null, "finish_quiz", null, $currentDateTime);
+		$currentDateTime = $_POST['currentDateTime'];
+		$message = $this->user_model->saveQuizResults($userAnswers);
+		//$this->user_model->saveUserActionsLessions(null, "finish_quiz", null, $currentDateTime);
 		
-		
+		echo $message;
 	}
 	public function QuizResultPage()
 	{

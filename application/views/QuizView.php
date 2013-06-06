@@ -38,8 +38,7 @@
 <?php //echo $question2;?>
 
 
-<?php $attributes = array('id' => 'finishQuiz');
-	echo form_open("user/QuizResultPage", $attributes); ?>
+
 
 	<?php
 
@@ -63,18 +62,20 @@ sendUserActionsLessions(null, "start_quiz", null);
 		<button id="nextButton" type="button" class="button" onclick="nextQuestionPage();">NEXT</button>
 	</span>
 	
-
+<?php // $attributes = array('id' => 'finishQuiz');
+	//echo form_open("user/QuizResultPage", $attributes); ?>
 			
 	<span id="finishButtonSpan">
-		<input type="submit" id="finishButton" type="button" onclick="finishQuiz();" value="FINISH!"/>
+		<input  id="finishButton" type="button" onclick="finishQuiz();" value="FINISH!"/>
 	</span>
-<?php echo form_close(); ?>
+<?php // echo form_close(); ?>
 </div>
 
 <script>
 
 	var qCount = 3;
 	var userAnswers = new Array();
+	var resultsSent = false;
 	
 	$("#prevButton").hide();
 	$("#finishButton").hide();
@@ -134,32 +135,37 @@ sendUserActionsLessions(null, "start_quiz", null);
 	
 	function finishQuiz()
 	{
-		for(var i=1;i<=30;i++)
+		if(resultsSent!=true)
 		{
-			if($("input[name=q"+i+"]:checked").val()==null)
+			for(var i=1;i<=30;i++)
 			{
-				userAnswers[i] = null;
+				if($("input[name=q"+i+"]:checked").val()==null)
+				{
+					userAnswers[i] = null;
+				}
+				else
+				{
+					var answerId =  $("input[name=q"+i+"]:checked").attr('id');
+					var userAnswer = answerId.substr(-1,1);
+					userAnswers[i] = userAnswer;
+				}
 			}
-			else
-			{
-				var answerId =  $("input[name=q"+i+"]:checked").attr('id');
-				var userAnswer = answerId.substr(-1,1);
-				userAnswers[i] = userAnswer;
-			}
-		}
-		//sendUserActionsLessions(null, "end_quiz", null);
-		//sendQuizResults();
 		
+			sendUserActionsLessions(null, "end_quiz", null);
+			sendQuizResults();
+
+			resultsSent = true;
+		}
 	}
 	
-		$(document).ready(function() {
+		/*$(document).ready(function() {
 			
 			$('#finishQuiz').submit(function() {
 				sendQuizResults();
 				
 			});
 			
-		});
+		});*/
 
 		
 	function sendQuizResults()
@@ -173,7 +179,17 @@ sendUserActionsLessions(null, "start_quiz", null);
 			  		}
 			}).done(function( response ) {
 
-				//
+				if(response == "Success")
+				{
+						$("#nextButton").hide();
+						$("#finishButton").hide();
+
+						$("#q" + (parseInt(qCount)+1)).hide();
+						$("#q" + (parseInt(qCount)+2)).hide();
+						$("#q" + (parseInt(qCount)+3)).hide();
+						
+						$("#mainQuizDiv").html("Rezultati su sacuvani! Hvala sto ste ucestovali");
+				}
 			});
 	}
 	
