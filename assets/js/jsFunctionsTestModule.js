@@ -21,8 +21,7 @@
 		var rdfController = config.site_url + "/RdfController";
 
 		var currentLessionNumber = 1;
-		
-		
+		var timeIsUp = false;
 
 		// FUNKCIJE
 		$(document).ready(function() {

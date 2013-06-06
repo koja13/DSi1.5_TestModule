@@ -1,3 +1,8 @@
+
+
+<script src="<?php echo base_url('assets/countdownTimer/countdown/jquery.countdown.ReadMode.js')?>"></script>
+<script src="<?php echo base_url('assets/countdownTimer/js/ReadModeCountdownScript.js')?>"></script>
+
 <div id='navigationDiv'>
 <span id="lessionNumberSpan1">
 	<span id="lessionNumberSpan2">

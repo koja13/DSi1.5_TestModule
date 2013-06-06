@@ -1,27 +1,21 @@
-
-
-	<!------------------------------------- jQuery biblioteke  ------------------------------------->
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-1.7.2.js');?>"></script>	
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-ui.min.js');?>"></script>
-<!--
-	<script type="text/javascript" src="<?php //echo base_url('/assets/js/findAndReplaceDOMText.js');?>"></script>-->
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jsFunctionsTestModule.js');?>"></script>
-  <!--  
-	<script src="<?php //echo base_url('assets/countdownTimer/countdown/jquery.countdown.js')?>"></script>
-	<script src="<?php //echo base_url('assets/countdownTimer/js/script.js')?>"></script>
-
--->
+<script src="<?php echo base_url('assets/countdownTimer/countdown/jquery.countdown.Quiz.js')?>"></script>
+<script src="<?php echo base_url('assets/countdownTimer/js/QuizCountdownScript.js')?>"></script>
 
 
 <div id='navigationDiv'>
 
-<nav> <?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
+	<div id="countdownDivQuiz">
+		<div id="countdown"> </div>	
+	</div>
+	
+	<nav> <?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
+	
 </div>
 
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainQuizDiv'>
  			
- 			
+ 		
  			
  <!--  	<form action="">-->
  			
@@ -38,9 +32,13 @@
 <?php //echo $question2;?>
 
 
-
+<div id="progressOutDiv">
+	<div id="progressInDiv">
+	</div>
+</div>
 
 	<?php
+	echo "<script> var numberOfQuestions = " . count($questions) . "; </script>";
 
 for ($i = 1; $i <=30; $i++)
 {
@@ -73,7 +71,18 @@ sendUserActionsLessions(null, "start_quiz", null);
 
 <script>
 
+
+
+// broj pitanja na strani
 	var qCount = 3;
+
+	// broj strana sa pitanjima
+	var numberOfQuestionPages = numberOfQuestions/qCount;
+
+	var progressPercents = 100/numberOfQuestionPages;
+	$("#progressInDiv").width(progressPercents + "%");
+	//progressPercents += 100/numberOfQuestionPages;
+	
 	var userAnswers = new Array();
 	var resultsSent = false;
 	
@@ -103,7 +112,21 @@ sendUserActionsLessions(null, "start_quiz", null);
 		{
 			$("#finishButton").hide();
 			$("#nextButton").show();
+			$("#progressInDiv").css({'border-top-right-radius': '0px', 'border-bottom-right-radius': '0px'});
 		}
+		
+		progressPercents -= 100/numberOfQuestionPages;
+
+
+		
+			  $("#progressInDiv").animate({
+			    
+			    width:progressPercents + "%"
+			  }, "slow");
+			
+		
+		//$("#progressInDiv").width(progressPercents + "%");
+		
 	}
 
 	function nextQuestionPage()
@@ -128,7 +151,20 @@ sendUserActionsLessions(null, "start_quiz", null);
 		{
 			$("#nextButton").hide();
 			$("#finishButton").show();
+			
+			$("#progressInDiv").css({'border-top-right-radius': '7px', 'border-bottom-right-radius': '7px'});//.attr("border-top-right-radius", "7px" );
+			//$("#progressInDiv").attr("border-bottom-right-radius", "7px" );
 		}
+
+		progressPercents += 100/numberOfQuestionPages;
+
+
+		$("#progressInDiv").animate({
+		    
+		    width:progressPercents + "%"
+		  }, "slow");
+		  
+		//$("#progressInDiv").width(progressPercents + "%");
 		
 		
 	}

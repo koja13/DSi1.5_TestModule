@@ -33,17 +33,11 @@
 			// Time left
 			left = Math.floor((options.timestamp - (new Date())) / 1000);
 			
-			if(left < 0){
+			if(left < 0)
+			{
 				left = 0;
 				
-				//alert("Nema vise vremena!");
 				sendUserActionsLessions(null, "reading_time_is_up", null);
-				
-				//$('#wrapper').load('user/startQuiz2', function() {
-					  //alert('Load was performed.');
-					//});
-				//alert("vreme je isteklo!");
-				//startQuiz();
 				window.location = config.site_url + "/user/startQuiz";
 			}
 			

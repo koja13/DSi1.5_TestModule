@@ -20,6 +20,14 @@ h2 {
 	text-align:center;
 	width: 500px;
 }
+
+#countdownDivQuiz
+{
+	float: left;
+	margin-top: -3px;
+	margin-left: -25px;
+}
+
 img
 {
 	float: right;
@@ -37,6 +45,33 @@ img
 {
 	height: 90%;
 }
+
+#progressOutDiv
+{
+	
+	width: 660px;
+	height: 15px;
+	margin: auto;
+	margin-bottom:15px;
+	background: white;
+	border-radius: 7px;
+	box-shadow: 0 0 7px rgba(0,0,0, .4); 
+	/*text-align: center;*/
+	/*padding:15px 30px;*/
+
+}
+
+#progressInDiv
+{
+	width: 0px;
+	height: 15px;
+	
+	border-top-left-radius:7px;
+	border-bottom-left-radius:7px;
+	
+	background: #4889C2;
+}
+
 
 .qPar
 {
