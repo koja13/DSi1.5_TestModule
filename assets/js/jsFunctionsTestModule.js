@@ -21,7 +21,10 @@
 		var rdfController = config.site_url + "/RdfController";
 
 		var currentLessionNumber = 1;
+		
 		var timeIsUp = false;
+		
+		var userActions = new Array();
 
 		// FUNKCIJE
 		$(document).ready(function() {
@@ -31,17 +34,7 @@
 			    sendUserActionsLessions(currentLessionNumber, "end_dsi", null);
 			});
 			
-			/*$('#startQuiz').submit(function() {
-				sendUserActionsLessions("start_quiz", null);
-				  return false;
-				});*/
-			/*
-			$("#startQuizButton").click(function() {
-			    sendUserActionsLessions("start_quiz", null);
-			});
-			*/
 			$("#lessionNumberSpan2").html(currentLessionNumber);
-			
 			
 			$(document).on('click', '.close', function(){
 			        $(this).parent().hide(400);
@@ -136,20 +129,7 @@
 
 		});
 		
-		var userActions = new Array();
 		
-		function startQuiz()
-		{
-			$.ajax({
-				  type: "POST",
-				  url: config.site_url + "/user/startQuiz3",
-				  data: {
-				  		}
-				}).done(function( response ) {
-					
-					//alert(response);
-				});
-		}	
 		
 		function sendUserActions(subject, object)
 		{

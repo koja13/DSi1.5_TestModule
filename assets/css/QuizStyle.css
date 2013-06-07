@@ -223,3 +223,44 @@ img
 	
 	box-shadow: inset 0 0 2px rgba(0,0,0, .3), 0 1px 0 white;
 }
+
+
+#ButtonQuizResults{																				/* Submit button */
+	border-radius: 3px;
+	border: 1px solid #009900;
+	box-shadow: inset 0 1px 0 #009900;
+	width: 130px;
+	height: 40px;
+	margin-top: 20px;
+	
+	background: linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -o-linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -moz-linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -webkit-linear-gradient(bottom, #009900 0%, #009900 100%);
+	background: -ms-linear-gradient(bottom, #009900 0%, #009900 100%);
+	
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 #336895;
+	
+	font-size: 13px;
+}
+
+#ButtonQuizResults:hover {
+	background: linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -o-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -moz-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -webkit-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -ms-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+}
+
+#ButtonQuizResults:active {
+	background: linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -o-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -moz-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -webkit-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	background: -ms-linear-gradient(bottom, #33CC00 0%, #33CC00 100%);
+	
+	box-shadow: inset 0 0 2px rgba(0,0,0, .3), 0 1px 0 white;
+}

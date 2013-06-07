@@ -170,21 +170,22 @@ class User_model extends CI_Model {
 				$question = " <div id='q" .$qNo. "' class='question'>" .
 							"<p id='question" .$qNo. "' class ='qPar'>".$qNo. ". ".$ques. "</p> <br />";
 				
-				if($userAnswers[$qNo]==$correct_answer_number)
+				if($userAnswers[$qNo]==$correct_answer_number && $correct_answer_number==1)
 				{
 					$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label><img src='<?php echo base_url('/correct.jpg')?>' alt='correct' height='23' width='23'></p>";
+					echo $userAnswers[$qNo];
 				}
 				else
 				{
-					echo $userAnswers[$qNo];
-					$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
+					//echo $userAnswers[$qNo];
+					//$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
 				}
 				$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
 				$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
 							"</div>";
 				
 				$questions[$qNo] = $question;
-	
+	echo $questions[$qNo];
 			}
 				
 			$data["questions"] = $questions;

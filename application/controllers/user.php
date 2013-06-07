@@ -82,19 +82,6 @@ class User extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
-	public function startQuiz2()
-	{
-		$data['title']= 'Welcome';
-		$this->load->view('welcomeViewQuiz.php', $data);
-	}
-	public function startQuiz3()
-	{
-		$data['title']= 'Welcome';
-		$this->load->view('header_view',$data);
-		$this->load->view('welcomeViewQuiz.php', $data);
-		$this->load->view('footer_view',$data);
-	}
-	
 	public function quiz()
 	{
 		$data=$this->user_model->getQuestions();
@@ -116,9 +103,9 @@ class User extends CI_Controller{
 	}
 	public function QuizResultPage()
 	{
-		$data=$this->user_model->getResults();
+		$data = $this->user_model->getResults();
 		
-		$data['title']= 'Qiuz results';
+		$data['title'] = 'Quiz results';
 		$this->load->view('header_view',$data);
 		$this->load->view('QuizResultsView.php', $data);
 		$this->load->view('footer_view',$data);

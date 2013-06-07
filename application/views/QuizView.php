@@ -152,7 +152,7 @@ sendUserActionsLessions(null, "start_quiz", null);
 			$("#nextButton").hide();
 			$("#finishButton").show();
 			
-			$("#progressInDiv").css({'border-top-right-radius': '7px', 'border-bottom-right-radius': '7px'});//.attr("border-top-right-radius", "7px" );
+			$("#progressInDiv").css({'border-top-right-radius': '7px', 'border-bottom-right-radius': '7px'});
 			//$("#progressInDiv").attr("border-bottom-right-radius", "7px" );
 		}
 
@@ -191,18 +191,9 @@ sendUserActionsLessions(null, "start_quiz", null);
 			sendQuizResults();
 
 			resultsSent = true;
+			
 		}
 	}
-	
-		/*$(document).ready(function() {
-			
-			$('#finishQuiz').submit(function() {
-				sendQuizResults();
-				
-			});
-			
-		});*/
-
 		
 	function sendQuizResults()
 	{	  
@@ -225,10 +216,21 @@ sendUserActionsLessions(null, "start_quiz", null);
 						$("#q" + (parseInt(qCount)+3)).hide();
 						
 						$("#mainQuizDiv").html("Rezultati su sacuvani! Hvala sto ste ucestovali");
+						showButtonQuizResults();
 				}
 			});
 	}
+
+
+	function showButtonQuizResults()
+	{
+		$("#mainQuizDiv").html("<input  id='ButtonQuizResults' type='button' onclick='QuizResults();' value='QUIZ RESULTS'/>");
+	}
 	
+	function QuizResults()
+	{
+		window.location = config.site_url + "/user/QuizResultPage";
+	}
 </script>
 
 <!-- 

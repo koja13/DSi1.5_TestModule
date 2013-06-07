@@ -70,6 +70,7 @@
 			{
 				$("#countdownDivQuiz").empty();
 				finishQuiz();
+
 			}
 			
 		})();
