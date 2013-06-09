@@ -1,13 +1,15 @@
 body,html{
   height:100%;
 }
-
+html{ overflow: auto;
+	}
 body {
 	/* ovde treba da se ubaci pozadinska slika */
 /*	background: url('../images/background.png') fixed 50% no-repeat white;*/
 	margin:0;
 	padding:0;
-	font-family: Helvetica;
+	font-family: Helvetica;	
+	
 }
 
 h2 {
@@ -43,7 +45,9 @@ img
 
 #mainQuizDiv
 {
-	height: 90%;
+	/*height: 90%;
+	overflow: auto;*/overflow: auto;
+
 }
 
 #progressOutDiv
@@ -104,6 +108,27 @@ img
 	color:#C64F00;
 	font-size: 14px;
 	background: #E1E1E1;
+}
+
+.answerResult
+{
+	padding-left:5px;
+	border-radius: 5px;
+	font-weight:bold;
+	font-size: 13px;
+	color:#555555;
+
+}
+
+.answerResultCorrect
+{
+	padding-left:5px;
+	border-radius: 5px;
+	font-weight:bold;
+	color:#C64F00;
+	font-size: 14px;
+	background: #E1E1E1;
+
 }
 
 .question

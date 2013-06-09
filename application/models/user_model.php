@@ -155,7 +155,7 @@ class User_model extends CI_Model {
 		}
 		
 		$counter = 1;
-		
+
 		if($query1->num_rows()>0)
 		{
 			foreach($query1->result() as $rows)
@@ -170,22 +170,142 @@ class User_model extends CI_Model {
 				$question = " <div id='q" .$qNo. "' class='question'>" .
 							"<p id='question" .$qNo. "' class ='qPar'>".$qNo. ". ".$ques. "</p> <br />";
 				
-				if($userAnswers[$qNo]==$correct_answer_number && $correct_answer_number==1)
+				if($userAnswers[$qNo]==1)
 				{
-					$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label><img src='<?php echo base_url('/correct.jpg')?>' alt='correct' height='23' width='23'></p>";
-					echo $userAnswers[$qNo];
+					if($correct_answer_number==1)
+					{
+					
+						$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'> </p>";
+						$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
+						$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+						$question .="</div>";
+					}
+					else
+					{
+						if($correct_answer_number==2)
+						{
+						
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+							$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+							$question .="</div>";
+						}
+						else
+						{
+							if($correct_answer_number==3)
+							{
+							
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
+								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+								$question .="</div>";
+							}
+
+						}
+					}
+
 				}
 				else
 				{
-					//echo $userAnswers[$qNo];
-					//$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
+					if($userAnswers[$qNo]==2)
+					{
+						/*$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
+						$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "' checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label><img src='<?php echo base_url('/correct.jpg')?>' alt='correct' height='23' width='23'></p>";
+						$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+						"</div>";*/
+						
+						if($correct_answer_number==1)
+						{
+								
+							$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'> </p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+							$question .="</div>";
+						}
+						else
+						{
+							if($correct_answer_number==2)
+							{
+						
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
+								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+								$question .="</div>";
+							}
+							else
+							{
+								if($correct_answer_number==3)
+								{
+										
+									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
+									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'></p>";
+									$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+									$question .="</div>";
+								}
+						
+							}
+						}
+						
+
+					}
+					else
+					{
+						if($userAnswers[$qNo]==3)
+						{
+							/*$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "' checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label><img src='<?php echo base_url('/correct.jpg')?>' alt='correct' height='23' width='23'></p>";
+							"</div>";*/
+							
+							if($correct_answer_number==1)
+							{
+							
+								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'> </p>";
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+								$question .="</div>";
+							}
+							else
+							{
+								if($correct_answer_number==2)
+								{
+							
+									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
+									$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label>  <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+									$question .="</div>";
+								}
+								else
+								{
+									if($correct_answer_number==3)
+									{
+							
+										$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
+										$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> </p>";
+										$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+										$question .="</div>";
+									}
+							
+								}
+							}
+							
+
+						}
+						else
+						{
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
+							$question .="</div>";
+						}
+					}
+					
 				}
-				$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
-				$question .= "<p class='answer'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
-							"</div>";
+
 				
 				$questions[$qNo] = $question;
-	echo $questions[$qNo];
+				
+				//echo $questions[$qNo];
 			}
 				
 			$data["questions"] = $questions;
