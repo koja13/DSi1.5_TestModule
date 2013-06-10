@@ -43,13 +43,6 @@ h2 {
 	height:100%;
 
 }
-#navigationDiv
-{
-	height: 2%;
-	/*margin: 10px;*/
-	padding: 10px;
-	text-align: right;
-}
 
 #mainDiv
 {
@@ -148,6 +141,15 @@ nav a.focus {
 	padding-top: 1px;
 }
 
+#navigationDiv
+{
+	height: 2%;
+	/*margin: 10px;*/
+	padding: 10px;
+	text-align: right;
+}
+
+
 /* LOGIN & REGISTER FORM */
 
 form.signin, form.welcome, form.welcomeQuiz{
@@ -161,8 +163,16 @@ form.signin, form.welcome, form.welcomeQuiz{
 	padding-top: 1px;
 }
 
-form.register{																				/* Register form height */
+form.register{
+	width: 280px;
 	height: 370px;
+	margin: 200px auto;
+	background: white;
+	border-radius: 3px;
+	box-shadow: 0 0 10px rgba(0,0,0, .4); 
+	text-align: center;
+	padding-top: 1px;/* Register form height */
+	
 }
 
 form .text-field {																			/* Input fields; Username, Password etc. */

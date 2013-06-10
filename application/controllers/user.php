@@ -87,7 +87,7 @@ class User extends CI_Controller{
 		$data=$this->user_model->getQuestions();
 		
 		$data['title']= 'Qiuz';
-		$this->load->view('header_view',$data);
+		$this->load->view('HeaderViewQuiz',$data);
 		$this->load->view('QuizView.php', $data);
 		$this->load->view('footer_view',$data);
 	}
@@ -106,7 +106,7 @@ class User extends CI_Controller{
 		$data = $this->user_model->getResults();
 		
 		$data['title'] = 'Quiz results';
-		$this->load->view('header_view',$data);
+		$this->load->view('HeaderViewQuiz',$data);
 		$this->load->view('QuizResultsView.php', $data);
 		$this->load->view('footer_view',$data);
 	}
@@ -150,12 +150,17 @@ class User extends CI_Controller{
 	
 	public function logout()
 	{
+		// upisivanje informacije o logout-u u bazu
+		$this->user_model->saveUserActionsLessions(null, "logged_out", null, date('Y-m-d H:i:s'));
+		
 		$newdata = array(
 		'user_id'   =>'',
 		'user_name'  =>'',
 		'user_email'     => '',
 		'logged_in' => FALSE,
 		);
+		
+		
 		$this->session->unset_userdata($newdata );
 		$this->session->sess_destroy();
 		$this->index();

@@ -239,7 +239,7 @@
 	 	  // handler za kraj prevlacenja
 	      function HandleDragStop( event, ui )
 	      {
-	    	  $("span").css("background-color", "transparent");
+	    	  $(".dragdrop").css("background-color", "transparent");
 		  }
 
 	      // handler za spustanje reci

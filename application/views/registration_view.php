@@ -18,7 +18,7 @@
 				echo form_open("/user/registration", $attributes); 
 				
 				?>
-					
+					<br />
 					<h2>Register</h2>
 					
 					<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="<?php echo set_value('user_name'); ?>" />

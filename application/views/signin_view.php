@@ -10,7 +10,7 @@
 		<?php $attributes = array('class' => 'signin');
 				
 			echo form_open("user/login", $attributes); ?>
-			
+			<br />
 				<h2>Log In</h2>
 			    
 		    	<input type="text" id="email" name="email" class="text-field" placeholder="E-mail" value="" />

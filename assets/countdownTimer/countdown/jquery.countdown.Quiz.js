@@ -38,7 +38,7 @@
 				sendUserActionsLessions(null, "quiz_time_is_up", null);
 				timeIsUp = true;
 			}
-			
+
 			// Number of days left
 			d = Math.floor(left / days);
 			updateDuo(0, 1, d);
@@ -64,13 +64,20 @@
 			// Scheduling another call of this function in 1s
 			if(timeIsUp==false)
 			{
-				setTimeout(tick, 1000);
+				if(userFinishedQuiz == false)
+				{
+					setTimeout(tick, 1000);
+				}
+				else
+				{
+					$("#countdownDivQuiz").empty();
+					finishQuiz();
+				}
 			}
 			else
 			{
 				$("#countdownDivQuiz").empty();
 				finishQuiz();
-
 			}
 			
 		})();
