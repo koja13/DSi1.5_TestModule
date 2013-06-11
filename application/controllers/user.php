@@ -112,10 +112,10 @@ class User extends CI_Controller{
 	}
 	public function login()
 	{
-		$email=$this->input->post('email');
+		$username=$this->input->post('user_name');
 		$password=md5($this->input->post('pass'));
 
-		$result=$this->user_model->login($email,$password);
+		$result=$this->user_model->login($username,$password);
 		if($result) $this->welcome();
 		else        $this->index();
 	}
@@ -132,14 +132,16 @@ class User extends CI_Controller{
 	{
 		$this->load->library('form_validation');
 		// field name, error message, validation rules
-		$this->form_validation->set_rules('user_name', 'User Name', 'trim|required|min_length[4]|xss_clean');
-		$this->form_validation->set_rules('email_address', 'Your Email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('user_name', 'User Name', 'trim|required|min_length[4]|xss_clean|is_unique[user.username]');
+		$this->form_validation->set_rules('email_address', 'Your Email', 'trim|required|valid_email|is_unique[user.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 		$this->form_validation->set_rules('con_password', 'Password Confirmation', 'trim|required|matches[password]');
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$this->index();
+			//$this->index();
+			$this->register();
+			//echo validation_errors();
 		}
 		else
 		{

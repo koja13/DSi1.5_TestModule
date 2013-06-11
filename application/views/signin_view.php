@@ -13,7 +13,7 @@
 			<br />
 				<h2>Log In</h2>
 			    
-		    	<input type="text" id="email" name="email" class="text-field" placeholder="E-mail" value="" />
+		    	<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="" />
 				<input type="password" id="pass" name="pass" class="text-field" placeholder="Password" value="" />
 		        <input type="submit" class="button" value="Sign in" />
 		        

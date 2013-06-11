@@ -6,7 +6,7 @@ class User_model extends CI_Model {
         parent::__construct();
     }
     
-	function login($email,$password)
+	function login($username,$password)
     {
     	// upisivanje u session cookie kako ne bi morali stalno
     	// da pristupamo bazi da vidimo koji je korisnik logovan
@@ -18,8 +18,9 @@ class User_model extends CI_Model {
     	$this->session->set_userdata($newdata);*/
     	
     	
-    	// upisivanje u bazu
-		$this->db->where("email",$email);
+
+    	// bira korisnika za zadatim korisnickim imenom i passwordom
+		$this->db->where("username",$username);
         $this->db->where("password",$password);
             
         $query=$this->db->get("user");
