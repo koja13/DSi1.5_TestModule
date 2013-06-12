@@ -176,7 +176,7 @@ class User_model extends CI_Model {
 					if($correct_answer_number==1)
 					{
 					
-						$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'> </p>";
+						$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("correct.png")." alt='correct' height='23' width='27'> </p>";
 						$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
 						$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
 						$question .="</div>";
@@ -186,7 +186,7 @@ class User_model extends CI_Model {
 						if($correct_answer_number==2)
 						{
 						
-							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("wrong.png")." alt='wrong' height='23' width='23'> </p>";
 							$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> </p>";
 							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
 							$question .="</div>";
@@ -196,7 +196,7 @@ class User_model extends CI_Model {
 							if($correct_answer_number==3)
 							{
 							
-								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "' checked> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> <img src=". base_url("wrong.png")." alt='wrong' height='23' width='23'> </p>";
 								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
 								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> </p>";
 								$question .="</div>";
@@ -219,7 +219,7 @@ class User_model extends CI_Model {
 						{
 								
 							$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label></p>";
-							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'  checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'  checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("wrong.png")." alt='wrong' height='23' width='23'> </p>";
 							$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
 							$question .="</div>";
 						}
@@ -229,7 +229,7 @@ class User_model extends CI_Model {
 							{
 						
 								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
-								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'  checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'  checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("correct.png")." alt='correct' height='23' width='27'></p>";
 								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label></p>";
 								$question .="</div>";
 							}
@@ -239,7 +239,7 @@ class User_model extends CI_Model {
 								{
 										
 									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
-									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'  checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'></p>";
+									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'  checked> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> <img src=". base_url("wrong.png")." alt='wrong' height='23' width='23'></p>";
 									$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> </p>";
 									$question .="</div>";
 								}
@@ -263,7 +263,7 @@ class User_model extends CI_Model {
 							
 								$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
 								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label></p>";
-								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "' checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+								$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "' checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("wrong.png")." alt='wrong' height='23' width='23'> </p>";
 								$question .="</div>";
 							}
 							else
@@ -273,7 +273,7 @@ class User_model extends CI_Model {
 							
 									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
 									$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> </p>";
-									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "' checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label>  <img src=". base_url("wrong.bmp")." alt='wrong' height='23' width='23'> </p>";
+									$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "' checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label>  <img src=". base_url("wrong.png")." alt='wrong' height='23' width='23'> </p>";
 									$question .="</div>";
 								}
 								else
@@ -283,7 +283,7 @@ class User_model extends CI_Model {
 							
 										$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a1' value='" .$answer1. "'> <label for='q" .$qNo. "a1'>" . $answer1 . "</label> </p>";
 										$question .= "<p class='answerResult'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a2' value='" .$answer2. "'> <label for='q" .$qNo. "a2'>" . $answer2 . "</label> </p>";
-										$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'  checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("correct.bmp")." alt='correct' height='23' width='27'></p>";
+										$question .= "<p class='answerResultCorrect'><input class='radio' type='radio' disabled='disabled' name='q" .$qNo. "' id='q" .$qNo. "a3' value='" .$answer3. "'  checked> <label for='q" .$qNo. "a3'>" . $answer3 . "</label> <img src=". base_url("correct.png")." alt='correct' height='23' width='27'></p>";
 										$question .="</div>";
 									}
 							

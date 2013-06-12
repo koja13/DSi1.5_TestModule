@@ -116,8 +116,16 @@ class User extends CI_Controller{
 		$password=md5($this->input->post('pass'));
 
 		$result=$this->user_model->login($username,$password);
-		if($result) $this->welcome();
-		else        $this->index();
+		if($result)
+		{
+			$this->welcome();
+		}
+		else
+		{
+			$this->index();
+			
+		}
+		
 	}
 	
 	public function thank()

@@ -193,18 +193,10 @@ sendUserActionsLessions(null, "start_quiz", null);
 			
 			userFinishedQuiz = true;
 			resultsSent = true;
-			
-			
+
 		}
 	}
 
-
-	//element.find(">:first-child")
-	
-/*	$(".answer").click(function(element) {
-  		//alert("jksndcjs");
-  		alert(this.find(":first-child"));
-	});*/
 	
 	function sendQuizResults()
 	{	  
@@ -244,6 +236,7 @@ sendUserActionsLessions(null, "start_quiz", null);
 	{
 		window.location = config.site_url + "/user/QuizResultPage";
 	}
+	
 </script>
 
     

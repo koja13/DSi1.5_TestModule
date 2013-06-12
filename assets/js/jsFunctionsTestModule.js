@@ -437,7 +437,7 @@
 			});
 	}
 
-	rdfGraphName = "model.rdf";
+	//rdfGraphName = "model.rdf";
 	/*
 	function getAllLessionsFromServer()
 	{

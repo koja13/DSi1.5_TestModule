@@ -15,6 +15,7 @@
 			    
 		    	<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="" />
 				<input type="password" id="pass" name="pass" class="text-field" placeholder="Password" value="" />
+
 		        <input type="submit" class="button" value="Sign in" />
 		        
 		    <?php echo form_close(); ?>
