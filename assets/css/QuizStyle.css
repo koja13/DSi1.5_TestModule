@@ -1,8 +1,10 @@
-body,html{
+body,html
+{
   height:100%;
 }
 
-body {
+body
+{
 	/* ovde treba da se ubaci pozadinska slika */
 /*	background: url('../images/background.png') fixed 50% no-repeat white;*/
 	margin:0;
@@ -11,10 +13,13 @@ body {
 	font: 14px Helvetica, Sans-Serif;
 }
 
-h2 {
+h2
+{
 	color: #a6a6a6;
 }
-.answerLabel { display: inline-block; width: 565px; }
+
+
+
 #divPrevNext
 {
 	margin:auto;
@@ -157,6 +162,12 @@ nav a.focus {
 	font-size: 14px;
 	background: #E1E1E1;
 
+}
+
+.answerLabel
+{
+	display: inline-block;
+	width: 565px;
 }
 
 .question

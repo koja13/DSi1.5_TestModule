@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-ui.min.js');?>"></script>
 
 	<script type="text/javascript" src="<?php echo base_url('/assets/js/findAndReplaceDOMText.js');?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('/assets/js/jsFunctionsTestModule.js');?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('/assets/js/MainScript.js');?>"></script>
 
 
 	

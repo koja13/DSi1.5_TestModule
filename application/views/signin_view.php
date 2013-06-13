@@ -5,6 +5,11 @@
 </div>
 	<div class="signup_wrap">
 	
+		<?php if(isset($message))
+			  {
+				echo "<div id='thanksDiv'>" . $message . "</div>";
+			  }
+		?>
 		<div class="signin_form">
 		
 		<?php $attributes = array('class' => 'signin');
@@ -15,7 +20,12 @@
 			    
 		    	<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="" />
 				<input type="password" id="pass" name="pass" class="text-field" placeholder="Password" value="" />
-
+				
+				<?php if(isset($error_message))
+			  		{
+						echo "<div class='error'>* " . $error_message . "</div>";
+			  		}
+				?>
 		        <input type="submit" class="button" value="Sign in" />
 		        
 		    <?php echo form_close(); ?>

@@ -17,6 +17,8 @@
 		// promenljiva koja cuva ime rdf modela, inicijalno je prazan string
 		var rdfGraphName = "";
 		
+		rdfGraphName = "model.rdf";
+		
 		// promenljiva koja cuva link ka rdf kontroleru, koristi se kod ajax poziva
 		var rdfController = config.site_url + "/RdfController";
 
@@ -437,7 +439,7 @@
 			});
 	}
 
-	//rdfGraphName = "model.rdf";
+
 	/*
 	function getAllLessionsFromServer()
 	{

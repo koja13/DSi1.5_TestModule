@@ -18,27 +18,6 @@
 <script>
 sendUserActionsLessions(currentLessionNumber, "start_dsi", null);
 </script>
-
-	 		<script>
-	 		/*alert($(window).height());   // returns height of browser viewport
-	 		alert($(document).height()); // returns height of HTML document
-	 		alert($(window).width());   // returns width of browser viewport
-	 		alert($(document).width());
-
-	 		alert(screen.height);
-	 		alert(screen.width);
-
-	 		$("#wrapper").height($(window).height());
-	 		$("#wrapper").width($(window).width());
-
-	 		$(window).resize(function() {
-	 			 alert("promena velicine");
-	 			});*/
-
-
-	 			//alert('<?php //echo $this->session->userdata('user_name'); ?>'// + "je ulogovan");
-	 		</script>	
-	 		
 	 		
         <div id="tabs">
 			

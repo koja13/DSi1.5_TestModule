@@ -1,8 +1,10 @@
-body,html{
+body,html
+{
   height:100%;
 }
 
-body {
+body
+{
 	/* ovde treba da se ubaci pozadinska slika */
 /*	background: url('../images/background.png') fixed 50% no-repeat white;*/
 	margin:0;
@@ -10,9 +12,11 @@ body {
 	font-family: Helvetica;
 }
 
-h2 {
+h2
+{
 	color: #a6a6a6;
 }
+
 #lessionNumberSpan1
 {
 	float: left;
@@ -38,10 +42,10 @@ h2 {
 	height:100%;
 	overflow:hidden;
 }
+
 #tabs
 {
 	height:100%;
-
 }
 
 #mainDiv
@@ -50,7 +54,6 @@ h2 {
 	overflow-y: auto;
 	overflow-x: hidden;
 	border: 1px solid #ccc;
-
 }
 
 #countDiv
@@ -65,10 +68,6 @@ h2 {
 	text-align: center;
 }
 
-#countdown
-{
-		
-}
 .lessionDiv
 {
 	height:100%;
@@ -93,7 +92,6 @@ height: 100%;
 	text-align: center;
 	
 }
-
 
 .close {
     float: right;
@@ -159,13 +157,23 @@ nav a.focus {
 	font-size:12px;
 	
 }
+#thanksDiv
+{
+	text-align: center;
+	color:  #4889C2;
+	font-weight:bold;
+	font-size:22px;
+	margin: 50px;
+	
+}
 
 /* LOGIN & REGISTER FORM */
 
-form.signin, form.welcome, form.welcomeQuiz{
+form.signin, form.welcome, form.welcomeQuiz
+{
 	width: 280px;
 	height: 260px;
-	margin: 200px auto;
+	margin: 150px auto;
 	background: white;
 	border-radius: 3px;
 	box-shadow: 0 0 10px rgba(0,0,0, .4); 
@@ -176,7 +184,7 @@ form.signin, form.welcome, form.welcomeQuiz{
 form.register{
 	width: 280px;
 	height: 385px;
-	margin: 200px auto;
+	margin: 150px auto;
 	background: white;
 	border-radius: 3px;
 	box-shadow: 0 0 10px rgba(0,0,0, .4); 
