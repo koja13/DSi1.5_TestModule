@@ -1,3 +1,13 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=128303734043111";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <div id="content">
 
 <div id='navigationDiv'>
@@ -29,7 +39,7 @@
 		        <input type="submit" class="button" value="Sign in" />
 		        
 		    <?php echo form_close(); ?>
-		    
+		    <div class="fb-login-button" autologoutlink="true" scope="publish_stream" data-show-faces="false" data-width="200" data-max-rows="1"></div>
 		</div><!--<div class="signin_form">-->
 	</div><!--<div class="signup_wrap">-->
  
