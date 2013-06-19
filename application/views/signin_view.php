@@ -39,7 +39,9 @@
 		        <input type="submit" class="button" value="Sign in" />
 		        
 		    <?php echo form_close(); ?>
-		    <div class="fb-login-button" autologoutlink="true" scope="publish_stream" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+		    
+<div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+
 		</div><!--<div class="signin_form">-->
 	</div><!--<div class="signup_wrap">-->
  
