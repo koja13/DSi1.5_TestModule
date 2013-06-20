@@ -68,7 +68,7 @@
 
   Learn more about options for the login button plugin:
   /docs/reference/plugins/login/ -->
+<fb:login-button autologoutlink="true" scope="publish_stream" data-show-faces="false" width="200" max-rows="1"></fb:login-button>
 
-<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 </body>
 </html>
