@@ -39,6 +39,8 @@
 		        <input type="submit" class="button" value="Sign in" />
 		        
 		    <?php echo form_close(); ?>
+		    <input type="image" id="myimage" src="<?php echo base_url("wrong.png"); ?>" onclick="alert('blabla');" />
+		    
 		    
 <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
 

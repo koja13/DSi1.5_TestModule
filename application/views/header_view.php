@@ -30,7 +30,7 @@
 
 	
 	
-<title><?php echo (isset($title)) ? $title : "My CI Site" ?> </title>
+<title><?php echo (isset($title)) ? $title : "DSi2.0" ?> </title>
 
 </head>
 <body>
