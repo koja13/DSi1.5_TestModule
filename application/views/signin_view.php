@@ -38,12 +38,11 @@
 				?>
 		        <input type="submit" class="button" value="Sign in" />
 		        
+		        <br /><br /><h4>--------     or     --------</h4><br />
+		        <div class="fb-login-button" size="large" data-show-faces="false" data-width="200" data-max-rows="1">Login with Facebook</div>
+		        
 		    <?php echo form_close(); ?>
-		    <input type="image" id="myimage" src="<?php echo base_url("wrong.png"); ?>" onclick="alert('blabla');" />
 		    
-		    
-<div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-
 		</div><!--<div class="signin_form">-->
 	</div><!--<div class="signup_wrap">-->
  

@@ -12,7 +12,7 @@ body
 	font-family: Helvetica;
 }
 
-h2
+h2, h4
 {
 	color: #a6a6a6;
 }
@@ -172,7 +172,7 @@ nav a.focus {
 form.signin, form.welcome, form.welcomeQuiz
 {
 	width: 280px;
-	height: 260px;
+	height: 300px;
 	margin: 150px auto;
 	background: white;
 	border-radius: 3px;
