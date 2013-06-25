@@ -31,16 +31,20 @@
       // (1) JavaScript created popup windows are blocked by most browsers unless they 
       // result from direct interaction from people using the app (such as a mouse click)
       // (2) it is a bad experience to be continually prompted to login upon page load.
-      FB.login();
+     FB.login(function(response) {
+        testAPI() ;
+ }, {scope: 'email,user_likes'});
     } else {
       // In this case, the person is not logged into Facebook, so we call the login() 
       // function to prompt them to do so. Note that at this stage there is no indication
       // of whether they are logged into the app. If they aren't then they'll see the Login
       // dialog right after they log in to Facebook. 
       // The same caveats as above apply to the FB.login() call here.
-      FB.login();
-    }
-  });
+      FB.login(function(response) {
+ testAPI() ;
+ }, {scope: 'email,user_likes'});
+    }});
+
   };
 
   // Load the SDK asynchronously
@@ -57,9 +61,16 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('Good to see you, ' + response.name + '.');
+console.log('Good to see you, ' + response.name + '.');
+      console.log('Good to see you, ' + response.username + '.');
+console.log('Good to see you, ' + response.email + '.');
+	 
     });
   }
+  
+
+  
+  
 </script>
 
 <!--
@@ -68,7 +79,7 @@
 
   Learn more about options for the login button plugin:
   /docs/reference/plugins/login/ -->
-<fb:login-button autologoutlink="true" scope="publish_stream" data-show-faces="false" width="200" max-rows="1"></fb:login-button>
+<fb:login-button perms="email" scope="publish_stream" data-show-faces="false" width="200" max-rows="1"></fb:login-button>
 
 </body>
-</html>
+</html>		
