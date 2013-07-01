@@ -53,6 +53,32 @@ class User_model extends CI_Model {
 		$this->db->insert('user',$data);
 	}
 	
+	public function addUserFB($name, $username, $email)
+	{
+		$this->db->where("username",$username);
+		//$this->db->where("password",$password);
+		
+		$query=$this->db->get("user");
+		if($query->num_rows()>0)
+		{
+			foreach($query->result() as $rows)
+			{
+				$account_type = $rows->account_type;
+			}
+		}
+		else
+		{
+		
+			$data=array(
+					//'name'=> $name,
+					'username'=> $username,
+					'email'=> $email
+			);
+			$this->db->insert('user',$data);
+		}
+	}
+	
+	
 	public function getQuestions()
 	{
 		$query=$this->db->get("quiz_questions");

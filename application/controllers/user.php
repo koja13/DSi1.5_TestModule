@@ -102,6 +102,16 @@ class User extends CI_Controller{
 		}
 	}
 	
+	public function getUserDataFB()
+	{
+		$name = $_POST['name'];
+		$username = $_POST['username'];
+		$email = $_POST['email'];
+		
+		$this->user_model->addUserFB($name, $username, $email);
+	}
+	
+	
 	// otvara stranu koja sledi nakon logovanja - Welcome stranu
 	public function welcome()
 	{
