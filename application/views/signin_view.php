@@ -87,8 +87,9 @@
 					//  username: response.username,
 					 // email: response.email
 					  name: "ppp",
-					  username:"bla",
-					  email: "bla@bla"
+					  username:"trucbla",
+					  email: "blatruc@bla",
+					  account_type: "f"
 		  		}
 		}).done(function( response ) {
 			

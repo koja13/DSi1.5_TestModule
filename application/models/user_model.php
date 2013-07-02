@@ -34,6 +34,7 @@ class User_model extends CI_Model {
                     	'user_name' 	=> $rows->username,
 		                'user_email'    => $rows->email,
                 		'use_dsi'    => $rows->use_dsi,
+                		'account_type' => $rows->account_type,
 	                    'logged_in' 	=> TRUE,
                    );
 			}
@@ -48,14 +49,16 @@ class User_model extends CI_Model {
 		$data=array(
 			'username'=>$this->input->post('user_name'),
 			'email'=>$this->input->post('email_address'),
-			'password'=>md5($this->input->post('password'))
+			'password'=>md5($this->input->post('password')),
+			'account_type'=> 'd',
 			);
 		$this->db->insert('user',$data);
 	}
 	
-	public function addUserFB($name, $username, $email)
+	public function addUserFB($name, $username, $email, $account_type)
 	{
 		$this->db->where("username",$username);
+		$this->db->where("email",$email);
 		//$this->db->where("password",$password);
 		
 		$query=$this->db->get("user");
@@ -63,18 +66,53 @@ class User_model extends CI_Model {
 		{
 			foreach($query->result() as $rows)
 			{
-				$account_type = $rows->account_type;
+				//$account_type = $rows->account_type;
+				$newdata = array(
+						'user_id' 		=> $rows->id,
+						'user_name' 	=> $rows->username,
+						'user_email'    => $rows->email,
+						//'use_dsi'    => $rows->use_dsi,
+						'account_type' => $rows->account_type,
+						'logged_in' 	=> TRUE,
+				);
 			}
+			$this->session->set_userdata($newdata);
+			
 		}
 		else
 		{
 		
+			// upisivanje podataka o korisniku preuzetih sa fb
 			$data=array(
 					//'name'=> $name,
 					'username'=> $username,
-					'email'=> $email
+					'email'=> $email,
+					'account_type' => $account_type
 			);
 			$this->db->insert('user',$data);
+			
+			// uzimimanje informacija o korisniku iz baze i njihovo upisivanje u promeniljivu sesije
+			$this->db->where("username",$username);
+			$this->db->where("email",$email);
+			
+			$query1=$this->db->get("user");
+			if($query1->num_rows()>0)
+			{
+				foreach($query1->result() as $rows)
+				{
+					//$account_type = $rows->account_type;
+					$newdata = array(
+							'user_id' 		=> $rows->id,
+							'user_name' 	=> $rows->username,
+							'user_email'    => $rows->email,
+							//'use_dsi'    => $rows->use_dsi,
+							'account_type' => $rows->account_type,
+							'logged_in' 	=> TRUE,
+					);
+				}
+				$this->session->set_userdata($newdata);
+					
+			}
 		}
 	}
 	

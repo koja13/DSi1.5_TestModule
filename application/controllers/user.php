@@ -107,8 +107,9 @@ class User extends CI_Controller{
 		$name = $_POST['name'];
 		$username = $_POST['username'];
 		$email = $_POST['email'];
+		$account_type = $_POST['account_type'];
 		
-		$this->user_model->addUserFB($name, $username, $email);
+		$this->user_model->addUserFB($name, $username, $email, $account_type);
 	}
 	
 	

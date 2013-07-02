@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 01, 2013 at 02:23 PM
+-- Generation Time: Jul 02, 2013 at 02:02 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -198,20 +198,24 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `use_dsi` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `account_type` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `use_dsi`) VALUES
-(2, 'koja13', 'koja13@koja13.com', '4297f44b13955235245b2497399d7a93', 'yes'),
-(3, 'martin', 'martin@martin.com', '827ccb0eea8a706c4c34a16891f84e7b', 'no'),
-(4, 'kojakoja', 'kojakoja@koja.com', '827ccb0eea8a706c4c34a16891f84e7b', 'yes'),
-(5, 'blabla', 'blabla@bla.com', '827ccb0eea8a706c4c34a16891f84e7b', 'no'),
-(6, 'bla', 'bla@bla', NULL, ''),
-(7, 'bla', 'bla@bla', NULL, '');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `use_dsi`, `account_type`) VALUES
+(2, 'koja13', 'koja13@koja13.com', '4297f44b13955235245b2497399d7a93', 'yes', 'd'),
+(3, 'martin', 'martin@martin.com', '827ccb0eea8a706c4c34a16891f84e7b', 'no', 'd'),
+(4, 'kojakoja', 'kojakoja@koja.com', '827ccb0eea8a706c4c34a16891f84e7b', 'yes', 'd'),
+(5, 'blabla', 'blabla@bla.com', '827ccb0eea8a706c4c34a16891f84e7b', 'no', 'd'),
+(8, 'blatruc', 'bla@bla', NULL, '', 'f'),
+(10, 'trucbla', 'blatruc@bla', NULL, '', 'f'),
+(11, 'haha', 'bdnas@nosvnf.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 'd');
 
 -- --------------------------------------------------------
 
@@ -228,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `user_actions` (
   `object` varchar(255) NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `user_actions`
@@ -268,7 +272,9 @@ INSERT INTO `user_actions` (`id`, `session_id`, `user_name`, `lession_number`, `
 (31, 'df8f8b62fbf74fe9152cd3d32f8ce6a7', 'kojakoja', 1, 'brisanje', 'VAKOG', '2013-07-01 12:49:29'),
 (32, 'df8f8b62fbf74fe9152cd3d32f8ce6a7', 'kojakoja', 6, 'modelovanje', 'NLP', '2013-07-01 12:50:12'),
 (33, 'df8f8b62fbf74fe9152cd3d32f8ce6a7', 'kojakoja', 6, 'NLP', 'modelovanje', '2013-07-01 12:50:23'),
-(34, 'df8f8b62fbf74fe9152cd3d32f8ce6a7', 'kojakoja', 6, 'generalizacija', 'VAKOG', '2013-07-01 12:50:39');
+(34, 'df8f8b62fbf74fe9152cd3d32f8ce6a7', 'kojakoja', 6, 'generalizacija', 'VAKOG', '2013-07-01 12:50:39'),
+(35, '115ad1488e4f38866a687e380a45dfc9', 'kojakoja', 1, 'NLP', 'obrazaca', '2013-07-02 15:50:31'),
+(36, '115ad1488e4f38866a687e380a45dfc9', 'kojakoja', 1, 'generalizacija', 'VAKOG', '2013-07-02 15:50:42');
 
 -- --------------------------------------------------------
 
@@ -285,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `user_actions_lessions` (
   `next_prev_lession_number` int(11) DEFAULT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=100 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data for table `user_actions_lessions`
@@ -390,7 +396,12 @@ INSERT INTO `user_actions_lessions` (`id`, `session_id`, `user_name`, `lession_n
 (96, 'deb818f88afac2024fd1d5ad6bb9bcd3', '0', NULL, 'logged_out', NULL, '2013-07-01 13:12:51'),
 (97, 'abf4070e2ae551712daede0365083105', '0', NULL, 'logged_out', NULL, '2013-07-01 13:13:28'),
 (98, 'a63a8e6863c3aacd06ac1fd80f276bd3', '0', NULL, 'logged_out', NULL, '2013-07-01 13:25:45'),
-(99, 'bd26921772625dc4af72b53b7b7dccd7', '0', NULL, 'logged_out', NULL, '2013-07-01 13:27:55');
+(99, 'bd26921772625dc4af72b53b7b7dccd7', '0', NULL, 'logged_out', NULL, '2013-07-01 13:27:55'),
+(100, '5e6067b8529ddea433361d28203f13fe', 'trucbla', 0, 'logged_in', 0, '2013-07-02 15:49:11'),
+(101, '5e6067b8529ddea433361d28203f13fe', 'trucbla', 1, 'start_dsi', 0, '2013-07-02 15:50:00'),
+(102, '5e6067b8529ddea433361d28203f13fe', 'trucbla', 1, 'start_dsi', 0, '2013-07-02 15:50:06'),
+(103, '115ad1488e4f38866a687e380a45dfc9', 'kojakoja', 0, 'logged_in', 0, '2013-07-02 15:50:22'),
+(104, '115ad1488e4f38866a687e380a45dfc9', 'kojakoja', 1, 'start_dsi', 0, '2013-07-02 15:50:25');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
