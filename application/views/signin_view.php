@@ -77,27 +77,27 @@
   }
 
 
-  function saveUserDataFromFB()
+  function saveUserDataFromFB(response)
   {
 	  $.ajax({
 		  type: "POST",
 		  url: config.site_url + "/user/getUserDataFB",
 		  data: {	
-					 // name: response.name,
-					//  username: response.username,
-					 // email: response.email
-					  name: "ppp",
-					  username:"trucbla",
-					  email: "blatruc@bla",
-					  account_type: "f"
+					name: response.name,
+					username: response.username,
+					email: response.email,
+					// name: "ppp",
+					// username:"trucbla",
+				 	// email: "blatruc@bla",
+					account_type: "f"
 		  		}
 		}).done(function( response ) {
 			
-			alert("Podaci su sacuvani!");
+			//alert("Podaci su sacuvani!");
 		});
   }
 
-  saveUserDataFromFB();
+ //saveUserDataFromFB();
 </script>
 
 <div id="content">
