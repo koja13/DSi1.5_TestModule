@@ -1,7 +1,7 @@
 <div id="content">
 <div class="signup_wrap">
 <div class="signin_form">
-	<?php echo form_open("user/login"); ?>
+	<?php echo form_open("UserController/login"); ?>
 	    <label for="email">Email:</label>
     	<input type="text" id="email" name="email" value="" />
 	    <label for="pass">Password:</label>

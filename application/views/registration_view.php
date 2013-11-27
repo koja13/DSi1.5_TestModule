@@ -1,7 +1,7 @@
 <div id="content">
 
 <div id='navigationDiv'>
-<nav><a  href="<?php echo site_url("/user"); ?>">Log In</a> | <a href="#" class="focus">Register</a></nav>
+<nav><a  href="<?php echo site_url("/UserController"); ?>">Log In</a> | <a href="#" class="focus">Register</a></nav>
 
 </div>
 	<div class="reg_form" >
@@ -15,7 +15,7 @@
 				 
 				$attributes = array('class' => 'register');
 				
-				echo form_open("/user/registration", $attributes); 
+				echo form_open("/UserController/registration", $attributes); 
 				
 				?>
 					<br />

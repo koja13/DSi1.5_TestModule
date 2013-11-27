@@ -1,6 +1,6 @@
 <div id="content">
 <div id='navigationDiv'>
-<nav><?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
+<nav><?php echo anchor('UserController/logout', 'Logout', array('class'=>'focus') ); ?></nav>
 </div>
 
 <script>
@@ -10,7 +10,7 @@ sendUserActionsLessions(null, "logged_in", null);
 		<?php $attributes = array('class' => 'welcome');
 				
 			
-		echo form_open("user/start", $attributes); ?>
+		echo form_open("UserController/start", $attributes); ?>
 		
 			<h6> Welcome <?php echo $this->session->userdata('user_name'); ?>! Start learning with DSi2.0 </h6>
 

@@ -8,7 +8,7 @@
 		<div id="countdown"> </div>	
 	</div>
 	
-	<nav> <?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
+	<nav> <?php echo anchor('UserController/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
 	
 </div>
 
@@ -61,7 +61,7 @@ sendUserActionsLessions(null, "start_quiz", null);
 	</span>
 	
 <?php // $attributes = array('id' => 'finishQuiz');
-	//echo form_open("user/QuizResultPage", $attributes); ?>
+	//echo form_open("UserController/QuizResultPage", $attributes); ?>
 			
 	<span id="finishButtonSpan">
 		<input  id="finishButton" type="button" onclick="finishQuiz();" value="FINISH!"/>
@@ -202,7 +202,7 @@ sendUserActionsLessions(null, "start_quiz", null);
 	{	  
 		$.ajax({
 			  type: "POST",
-			  url: config.site_url + "/user/getQuizResults",
+			  url: config.site_url + "/UserController/getQuizResults",
 			  data: {	
 				  		userAnswers: userAnswers,
 						currentDateTime: getCurrentTime()
@@ -234,7 +234,7 @@ sendUserActionsLessions(null, "start_quiz", null);
 	
 	function QuizResults()
 	{
-		window.location = config.site_url + "/user/QuizResultPage";
+		window.location = config.site_url + "/UserController/QuizResultPage";
 	}
 	
 </script>

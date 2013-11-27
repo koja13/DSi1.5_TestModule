@@ -9,7 +9,7 @@
 		
 	</span>  of 10
 </span>
-<nav> <?php echo anchor('user/startQuiz', 'Start test', array('id'=>'startTest') ) . " | " . anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
+<nav> <?php echo anchor('UserController/startQuiz', 'Start test', array('id'=>'startTest') ) . " | " . anchor('UserController/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
 </div>
 
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->

@@ -1,11 +1,11 @@
 <div id="content">
 <div id='navigationDiv'>
-<nav><?php echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?></nav>
+<nav><?php echo anchor('UserController/logout', 'Logout', array('class'=>'focus') ); ?></nav>
 </div>
 
 		<?php $attributes = array('class' => 'welcomeQuiz','id' =>'startQuiz');
 	
-		echo form_open("user/quiz", $attributes); ?>
+		echo form_open("UserController/quiz", $attributes); ?>
 		
 			<h5> Let's see what you have learned with DSi <?php echo $this->session->userdata('user_name'); ?>!<br /><br />
 			

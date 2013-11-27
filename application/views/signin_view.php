@@ -81,7 +81,7 @@
   {
 	  $.ajax({
 		  type: "POST",
-		  url: config.site_url + "/user/getUserDataFB",
+		  url: config.site_url + "/UserController/getUserDataFB",
 		  data: {	
 					name: response.name,
 					username: response.username,
@@ -103,7 +103,7 @@
 <div id="content">
 
 <div id='navigationDiv'>
-<nav><a href="#" class="focus">Log In</a> | <a href="<?php echo site_url("/user/register"); ?>">Register</a></nav>
+<nav><a href="#" class="focus">Log In</a> | <a href="<?php echo site_url("/UserController/register"); ?>">Register</a></nav>
 </div>
 	<div class="signup_wrap">
 	
@@ -116,7 +116,7 @@
 		
 		<?php $attributes = array('class' => 'signin');
 				
-			echo form_open("user/login", $attributes); ?>
+			echo form_open("UserController/login", $attributes); ?>
 			<br />
 				<h2>Log In</h2>
 			    
