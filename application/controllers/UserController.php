@@ -18,7 +18,7 @@ class UserController extends CI_Controller{
 		else{
 			$data['title']= 'Sign In | DSi2.0';
 			$this->load->view('HeaderView',$data);
-			$this->load->view("signin_view.php", $data);
+			$this->load->view("SignInView.php", $data);
 			$this->load->view('FooterView',$data);
 		}
 	}
@@ -45,7 +45,7 @@ class UserController extends CI_Controller{
 				$data['title']= 'Sign In | DSi2.0';
 				$data['error_message']= "Login failed. Try again!";
 				$this->load->view('HeaderView',$data);
-				$this->load->view("signin_view.php", $data);
+				$this->load->view("SignInView.php", $data);
 				$this->load->view('FooterView',$data);
 			}
 				
@@ -59,7 +59,7 @@ class UserController extends CI_Controller{
 		$data['title']= 'Sign In | DSi2.0';
 		$data['message'] = "Thanks for registering!";
 		$this->load->view('HeaderView',$data);
-		$this->load->view("signin_view.php", $data);
+		$this->load->view("SignInView.php", $data);
 		//$this->load->view('thank_view.php', $data);
 		$this->load->view('FooterView',$data);
 	}
@@ -97,7 +97,7 @@ class UserController extends CI_Controller{
 		else{
 			$data['title']= 'Registration | DSi2.0';
 			$this->load->view('HeaderView',$data);
-			$this->load->view("registration_view.php", $data);
+			$this->load->view("RegistrationView.php", $data);
 			$this->load->view('FooterView',$data);
 		}
 	}
