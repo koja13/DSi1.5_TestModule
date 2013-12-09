@@ -118,7 +118,7 @@ class UserController extends CI_Controller{
 	{
 		$data['title']= 'Welcome | DSi2.0';
 		$this->load->view('HeaderView',$data);
-		$this->load->view('welcome_view.php', $data);
+		$this->load->view('WelcomeView.php', $data);
 		$this->load->view('FooterView',$data);
 	}
 	
