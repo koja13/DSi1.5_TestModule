@@ -158,7 +158,7 @@ class UserController extends CI_Controller{
 	{
 		$data['title']= 'Start quiz | DSi2.0';
 		$this->load->view('HeaderView',$data);
-		$this->load->view('welcomeViewQuiz.php', $data);
+		$this->load->view('WelcomeQuizView.php', $data);
 		$this->load->view('FooterView',$data);
 	}
 	
