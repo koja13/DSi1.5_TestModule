@@ -6,29 +6,35 @@ class UserModel extends CI_Model {
         parent::__construct();
     }
     
+    // ================================ login($username, $password) ================================
+    //
+    // poziva je fja login() === UserController ===
+    //
+    // Ulazni parametri: $username     - korisnicko ime
+    //                   $password     - sifra		 
+    //
+    // fja na osnovu prosledjenog korisnickog imena i sifre pretrazuje bazu podataka trazeci odgovarajuceg
+    // korisnika, ukoliko takav korisnik postoji citaju se njegovi podaci i upisuju u niz koji se cuva
+    // u okviru session promenljive (kako bi bio dostupan u svakom momentu dok je sesija aktivna)
+    //
+    
 	function login($username,$password)
     {
-    	// upisivanje u session cookie kako ne bi morali stalno
-    	// da pristupamo bazi da vidimo koji je korisnik logovan
-    	/*$newdata = array(
-    			'email'     => 'johndoe@some-site.com',
-    			'logged_in' => TRUE
-    	);
-    	
-    	$this->session->set_userdata($newdata);*/
-    	
-    	
 
-    	// bira korisnika za zadatim korisnickim imenom i passwordom
+    	// trazi korisnika sa zadatim korisnickim imenom i sifrom u bazi podataka
 		$this->db->where("username",$username);
         $this->db->where("password",$password);
             
+        
         $query=$this->db->get("user");
         if($query->num_rows()>0)
         {
          	foreach($query->result() as $rows)
             {
             	//add all data to session
+            	
+            	// upisivanje u session cookie kako ne bi morali stalno
+            	// da pristupamo bazi da vidimo koji je korisnik logovan
                 $newdata = array(
                 	   	'user_id' 		=> $rows->id,
                     	'user_name' 	=> $rows->username,
@@ -44,7 +50,14 @@ class UserModel extends CI_Model {
 		return false;
     }
     
-	public function add_user()
+    // ================================ addUserDSI() ================================
+    //
+    // poziva je fja registration() === UserController ===
+    //
+    // fja dodaje novog korisnika u bazu podataka (tip naloga je d, kao DSI, ovo je direktna registracija)
+    //
+    
+	public function addUserDSI()
 	{
 		$data=array(
 			'username'=>$this->input->post('user_name'),
@@ -55,8 +68,24 @@ class UserModel extends CI_Model {
 		$this->db->insert('user',$data);
 	}
 	
+	// ================================ addUserFB($name, $username, $email, $account_type) ================================
+	//
+	// poziva je fja getUserDataFB() === UserController ===
+	//
+	// Ulazni parametri: $name		   - ime i prezime fb korisnika
+	//					 $username     - korisnicko ime
+	//                   $email        - email
+	//                   $account_type - tip naloga
+	//
+	// fja dodaje novog korisnika u bazu podataka, ukoliko je tip naloga f (kao fb) podrazumeva se da se 
+	// korisnik loguje preko fb naloga, ukoliko se korisnik vec logovao ranije onda se samo uzimaju
+	// podaci iz baze i upisuju u promenljivu sesije
+	//
+	
 	public function addUserFB($name, $username, $email, $account_type)
 	{
+		
+		// trazi korisnika sa zadatim korisnickim imenom i mejlom u bazi podataka
 		$this->db->where("username",$username);
 		$this->db->where("email",$email);
 		//$this->db->where("password",$password);
@@ -64,8 +93,12 @@ class UserModel extends CI_Model {
 		$query=$this->db->get("user");
 		if($query->num_rows()>0)
 		{
+			// ukoliko korisnik vec postoji u bazi
 			foreach($query->result() as $rows)
 			{
+				// upisivanje u session cookie kako ne bi morali stalno
+				// da pristupamo bazi da vidimo koji je korisnik logovan
+				
 				//$account_type = $rows->account_type;
 				$newdata = array(
 						'user_id' 		=> $rows->id,
@@ -81,7 +114,8 @@ class UserModel extends CI_Model {
 		}
 		else
 		{
-		
+			// ukoliko takav korisnik ne postoji, onda upisujemo podatke preuzete sa fb u bazu
+			
 			// upisivanje podataka o korisniku preuzetih sa fb
 			$data=array(
 					//'name'=> $name,
@@ -89,7 +123,9 @@ class UserModel extends CI_Model {
 					'email'=> $email,
 					'account_type' => $account_type
 			);
+			
 			$this->db->insert('user',$data);
+			
 			
 			// uzimimanje informacija o korisniku iz baze i njihovo upisivanje u promeniljivu sesije
 			$this->db->where("username",$username);
@@ -101,6 +137,9 @@ class UserModel extends CI_Model {
 				foreach($query1->result() as $rows)
 				{
 					//$account_type = $rows->account_type;
+					
+					// upisivanje u session cookie kako ne bi morali stalno
+					// da pristupamo bazi da vidimo koji je korisnik logovan
 					$newdata = array(
 							'user_id' 		=> $rows->id,
 							'user_name' 	=> $rows->username,
@@ -116,6 +155,13 @@ class UserModel extends CI_Model {
 		}
 	}
 	
+	// ================================ getQuestions() ================================
+	//
+	// poziva je fja quiz() === UserController ===
+	//
+	// fja cita iz baze pitanja za kviz a zatim ih stampa ka klijentu ($data niz) u formi div-pitanje
+	// prva tri pitanja su vidljiva (ostatak pitanja je sakriven uspomoc display:none)
+	//
 	
 	public function getQuestions()
 	{
@@ -158,6 +204,16 @@ class UserModel extends CI_Model {
 		}
 	}
 	
+	
+	// ================================ saveQuizResults($userAnswers) ================================
+	//
+	// poziva je fja getQuizResults() === UserController ===
+	//
+	// Ulazni parametri: $userAnswers	  - niz stringova sa odgovorima na pitanaj u kvizu
+	//
+	// fja koja upisuje korisnikove odgovore na pitanja u bazu podataka
+	//
+	
 	public function saveQuizResults($userAnswers)
 	{
 		for($i=1;$i<count($userAnswers);$i++)
@@ -173,6 +229,19 @@ class UserModel extends CI_Model {
 		}
 		return "Success";
 	}
+	
+	// ======== saveUserActions($currentLessionNumber, $subject, $object, $currentDateTime) ========
+	//
+	// poziva je fja getUserActions() === UserController ===
+	//
+	// Ulazni parametri: $currentLessionNumber	  	- broj lekcije na kojoj se desilo prevljacenje reci na rec
+	//					 $subject     				- objekat
+	//                   $object        			- subjekat
+	//                   $currentDateTime 			- datum/vreme akcije
+	//
+	// fja koja upisuje korisnikovu akciju prevlacenja u bazu podataka, upisuju se trenutni br lekcije
+	// subjekat, objekat i vreme prevlacenja
+	//
 	
 	public function saveUserActions($currentLessionNumber, $subject, $object, $currentDateTime)
 	{/*
@@ -190,6 +259,22 @@ class UserModel extends CI_Model {
 			$this->db->insert('user_actions', $data);
 		//}
 	}
+	
+	
+	// ======== saveUserActionsLessions($currentLessionNumber, $action, $next_prev_lession_number,$currentDateTime) ========
+	//
+	// pozivaju je fje getUserActionsLessions() i logout() === UserController ===
+	//
+	// Ulazni parametri: $currentLessionNumber	  	- broj lekcije na kojoj se desilo prevljacenje reci na rec
+	//					 $action     				- akcija koja je obavljena
+	//                   $next_prev_lession_number  - broj lekcije na koju se prelazi (sledeca ili prethodna, ili null)
+	//                   $currentDateTime 			- datum/vreme akcije
+	//
+	// fja koja upisuje u bazu korisnikovu akciju pokretanja odredjene lekcije, tj prelaska sa jedne na drugu lekciju
+	// u bazi se cuvaju broj lekcije na kojoj se korisnik trenutno nalazi, obavljena akcija (stisnuto dugme prev, next, pokretanje dela za ucenje,
+	// zavrsetak ucenja, pokretanje kviza, prosledjivanje rezultata kviza, logout korisnika...)
+	//
+	
 	public function saveUserActionsLessions($currentLessionNumber, $action, $next_prev_lession_number,$currentDateTime)
 	{
 		$data = array(
@@ -203,6 +288,13 @@ class UserModel extends CI_Model {
 			
 		$this->db->insert('user_actions_lessions', $data);
 	}
+	
+	// ================================ getResults() ================================
+	//
+	// poziva je fja QuizResultPage() === UserController ===
+	//
+	// fja cita iz baze korisnikove odgovore na pitanja u kvizu a zatim ih stampa ka klijentu ($data niz) u formi div-pitanje
+	// 
 	
 	public function getResults()
 	{

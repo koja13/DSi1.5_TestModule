@@ -82,7 +82,7 @@ class UserController extends CI_Controller{
 		}
 		else
 		{
-			$this->UserModel->add_user();
+			$this->UserModel->addUserDSI();
 			$this->thanks();
 		}
 	}

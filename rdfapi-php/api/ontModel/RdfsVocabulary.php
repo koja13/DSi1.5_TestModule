@@ -124,10 +124,10 @@ class RdfsVocabulary extends OntVocabulary
    	* @return	string
    	* @access	public
    	*/
-	function NAMESPACE()
+	/*function NAMESPACE()
 	{
 		return RDF_SCHEMA_URI;
-	}
+	}*/
 	
 	/**
 	* Answer the predicate that denotes the rdf:type property.
