@@ -20,11 +20,11 @@
 				?>
 					<br />
 					<h2>Register</h2>
-					
-					<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="<?php echo set_value('user_name'); ?>" />
+
+					<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="<?php echo $this->session->userdata('user_name'); ?><?php echo set_value('user_name'); ?>" />
 					<?php echo form_error('user_name', '<div class="error"  >* ', '</div>'); ?>
 					
-					<input type="text" id="email_address" name="email_address" class="text-field" placeholder="E-mail" value="<?php echo set_value('email_address'); ?>" />
+					<input type="text" id="email_address" name="email_address" class="text-field" placeholder="E-mail" value="<?php echo $this->session->userdata('user_email'); ?><?php echo set_value('email_address'); ?>" <?php  if($this->session->userdata('user_email') !="") {echo "disabled='disabled'"; }?> />
 					<?php echo form_error('email_address', '<div class="error" >* ', '</div>'); ?>
 					
 					<input type="password" id="password" name="password" class="text-field" placeholder="Password" value="<?php echo set_value('password'); ?>" />
@@ -41,18 +41,26 @@
 					
 				
 				<?php echo form_close();?>
-
-				<iframe src="https://www.facebook.com/plugins/registration?
-             client_id=113869198637480&
-             redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fecho%2F&
-             fields=name,email"
-        scrolling="auto"
-        frameborder="no"
-        style="border:none"
-        allowTransparency="true"
-        width="100%"
-        height="330">
-</iframe>
+            <!--   
+     
+            	<iframe src="https://www.facebook.com/plugins/registration?
+                         client_id=128303734043111&
+                         redirect_uri=http://www.martin.rs/DSi2.0_TestModule/index.php/user/registerFBUser&
+                         fields=[
+                                 {'name':'name'},
+                                 {'name':'email'},
+                                 {'name':'username',   'description':'Username',  'type':'text'},
+                                 {'name':'password'}
+                                ]"
+                    scrolling="auto"
+                    frameborder="no"
+                    style="border:none"
+                    allowTransparency="true"
+                    width="100%"
+                    height="330">
+                    
+                </iframe>
+    -->
 	</div><!--<div class="reg_form">-->
     
 </div><!--<div id="content">-->

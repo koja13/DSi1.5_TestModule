@@ -1,10 +1,10 @@
 <div id="fb-root"></div>
-
 <script>
+
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '128303734043111', // App ID
-    channelUrl : 'http://dsitest.site88.net/', // Channel File
+    channelUrl : 'http://www.martin.rs/DSi2.0_TestModule/', // Channel File
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
@@ -16,10 +16,15 @@
   // will be handled. 
   FB.Event.subscribe('auth.authResponseChange', function(response) {
     // Here we specify what we do with the response anytime this event occurs. 
+    
+    FB.logout(function(response) {
+  // user is now logged out
+});
     if (response.status === 'connected') {
       // The response object is returned with a status field that lets the app know the current
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
+      
       saveUserDataFB();
     } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
@@ -31,7 +36,7 @@
       // (2) it is a bad experience to be continually prompted to login upon page load.
      FB.login(function(response)
      {
-    	 saveUserDataFB();
+    	// saveUserDataFB();
     	 
 	 }, {scope: 'email'});
     } else {
@@ -43,7 +48,7 @@
       
       FB.login(function(response)
       {
-    	  saveUserDataFB();
+    //	  saveUserDataFB();
     	  
  	  }, {scope: 'email'});
       }});
@@ -67,15 +72,14 @@
 
     FB.api('/me', function(response)
 	{
-		console.log('Good to see you, ' + response.name + '.');
-		console.log('Good to see you, ' + response.username + '.');
-		console.log('Good to see you, ' + response.email + '.');
+		//console.log('Good to see you, ' + response.name + '.');
+		//console.log('Good to see you, ' + response.username + '.');
+		//console.log('Good to see you, ' + response.email + '.');
 
 		saveUserDataFromFB(response);
-	 
+
     });
   }
-
 
   function saveUserDataFromFB(response)
   {
@@ -86,14 +90,14 @@
 					name: response.name,
 					username: response.username,
 					email: response.email,
-					// name: "ppp",
-					// username:"trucbla",
-				 	// email: "blatruc@bla",
+                    use_dsi: "yes",
 					account_type: "f"
 		  		}
-		}).done(function( response ) {
-			
-			//alert("Podaci su sacuvani!");
+		}).done(function( response )
+		{
+		
+                 window.location = config.site_url + "/UserController/welcome";
+			     //alert("Podaci su sacuvani!");
 		});
   }
 
@@ -120,7 +124,7 @@
 			<br />
 				<h2>Log In</h2>
 			    
-		    	<input type="text" id="user_name" name="user_name" class="text-field" placeholder="Username" value="" />
+		    	<input type="text" id="email_address" name="email_address" class="text-field" placeholder="E-mail" value="" />
 				<input type="password" id="pass" name="pass" class="text-field" placeholder="Password" value="" />
 				
 				<?php if(isset($error_message))
@@ -133,7 +137,7 @@
 		        <br /><br /><h4>-- or --</h4><br />
 		        
 		        
-		        <div class="fb-login-button" perms="email" scope="publish_stream" size="large" data-show-faces="false" data-width="200" data-max-rows="1">Login with Facebook</div>
+		        <div class="fb-login-button"  perms="email" scope="publish_stream" size="large" data-show-faces="false" data-width="200" data-max-rows="1">Login with Facebook</div>
 		        
 		    <?php echo form_close(); ?>
 		    
