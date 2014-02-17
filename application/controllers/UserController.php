@@ -26,10 +26,10 @@ class UserController extends CI_Controller{
 	// otvara stranu za logovanje korisnika, sign in stranu
 	public function login()
 	{
-		$username=$this->input->post('user_name');
+		$email=$this->input->post('email_address');
 		$password=md5($this->input->post('pass'));
 	
-		$result=$this->UserModel->login($username,$password);
+		$result=$this->UserModel->login($email,$password);
 		if($result)
 		{
 			$this->welcome();
@@ -68,22 +68,39 @@ class UserController extends CI_Controller{
 	public function registration()
 	{
 		$this->load->library('form_validation');
+        
 		// field name, error message, validation rules
-		$this->form_validation->set_rules('user_name', 'User Name', 'trim|required|min_length[4]|xss_clean|is_unique[user.username]');
-		$this->form_validation->set_rules('email_address', 'Your Email', 'trim|required|valid_email|is_unique[user.email]');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
+		$this->form_validation->set_rules('user_name', 'User Name', 'trim|required|min_length[6]|xss_clean|is_unique[user.username]');
+        // ne raditi validaciju emaila ukoliko se korisnik vec ulogovao koristeci fb account
+        if($this->session->userdata('account_type') !="f")
+        {
+            $this->form_validation->set_rules('email_address', 'Your Email', 'trim|required|valid_email|is_unique[user.email]');
+		}
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[32]');
 		$this->form_validation->set_rules('con_password', 'Password Confirmation', 'trim|required|matches[password]');
 	
 		if($this->form_validation->run() == FALSE)
 		{
 			//$this->index();
+            echo $this->session->userdata('account_type');
 			$this->register();
 			//echo validation_errors();
 		}
 		else
 		{
+		  if($this->session->userdata('account_type') =="f")
+          {
+            // ako se registruje korisnik koji se vec logovao fb nalogom
+            $this->UserModel->registerFBuser();
+			$this->thanks();
+            
+          }
+          else
+          {
+            // ako se korisnik registruje regularno
 			$this->UserModel->addUserDSI();
 			$this->thanks();
+          }
 		}
 	}
 	
@@ -102,14 +119,25 @@ class UserController extends CI_Controller{
 		}
 	}
 	
+	
+	// redirektuje na stranu za registrovanje kada je korisnik ulogovan pomocu fb naloga
+	public function registerFBUser()
+	{
+		$data['title']= 'Registration | DSi2.0';
+		$this->load->view('header_view',$data);
+		$this->load->view("registration_view.php", $data);
+		$this->load->view('footer_view',$data);
+	}
+	
 	public function getUserDataFB()
 	{
 		$name = $_POST['name'];
 		$username = $_POST['username'];
 		$email = $_POST['email'];
+        $use_dsi = $_POST['use_dsi'];
 		$account_type = $_POST['account_type'];
 		
-		$this->UserModel->addUserFB($name, $username, $email, $account_type);
+		$this->user_model->addUserFB($name, $username, $email, $use_dsi, $account_type);
 	}
 	
 	

@@ -19,7 +19,16 @@
  };
 
 </script>
-        
+ 
+	<!--    
+	<style type="text/css">
+	
+	.bodyClass {
+		background-image:url('<?php //echo base_url();?>background.jpg');
+	}
+	</style>
+	 --> 
+       
 	<!------------------------------------- jQuery biblioteke  ------------------------------------->
 	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-1.7.2.js');?>"></script>	
 	<script type="text/javascript" src="<?php echo base_url('/assets/js/jquery-ui.min.js');?>"></script>
@@ -33,5 +42,6 @@
 <title><?php echo (isset($title)) ? $title : "DSi2.0" ?> </title>
 
 </head>
-<body>
+<body class="bodyClass">
+
 	<div id="wrapper">

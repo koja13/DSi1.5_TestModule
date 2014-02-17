@@ -18,13 +18,12 @@ class UserModel extends CI_Model {
     // u okviru session promenljive (kako bi bio dostupan u svakom momentu dok je sesija aktivna)
     //
     
-	function login($username,$password)
+	function login($email,$password)
     {
 
-    	// trazi korisnika sa zadatim korisnickim imenom i sifrom u bazi podataka
-		$this->db->where("username",$username);
+    	// trazi korisnika sa zadatim mejlom i sifrom u bazi podataka
+		$this->db->where("email",$email);
         $this->db->where("password",$password);
-            
         
         $query=$this->db->get("user");
         if($query->num_rows()>0)
@@ -68,6 +67,22 @@ class UserModel extends CI_Model {
 		$this->db->insert('user',$data);
 	}
 	
+
+	public function registerFBuser()
+	{
+		$data = array(
+				'username' => $this->input->post('user_name'),
+				'password' => md5($this->input->post('password')),
+				'account_type' => 'd'
+		);
+	
+		$this->db->where('email', $this->session->userdata('user_email'));
+		$this->db->update('user', $data);
+	
+	}
+	
+	
+	
 	// ================================ addUserFB($name, $username, $email, $account_type) ================================
 	//
 	// poziva je fja getUserDataFB() === UserController ===
@@ -82,30 +97,25 @@ class UserModel extends CI_Model {
 	// podaci iz baze i upisuju u promenljivu sesije
 	//
 	
-	public function addUserFB($name, $username, $email, $account_type)
+
+	public function addUserFB($name, $username, $email, $use_dsi ,$account_type)
 	{
-		
-		// trazi korisnika sa zadatim korisnickim imenom i mejlom u bazi podataka
-		$this->db->where("username",$username);
+		//$this->db->where("username",$username);
 		$this->db->where("email",$email);
 		//$this->db->where("password",$password);
 		
 		$query=$this->db->get("user");
 		if($query->num_rows()>0)
 		{
-			// ukoliko korisnik vec postoji u bazi
 			foreach($query->result() as $rows)
 			{
-				// upisivanje u session cookie kako ne bi morali stalno
-				// da pristupamo bazi da vidimo koji je korisnik logovan
-				
 				//$account_type = $rows->account_type;
 				$newdata = array(
 						'user_id' 		=> $rows->id,
 						'user_name' 	=> $rows->username,
 						'user_email'    => $rows->email,
-						//'use_dsi'    => $rows->use_dsi,
-						'account_type' => $rows->account_type,
+						'use_dsi'       => $rows->use_dsi,
+						'account_type'  => $rows->account_type,
 						'logged_in' 	=> TRUE,
 				);
 			}
@@ -114,18 +124,16 @@ class UserModel extends CI_Model {
 		}
 		else
 		{
-			// ukoliko takav korisnik ne postoji, onda upisujemo podatke preuzete sa fb u bazu
-			
+		
 			// upisivanje podataka o korisniku preuzetih sa fb
 			$data=array(
 					//'name'=> $name,
 					'username'=> $username,
 					'email'=> $email,
+                    'use_dsi' => $use_dsi,
 					'account_type' => $account_type
 			);
-			
 			$this->db->insert('user',$data);
-			
 			
 			// uzimimanje informacija o korisniku iz baze i njihovo upisivanje u promeniljivu sesije
 			$this->db->where("username",$username);
@@ -137,14 +145,11 @@ class UserModel extends CI_Model {
 				foreach($query1->result() as $rows)
 				{
 					//$account_type = $rows->account_type;
-					
-					// upisivanje u session cookie kako ne bi morali stalno
-					// da pristupamo bazi da vidimo koji je korisnik logovan
 					$newdata = array(
 							'user_id' 		=> $rows->id,
 							'user_name' 	=> $rows->username,
 							'user_email'    => $rows->email,
-							//'use_dsi'    => $rows->use_dsi,
+							'use_dsi'    => $rows->use_dsi,
 							'account_type' => $rows->account_type,
 							'logged_in' 	=> TRUE,
 					);
@@ -154,6 +159,7 @@ class UserModel extends CI_Model {
 			}
 		}
 	}
+	
 	
 	// ================================ getQuestions() ================================
 	//

@@ -56,7 +56,8 @@
 			$("#lessionNumberSpan2").html(currentLessionNumber);
 		}
 
-		getTextFromServer(1, "tekst1.html", "model.rdf");
+		//getTextFromServer(1, "tekst1.html", "model.rdf");
+		getTextFromServer(1, "tekst1.htm", "model.rdf");
 
 		// dodavanje next i prev kontrola na svaki tab
 		$(function() 
@@ -90,7 +91,7 @@
 				$tabs.tabs('select', $(this).attr("rel"));
 			
 				// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
-				getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".html", "model.rdf");
+				getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".htm", "model.rdf");
 				
 				var relPrev = parseInt($(this).attr("rel"))-1;
 				
@@ -114,7 +115,7 @@
 						$tabs.tabs('select', $(this).attr("rel"));
 					
 						// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
-						getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".html", "model.rdf");
+						getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".htm", "model.rdf");
 						
 						
 						var relNext = parseInt($(this).attr("rel"))+1;
@@ -137,7 +138,7 @@
 		{
 			$.ajax({
 				  type: "POST",
-				  url: config.site_url + "/user/getUserActions",
+				  url: config.site_url + "/UserController/getUserActions",
 				  data: {	
 							  currentLessionNumber: currentLessionNumber,
 							  subject: subject,
@@ -155,7 +156,7 @@
 		{
 			$.ajax({
 				  type: "POST",
-				  url: config.site_url + "/user/getUserActionsLessions",
+				  url: config.site_url + "/UserController/getUserActionsLessions",
 				  data: {	
 							  currentLessionNumber: currentLessionNumber,
 							  action: action,
