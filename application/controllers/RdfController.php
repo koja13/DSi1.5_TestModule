@@ -231,7 +231,7 @@ class RdfController extends CI_Controller {
 	// lista RDF iskaza u promenljivoj tipa klase MemModel). Onda se prodje kroz ovu listu
 	// iskaza, i iz svakog se izvuce objekat. Prilikom svakog izvlacenja objekta,
 	// o se istovremeno i stampa (echo), nazad ka klijentu
-	// (stampa se u obliku jQuery selektora " span:contains('OBJEKAT') ", kako bi te objekte pronasli u tekstu).
+	// (stampa se u obliku jQuery selektora " span.dragdrop:contains('OBJEKAT') ", kako bi te objekte pronasli u tekstu).
 	//
 	function getObjects()
 	{
@@ -266,11 +266,11 @@ class RdfController extends CI_Controller {
 
 				if($it->hasNext())
 				{
-					echo "span:contains(" . $statement->getLabelObject() . "),";
+					echo "span.dragdrop:contains(" . $statement->getLabelObject() . "),";
 				}
 				else
 				{
-					echo "span:contains(" . $statement->getLabelObject() . ")";
+					echo "span.dragdrop:contains(" . $statement->getLabelObject() . ")";
 				}
 			}
 				

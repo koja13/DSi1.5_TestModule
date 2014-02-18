@@ -15,7 +15,7 @@
 <rdf:Description rdf:about="VI">
    <predstavlja_podoblast>racunarstva</predstavlja_podoblast>
    <ima_za_cilj_razvijanje_inteligentnih>programa</ima_za_cilj_razvijanje_inteligentnih>
-   <ima_za_cilj_obavljanje_zadataka_inteligentno>inteligentno</ima_za_cilj_obavljanje_zadataka_inteligentno>
+   <ima_za_cilj_obavljanje_zadataka>inteligentno</ima_za_cilj_obavljanje_zadataka>
 </rdf:Description>
 
 <rdf:Description rdf:about="medicina">
