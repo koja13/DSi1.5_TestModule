@@ -68,6 +68,14 @@ class UserModel extends CI_Model {
 	}
 	
 
+	// ================================ registerFBuser() ================================
+	//
+	// poziva je fja registration() === UserController ===
+	//
+	// fja korisniku koji se vec prijavio preko fb naloga menja podatke u bazi, stavlja da je tip naloga d
+	// (kao DSi) i dodaje mu korisnicko ime i sifru unete prilikom registracije
+	//
+	
 	public function registerFBuser()
 	{
 		$data = array(

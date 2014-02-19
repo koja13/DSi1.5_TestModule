@@ -16,7 +16,7 @@ class UserController extends CI_Controller{
 			$this->welcome();
 		}
 		else{
-			$data['title']= 'Sign In | DSi2.0';
+			$data['title']= 'Sign In | DSi1.5';
 			$this->load->view('HeaderView',$data);
 			$this->load->view("SignInView.php", $data);
 			$this->load->view('FooterView',$data);
@@ -42,7 +42,7 @@ class UserController extends CI_Controller{
 				$this->welcome();
 			}
 			else{
-				$data['title']= 'Sign In | DSi2.0';
+				$data['title']= 'Sign In | DSi1.5';
 				$data['error_message']= "Login failed. Try again!";
 				$this->load->view('HeaderView',$data);
 				$this->load->view("SignInView.php", $data);
@@ -56,7 +56,7 @@ class UserController extends CI_Controller{
 	// otvara stranu za logovanje nakon uspesnog registorovanja i ispisuje da je registovanje uspesno
 	public function thanks()
 	{
-		$data['title']= 'Sign In | DSi2.0';
+		$data['title']= 'Sign In | DSi1.5';
 		$data['message'] = "Thanks for registering!";
 		$this->load->view('HeaderView',$data);
 		$this->load->view("SignInView.php", $data);
@@ -112,7 +112,7 @@ class UserController extends CI_Controller{
 			$this->welcome();
 		}
 		else{
-			$data['title']= 'Registration | DSi2.0';
+			$data['title']= 'Registration | DSi1.5';
 			$this->load->view('HeaderView',$data);
 			$this->load->view("RegistrationView.php", $data);
 			$this->load->view('FooterView',$data);
@@ -123,7 +123,7 @@ class UserController extends CI_Controller{
 	// redirektuje na stranu za registrovanje kada je korisnik ulogovan pomocu fb naloga
 	public function registerFBUser()
 	{
-		$data['title']= 'Registration | DSi2.0';
+		$data['title']= 'Registration | DSi1.5';
 		$this->load->view('header_view',$data);
 		$this->load->view("registration_view.php", $data);
 		$this->load->view('footer_view',$data);
@@ -144,7 +144,7 @@ class UserController extends CI_Controller{
 	// otvara stranu koja sledi nakon logovanja - Welcome stranu
 	public function welcome()
 	{
-		$data['title']= 'Welcome | DSi2.0';
+		$data['title']= 'Welcome | DSi1.5';
 		$this->load->view('HeaderView',$data);
 		$this->load->view('WelcomeView.php', $data);
 		$this->load->view('FooterView',$data);
@@ -153,7 +153,7 @@ class UserController extends CI_Controller{
 	// otvara stranu sa lekcijama, glavni pogled
 	public function start()
 	{
-		$data['title']= 'DSi2.0';
+		$data['title']= 'DSi1.5';
 		$this->load->view('HeaderView',$data);
 		$this->load->view('MainView.php', $data);
 		$this->load->view('FooterView',$data);
@@ -184,7 +184,7 @@ class UserController extends CI_Controller{
 	// otvara stranu koja sledi nakon citanja lekcija, welcome strana za kviz
 	public function startQuiz()
 	{
-		$data['title']= 'Start quiz | DSi2.0';
+		$data['title']= 'Start quiz | DSi1.5';
 		$this->load->view('HeaderView',$data);
 		$this->load->view('WelcomeQuizView.php', $data);
 		$this->load->view('FooterView',$data);
@@ -195,7 +195,7 @@ class UserController extends CI_Controller{
 	{
 		$data=$this->UserModel->getQuestions();
 		
-		$data['title']= 'Quiz | DSi2.0';
+		$data['title']= 'Quiz | DSi1.5';
 		$this->load->view('HeaderQuizView',$data);
 		$this->load->view('QuizView.php', $data);
 		$this->load->view('FooterView',$data);
@@ -217,7 +217,7 @@ class UserController extends CI_Controller{
 	{
 		$data = $this->UserModel->getResults();
 		
-		$data['title'] = 'Quiz results | DSi2.0';
+		$data['title'] = 'Quiz results | DSi1.5';
 		$this->load->view('HeaderQuizView',$data);
 		$this->load->view('QuizResultsView.php', $data);
 		$this->load->view('FooterView',$data);

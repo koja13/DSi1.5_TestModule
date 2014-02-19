@@ -8,10 +8,11 @@
 
 <?php
 
-for ($i = 1; $i <=30; $i++)
-{
-	echo $questions[$i];
-}
+	// citanje odgovora na pitanja iz promenjive, poslate od servera ka klijentu i njihovo stampanje (prikaz)
+	for ($i = 1; $i <=30; $i++)
+	{
+		echo $questions[$i];
+	}
 
 ?>
     <br /><br /><br />
