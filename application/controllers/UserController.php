@@ -8,7 +8,12 @@ class UserController extends CI_Controller{
 		$this->load->model('UserModel');
 	}
 	
-	// otvara Sign In stranu automatski
+	// ================================ index() ================================
+	//
+	// poziva se pokretanjem UserController-a automatski
+	//
+	// ova fja automatski pokrece Sign In stranu
+	//
 	public function index()
 	{
 		if(($this->session->userdata('user_name')!=""))
@@ -23,7 +28,13 @@ class UserController extends CI_Controller{
 		}
 	}
 	
-	// otvara stranu za logovanje korisnika, sign in stranu
+	// ================================ login() ================================
+	//
+	// poziva se u okviru forme za prijavu na sistem, klikom na dugme Sign In (Submit dugme)
+	//
+	// ova fja ukoliko su uneti podaci za prijavu ispravni (proverava se u bazi) prosledjuje korisnika
+	// na welcome stranu, koja sledi posle prijave korisnika na sistem
+	//
 	public function login()
 	{
 		$email=$this->input->post('email_address');
@@ -53,7 +64,13 @@ class UserController extends CI_Controller{
 	
 	}
 	
-	// otvara stranu za logovanje nakon uspesnog registorovanja i ispisuje da je registovanje uspesno
+	// ================================ thanks() ================================
+	//
+	// poziva je fja registration() == UserController ==
+	//
+	// ova fja nakon uspesne registracije otvara stranu na kojoj je korisniku ispisano da se uspesno registrovao
+	// i na kojoj moze da se prijavi na sistem
+	//
 	public function thanks()
 	{
 		$data['title']= 'Sign In | DSi1.5';
@@ -64,7 +81,14 @@ class UserController extends CI_Controller{
 		$this->load->view('FooterView',$data);
 	}
 	
-	// otvara stranu za registrovanje
+	// ================================ registration() ================================
+	//
+	// poziva se u okviru forme za registrovanje na sistem, klikom na Submit dugme
+	//
+	// ova fja registruje korisnika na sistem (cuva podatke u bazi), prvo se izvrsi provera (form validation) za svako polje u okviru forme
+	// nakon toga ukoliko su ispravno uneseni podaci pozivaju se ---- fja addUserDSI() ili fja registerFBuser() --- == UserModel ==
+	// koje unose podatke u bazu a korisnik se onda preusmerava na stranu gde mu se daje do znanja da se uspesno registrovao, i da moze da se loguje
+	// 
 	public function registration()
 	{
 		$this->load->library('form_validation');
@@ -104,7 +128,12 @@ class UserController extends CI_Controller{
 		}
 	}
 	
-	// redirektuje na stranu za registrovanje
+	// ================================ register() ================================
+	//
+	// poziva je fja registration() == UserController ==
+	//
+	// ova fja redirektuje na stranu za registrovanje, poziva se ukoliko podaci za registrovanje nisu ispravno uneseni u formu za registraciju
+	//
 	public function register()
 	{
 		if(($this->session->userdata('user_name')!=""))
@@ -119,8 +148,12 @@ class UserController extends CI_Controller{
 		}
 	}
 	
-	
-	// redirektuje na stranu za registrovanje kada je korisnik ulogovan pomocu fb naloga
+	// ================================ registerFBUser() ================================
+	//
+	// poziva se klikom na link u navigation divu u okviru MainView pogleda
+	//
+	// ova fja redirektuje na stranu za registrovanje kada je korisnik ulogovan pomocu fb naloga
+	//
 	public function registerFBUser()
 	{
 		$data['title']= 'Registration | DSi1.5';
@@ -129,6 +162,12 @@ class UserController extends CI_Controller{
 		$this->load->view('footer_view',$data);
 	}
 	
+	// ================================ getUserDataFB() ================================
+	//
+	// odogovor na ajax poziv fje saveUserDataFromFB(response) == fbLoginScript.js ==
+	//
+	// ova preuzima podatke iz post zahteva prosledjene od klijenta i prosledjuje ih modelu kako bi bili sacuvani u bazi
+	//
 	public function getUserDataFB()
 	{
 		$name = $_POST['name'];
@@ -140,8 +179,12 @@ class UserController extends CI_Controller{
 		$this->user_model->addUserFB($name, $username, $email, $use_dsi, $account_type);
 	}
 	
-	
-	// otvara stranu koja sledi nakon logovanja - Welcome stranu
+	// ================================ welcome() ================================
+	//
+	// pozivaju je fje index(), login() i register() == UserController ==
+	//
+	// ova fja otvara Welcome stranu (WelcomeView pogled) nakon uspesne prijave korisnika na sistem
+	//
 	public function welcome()
 	{
 		$data['title']= 'Welcome | DSi1.5';
@@ -150,7 +193,12 @@ class UserController extends CI_Controller{
 		$this->load->view('FooterView',$data);
 	}
 	
-	// otvara stranu sa lekcijama, glavni pogled
+	// ================================ start() ================================
+	//
+	// poziva se klikom na dugme u formi za pokretanje glavnog pogleda, Submit dugme == WelcomeView ==
+	//
+	// ova fja otvara stranu sa lekcijama, glavni pogled
+	//
 	public function start()
 	{
 		$data['title']= 'DSi1.5';
@@ -159,7 +207,13 @@ class UserController extends CI_Controller{
 		$this->load->view('FooterView',$data);
 	}
 	
-	// fja koja odgovara na ajax poziv klijenta, upisuje u bazu koja rec na koju je prevucena
+	// ================================ getUserActions() ================================
+	//
+	// odogovor na ajax poziv fje sendUserActions(subject, object) == MainScript.js ==
+	//
+	// ova fja cita iz post promeniljive podatke poslate od klijenta i upisuje ih u bazu i to podatke:
+	// koja rec na koju je prevucena, na kojoj lekciji i vreme prevlacenja
+	//
 	public function getUserActions()
 	{
 		$currentLessionNumber = $_POST['currentLessionNumber'];
@@ -170,7 +224,13 @@ class UserController extends CI_Controller{
 		$this->UserModel->saveUserActions($currentLessionNumber, $subject, $object, $currentDateTime);
 	}
 	
-	// fja koja odgovara na ajax poziv klijenta, upisuje u bazu akciju koju je korisnik obavio, next, prev,...
+	// ================================ getUserActionsLessions() ================================
+	//
+	// odogovor na ajax poziv fje sendUserActionsLessions(currentLessionNumber, action, next_prev_lession_number) == MainScript.js ==
+	//
+	// ova fja cita iz post promeniljive podatke poslate od klijenta i upisuje ih u bazu i to podatke:
+	// izvrsena akcija, lekcija na kojoj se korisnik trenutno nalazi, naredna lekcija na koju ce korisnik biti preusmeren, vreme akcije
+	//
 	public function getUserActionsLessions()
 	{
 		$currentLessionNumber = $_POST['currentLessionNumber'];
@@ -181,7 +241,12 @@ class UserController extends CI_Controller{
 		$this->UserModel->saveUserActionsLessions($currentLessionNumber, $action, $next_prev_lession_number, $currentDateTime);
 	}
 	
-	// otvara stranu koja sledi nakon citanja lekcija, welcome strana za kviz
+	// ================================ startQuiz() ================================
+	//
+	// poziva se klikom na link u navigation divu u okviru MainView pogleda
+	//
+	// ova fja otvara stranu koja sledi nakon citanja lekcija, welcome strana za kviz
+	//
 	public function startQuiz()
 	{
 		$data['title']= 'Start quiz | DSi1.5';
@@ -190,7 +255,12 @@ class UserController extends CI_Controller{
 		$this->load->view('FooterView',$data);
 	}
 	
-	// otvara stranu sa kvizom
+	// ================================ quiz() ================================
+	//
+	// poziva se klikom na dugme u formi za pokretanje kviza, Submit dugme == WelcomeQuizView ==
+	//
+	// ova fja otvara stranu sa kvizom
+	//
 	public function quiz()
 	{
 		$data=$this->UserModel->getQuestions();
@@ -201,6 +271,11 @@ class UserController extends CI_Controller{
 		$this->load->view('FooterView',$data);
 	}
 	
+	// ================================ getQuizResults() ================================
+	//
+	// odgovor na ajax poziv fje sendQuizResults() == QuizView ==
+	//
+	//
 	// fja koja odgovara na ajax poziv klijenta, upisuje u bazu rezultate kviza
 	public function getQuizResults()
 	{
