@@ -12,7 +12,7 @@ sendUserActionsLessions(null, "logged_in", null);
 			
 		echo form_open("UserController/start", $attributes); ?>
 		
-			<h6> Welcome <?php echo $this->session->userdata('user_name'); ?>! Start learning with DSi2.0 </h6>
+			<h6> Welcome <?php echo $this->session->userdata('user_name'); ?>! Start learning with DSi1.5 </h6>
 
 			<input type="submit" class="button" value="Start!" />
 			

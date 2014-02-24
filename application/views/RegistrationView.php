@@ -6,11 +6,6 @@
 </div>
 	<div class="reg_form" >
 
-			<?php //echo validation_errors('<p class="error">'); ?>
-				
-				
-
-				
 				<?php
 				 
 				$attributes = array('class' => 'register');
@@ -32,35 +27,12 @@
 					
 					<input type="password" id="con_password" name="con_password" class="text-field" placeholder="Repeat Password" value="<?php echo set_value('con_password'); ?>" />
 					<?php echo form_error('con_password', '<div class="error">* ', '</div>'); ?>
-					
-					
-					<?php //echo form_error('user_name', '<div class="error" style="color:red">', '</div>'); ?>
-					<?php // echo validation_errors('<p class="error" style="color:red">'); ?>
-					
+
 					<input id="submitButton" type="submit" class="button" value="Submit" />
 					
 				
 				<?php echo form_close();?>
-            <!--   
-     
-            	<iframe src="https://www.facebook.com/plugins/registration?
-                         client_id=128303734043111&
-                         redirect_uri=http://www.martin.rs/DSi2.0_TestModule/index.php/user/registerFBUser&
-                         fields=[
-                                 {'name':'name'},
-                                 {'name':'email'},
-                                 {'name':'username',   'description':'Username',  'type':'text'},
-                                 {'name':'password'}
-                                ]"
-                    scrolling="auto"
-                    frameborder="no"
-                    style="border:none"
-                    allowTransparency="true"
-                    width="100%"
-                    height="330">
-                    
-                </iframe>
-    -->
+
 	</div><!--<div class="reg_form">-->
     
 </div><!--<div id="content">-->

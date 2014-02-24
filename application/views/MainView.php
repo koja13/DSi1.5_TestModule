@@ -9,7 +9,7 @@
 		
 	</span>  of 10
 </span>
-<nav> <?php echo anchor('user/startQuiz', 'Start test', array('id'=>'startTest') ) . " | "; if($this->session->userdata('account_type') =="f") {echo anchor('/user/registerFBUser', 'Register') . " | "; } echo anchor('user/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
+<nav> <?php echo anchor('UserController/startQuiz', 'Start test', array('id'=>'startTest') ) . " | "; if($this->session->userdata('account_type') =="f") {echo anchor('/UserController/registerFBUser', 'Register') . " | "; } echo anchor('UserController/logout', 'Logout', array('class'=>'focus') ); ?> </nav>
 </div>
 
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->

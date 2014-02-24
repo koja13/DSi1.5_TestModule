@@ -16,7 +16,7 @@
 			Good luck! 
 			</h5>
 
-			<input  type="submit" class="button" value="Start DSi2.0 QUIZ!" />
+			<input  type="submit" class="button" value="Start DSi1.5 QUIZ!" />
 			
 		<?php echo form_close(); ?>
 		

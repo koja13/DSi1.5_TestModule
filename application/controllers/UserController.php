@@ -275,8 +275,8 @@ class UserController extends CI_Controller{
 	//
 	// odgovor na ajax poziv fje sendQuizResults() == QuizView ==
 	//
-	//
-	// fja koja odgovara na ajax poziv klijenta, upisuje u bazu rezultate kviza
+	// ova fja upisuje u bazu rezultate kviza, poziva fju saveQuizResults($userAnswers) za cuvanje podataka o rezultatima == UserModel ==
+	// 
 	public function getQuizResults()
 	{
 		$userAnswers = $_POST['userAnswers'];
@@ -287,7 +287,12 @@ class UserController extends CI_Controller{
 		echo $message;
 	}
 	
-	// fja koja otvara stranu sa rezultatima kviza
+	// ================================ QuizResultPage() ================================
+	//
+	// poziva je javascript fja QuizResults() na klijentu == QuizView ==
+	//
+	// ova fja otvara stranu sa rezultatima kviza
+	// 
 	public function QuizResultPage()
 	{
 		$data = $this->UserModel->getResults();
@@ -298,7 +303,12 @@ class UserController extends CI_Controller{
 		$this->load->view('FooterView',$data);
 	}
 	
-	//fja koja izloguje korisnika, obrise podatke iz sesije i pokrene sign in stranu
+	// ================================ logout() ================================
+	//
+	// poziva se klikom na link u navigation divu == WelcomeView, MainView, WelcomeQuizView, QuizView ==
+	//
+	// fja koja izloguje korisnika, upise podatke o ovoj akciji u bazu, obrise podatke iz sesije i pokrene Sign In stranu
+	//
 	public function logout()
 	{
 		// upisivanje informacije o logout-u u bazu

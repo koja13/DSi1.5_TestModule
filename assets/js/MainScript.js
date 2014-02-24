@@ -17,16 +17,21 @@
 		// promenljiva koja cuva ime rdf modela, inicijalno je prazan string
 		var rdfGraphName = "";
 		
+		
+		
+		// ==========================  KOD DODAT ZA TEST MODUL -- pocetak ================================
+		
+		// postavljanje imena modela (jedan model za sve lekcije)
 		rdfGraphName = "model.rdf";
 		
 		// promenljiva koja cuva link ka rdf kontroleru, koristi se kod ajax poziva
 		var rdfController = config.site_url + "/RdfController";
 
+		// postavljanje trenutnog broja lekcije na 1, pri pokretanju glavnog pogleda sa lekcijama
 		var currentLessionNumber = 1;
 		
+		// bool promenljiva, da li je isteklo vreme za ucenje, na false u startu
 		var timeIsUp = false;
-		
-		var userActions = new Array();
 
 		// FUNKCIJE
 		$(document).ready(function() {
@@ -144,7 +149,6 @@
 							  subject: subject,
 							  object:object,
 							  currentDateTime: getCurrentTime()
-					  		//userActions: userActions
 				  		}
 				}).done(function( response ) {
 					
@@ -162,7 +166,6 @@
 							  action: action,
 							  next_prev_lession_number: next_prev_lession_number,
 							  currentDateTime: getCurrentTime()
-					  		//userActions: userActions
 				  		}
 				}).done(function( response ) {
 					
@@ -184,6 +187,10 @@
 			//alert(month + "/" + day + "/" + year + " " + hours + ":" + minuts + ":" + seconds);
 			return currnetTimeString;
 		}
+		
+	// ==========================  KOD DODAT ZA TEST MODUL -- kraj ================================
+		
+		
 	//
 	// FUNKCIJA ZA DRAG & DROP
 	//
