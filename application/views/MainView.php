@@ -15,10 +15,12 @@
 <!------------------------- mainDiv, centralni div u koji se ucitava tekst ------------------------->
 <div id='mainDiv'>
 
-<script>
-sendUserActionsLessions(currentLessionNumber, "start_dsi", null);
-</script>
-	 		
+	<script>
+		// slanje informacije o akciji poktretanja sistema za ucenje
+		sendUserActionsLessions(currentLessionNumber, "start_dsi", null);
+	</script>
+
+	 	<!------------------------- tabs, div koje ce da sadrzi tabove (divove)  ------------------------->
         <div id="tabs">
 			
 	    	<ul>

@@ -34,40 +34,70 @@
 		var timeIsUp = false;
 
 		// FUNKCIJE
+		
+		//
+		// kod koji se izvrsava nakon ucitavanja strane
+		//
 		$(document).ready(function() {
 			
 			// kliktanje na start test u navigation divu
 			$("#startTest").click(function() {
+				// cuvanje informacije o akciji zavrsetku ucenja i startovanju testa
 			    sendUserActionsLessions(currentLessionNumber, "end_dsi", null);
 			});
 			
+			// postavljanje trenutnog broja lekcije u span u gornjem levom uglu
 			$("#lessionNumberSpan2").html(currentLessionNumber);
 			
+			// postavljanje event hendlera za kliktanje na close (x) na divu za prikaz veza dobijenih iz rdf-a
 			$(document).on('click', '.close', function(){
 			        $(this).parent().hide(400);
 			    });
 
 		});
 		
-		function changeLessionNumberPrev()
-		{
-			currentLessionNumber -= 1;
-			$("#lessionNumberSpan2").html(currentLessionNumber);
-		}
 		
-		function changeLessionNumberNext()
-		{
-			currentLessionNumber += 1;
-			$("#lessionNumberSpan2").html(currentLessionNumber);
-		}
-
+		// ucitavanje prve lekcije na strani
+		
 		//getTextFromServer(1, "tekst1.html", "model.rdf");
 		getTextFromServer(1, "tekst1.htm", "model.rdf");
 
+		
+		// ========================= changeLessionNumberPrev() ========================
+		//
+		// funkcija koja menja vrednost broja lekcije na kojoj se trenutno nalazi korisnik, korisnik se vraca unazad
+		// pozivaju je event handler za kliktanje na prev dugme u glavnom pogledu (MainView)
+		//
+		function changeLessionNumberPrev()
+		{
+			// promena vrednosti promenljive koja cuva broj trenutne lekcije
+			currentLessionNumber -= 1;
+			
+			// upisivanje nove vrednosti u span
+			$("#lessionNumberSpan2").html(currentLessionNumber);
+		}
+		
+		// ========================= changeLessionNumberNext() ========================
+		//
+		// funkcija koja menja vrednost broja lekcije na kojoj se trenutno nalazi korisnik, korisnik ide napred
+		// pozivaju je event handler za kliktanje na next dugme u glavnom pogledu (MainView)
+		//
+		function changeLessionNumberNext()
+		{
+			// promena vrednosti promenljive koja cuva broj trenutne lekcije
+			currentLessionNumber += 1;
+			
+			// upisivanje nove vrednosti u span
+			$("#lessionNumberSpan2").html(currentLessionNumber);
+		}
+
+		//
 		// dodavanje next i prev kontrola na svaki tab
+		//
 		$(function() 
 		{
 
+			// kreiranje tabova na osnovu divova
 			var $tabs = $('#tabs').tabs();
 			
 			$(".ui-tabs-panel").each(function(i)
@@ -89,6 +119,7 @@
 
 			});
 		
+			// definisanje event handlera za klik na next dugme
 			$('.next-tab').click(function() 
 			{ 
 				// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
@@ -98,47 +129,60 @@
 				// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
 				getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".htm", "model.rdf");
 				
+				// broj prethodne lekcije, treba nam da bi izbrisali sadrzaj lekcije na kojoj smo se prethodno nalazili
 				var relPrev = parseInt($(this).attr("rel"))-1;
 				
-				
-				// brisanje tabova koji nisu trenutno aktivni
+				// brisanje sadrzaja tabova koji nisu trenutno aktivni
 				$("#lessionDiv" + relPrev).empty();
 				
-				
+				// slanje informacije o akciji kliktanja na next dugme serveru
 				sendUserActionsLessions(currentLessionNumber, "next", parseInt(currentLessionNumber) + 1);
+				
+				// izmena broja lekcije na kojoj se trenutno nalazi korisnik, +1, korisnik ide napred
 				changeLessionNumberNext();
 				
 				//alert(relNext + " to je +1 i " + relPrev + " je -1");
 				return false;
 			});
 	       
-			
+			// definisanje event handlera za klik na prev dugme
 			$('.prev-tab').click(function() 
-					{ 
-						// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
-						// zatim se taj tab selektuje
-						$tabs.tabs('select', $(this).attr("rel"));
+			{ 
+				// pomocu $(this).attr("rel") se dobije broj taba na koji treba da se predje klikom na prev ili next dugme
+				// zatim se taj tab selektuje
+				$tabs.tabs('select', $(this).attr("rel"));
 					
-						// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
-						getTextFromServer($(this).attr("rel"), "tekst"+$(this).attr("rel")+".htm", "model.rdf");
-						
-						
-						var relNext = parseInt($(this).attr("rel"))+1;
-						
-						// brisanje tabova koji nisu trenutno aktivni
-						$("#lessionDiv" + relNext).empty();
-						
-						sendUserActionsLessions(currentLessionNumber,"prev", parseInt(currentLessionNumber) - 1);
-						changeLessionNumberPrev();
-						
-						//alert(relNext + " to je +1 i " + relPrev + " je -1");
-						return false;
-					});
+				// postavljanje teksta u tab koji ce biti aktivan klikom na prev ili next kontrolu
+				getTextFromServer($(this).attr("rel"), "tekst"+ $(this).attr("rel") + ".htm", "model.rdf");
+
+				// broj naredne lekcije, treba nam da bi izbrisali sadrzaj lekcije na kojoj smo se prethodno nalazili
+				var relNext = parseInt($(this).attr("rel")) + 1;
+
+				// brisanje sadrzaja tabova koji nisu trenutno aktivni
+				$("#lessionDiv" + relNext).empty();
+				
+				// slanje informacije o akciji kliktanja na prev dugme serveru
+				sendUserActionsLessions(currentLessionNumber, "prev", parseInt(currentLessionNumber) - 1);
+				
+				// izmena broja lekcije na kojoj se trenutno nalazi korisnik, -1, korisnik ide nazad
+				changeLessionNumberPrev();
+
+				// alert(relNext + " to je +1 i " + relPrev + " je -1");
+				return false;
+			});
 
 		});
 		
 		
-		
+		// ========================= sendUserActions(subject, object) ========================
+		//
+		// Ajax funkcija koja serveru salje informaciju o prevlacenju reci na rec
+		// poziva se u okviru handleDropEvent( event, ui ) koji predstavlja handler za drop event reci
+		// ova funkcija serveru salje broj lekcije na kojoj je obavljena akcija, prevucenu rec i onu na koju je spustena,
+		// kao i trenutno vreme ove akcije
+		// ulazni parametri su: subject - subjekat, podignuta rec
+		//						object  - objekat, rec na koju je podignuta rec spustena
+		//
 		function sendUserActions(subject, object)
 		{
 			$.ajax({
@@ -156,6 +200,16 @@
 				});
 		}	
 		
+		// ========================= sendUserActionsLessions(currentLessionNumber, action, next_prev_lession_number) ========================
+		//
+		// Ajax funkcija koja serveru salje informaciju o akciji koju je korisnik obavio
+		// pozivaju je fje: finishQuiz() == QuizScript.js ==, event handler za kliktanje na prev i next dugmice u MainView
+		// automatski se poziva kada se ucita strana na kojoj se ucitava MainScript.js (document.ready na pocetku skripte)
+		// poziva se u okviru pogleda: MainView, QuizView, Welcome
+		// ulazni parametri su: currentLessionNumber 		- broj lekcije na kojoj se korisnik trenutno nalazi
+		//						action  					- akcija koju je korisnik obavio
+		//						next_prev_lession_number  	- broj lekcije na koju ce korisnik biti preusmeren izvrsenom akcijom
+		//
 		function sendUserActionsLessions(currentLessionNumber, action, next_prev_lession_number)
 		{
 			$.ajax({
@@ -173,6 +227,14 @@
 				});
 		}	
 		
+		
+		// ========================= getCurrentTime() ========================
+		//
+		// fja koja vraca trenutno vreme u obliku stringa
+		// poziva se u okviru fja sendUserActions(subject, object) i
+		// sendUserActionsLessions(currentLessionNumber, action, next_prev_lession_number)
+		// kako bi se dobilo vreme izvrsene akcije
+		//
 		function getCurrentTime()
 		{
 			var currentTime = new Date();
@@ -183,9 +245,9 @@
 			var minuts = currentTime.getMinutes();
 			var seconds = currentTime.getSeconds();
 			
-			var currnetTimeString = year + "-" + month + "-" + day +" " + hours + ":" + minuts + ":" + seconds;
+			var currentTimeString = year + "-" + month + "-" + day +" " + hours + ":" + minuts + ":" + seconds;
 			//alert(month + "/" + day + "/" + year + " " + hours + ":" + minuts + ":" + seconds);
-			return currnetTimeString;
+			return currentTimeString;
 		}
 		
 	// ==========================  KOD DODAT ZA TEST MODUL -- kraj ================================
